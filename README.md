@@ -23,6 +23,8 @@ let me = Profile {
 
 I just enjoy doing IT projects on my spare time, whatever the topic is. I try to make them open-source and deliver quality code that can be used by other developers, the way I sometimes inspire myself from existing projects.
 
+I mostly work with Java and Javascript in my professional environment, however I prefer working with Rust in my spare time, hence why my profile mostly contains Rust projects.
+
 Check out my most complete and best documented projects if you have some time :blush: :
 
 * [tchatche.rs](https://github.com/nag763/tchatchers) : A chat web application based on axum, yew.rs, tailwind, nginx, postgres and redis.
