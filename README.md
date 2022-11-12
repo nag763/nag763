@@ -27,6 +27,7 @@ I mostly work with Java and Javascript in my professional environment, however I
 
 Check out my most complete and best documented projects if you have some time :blush: :
 
+* [texas-snake](https://github.com/nag763/texas-snake) : 🆕 A simple Snake game running in the browser, playable [here](https://nag763.github.io/texas-snake/).
 * [tchatche.rs](https://github.com/nag763/tchatchers) : A chat web application based on axum, yew.rs, tailwind, nginx, postgres and redis.
 * [doteur](https://github.com/nag763/doteur) : A database schema renderer, based in Rust.
 * [rat-rs](https://github.com/nag763/rat-rs) : A lightweight yet powerful CLI schedule fetcher for IDF (Paris region) common transportation.
