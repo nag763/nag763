@@ -10,6 +10,9 @@
     body > * {
         @apply col-start-4 col-end-10 text-center;
     }
+    select {
+        @apply bg-transparent;
+    }
     main {
         @apply row-span-10;
     }

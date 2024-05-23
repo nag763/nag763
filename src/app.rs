@@ -1,22 +1,57 @@
 use leptos::*;
-use leptos_i18n::t;
+use leptos_i18n::{t, Locale};
 use leptos_router::{Route, Router, Routes};
 
+use crate::components::index::Index;
 use crate::i18n::{provide_i18n_context, use_i18n};
 
+static LOCALES : [crate::i18n::Locale; 2] = [crate::i18n::Locale::fr, crate::i18n::Locale::en];
 
+#[component]
+pub fn language_picker() -> impl IntoView{
+
+    let i18n = use_i18n();
+    let current_locale = i18n.get_locale().as_str();
+    let (lang_val, set_lang) = create_signal(current_locale.to_string());
+
+    view! {
+        <select class="h-fit" on:change=move |ev| {
+            let new_value = event_target_value(&ev);
+            let locale = crate::i18n::Locale::find_locale(&[new_value.as_str()]);
+            i18n.set_locale(locale);
+            set_lang.set(new_value);
+        }>
+        <For 
+            each=move || LOCALES
+            key=|locale| *locale
+            children=move |locale: crate::i18n::Locale| {
+                let locale_as_str = locale.as_str();
+                view!{
+                    <option
+                    value=locale_as_str
+                    selected=lang_val.get() == locale_as_str
+                >
+                    {locale_as_str}
+                </option>
+                }
+            }
+        />
+        </select>
+    }
+}
 
 #[component]
 pub fn navbar() -> impl IntoView {
-
-
-
-    view! {
-        <nav class="flex  justify-between col-start-2 col-end-12 text-center ">
+    view!{
+        <nav class="flex justify-between col-start-2 col-end-12 items-center">
             <div class="font-extrabold content-center">
-            "LABEYE Loïc"
+                <a href="/">
+                "LABEYE Loïc"
+                </a>
             </div>
-            <div class="flex space-x-2 content-center">
+            
+            <div class="flex space-x-2 items-center">
+                <LanguagePicker/>
             </div>
         </nav>
     }
@@ -66,7 +101,8 @@ pub fn app() -> impl IntoView {
         <Router>
         <main>
             <Routes>
-            <Route path="/*any" view=move || view! { <h1>{t!(i18n, hello_world)}</h1> }/>
+            <Route path="/" view=Index />
+            <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
             </Routes>
         </main>
         </Router>

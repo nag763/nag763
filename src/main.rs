@@ -5,6 +5,7 @@ use crate::app::App;
 leptos_i18n::load_locales!();
 
 mod app;
+mod components;
 
 pub fn main() {
 
