@@ -1,7 +1,6 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
 use leptos_router::{use_navigate, NavigateOptions};
-use leptos_use::{use_document, use_event_listener};
 
 use crate::i18n::use_i18n;
 

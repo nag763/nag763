@@ -6,3 +6,20 @@ age: "26 years old"
 location: "Paris, France"
 see_next: "See next"
 scroll_down_to_continue: "Scroll down to continue"
+tools: "Working environment :"
+post_scholarship:
+  allianz_trade:
+    since_2021: "Since September 2021"
+    it_consultant: "IT Consultant at Allianz Trade on behalf of Aubay"
+    mission: "Development, integration and elaboration of solutions within the customer's CRM."
+    tools_used: " Java, JavaScript, Spring, Hibernate, Websphere, DB2"
+  internship:
+    since_2021: "March 2021 - September 2021"
+    it_consultant: "Intern within Aubay"
+    mission: "Maintenance and development of an internal tool."
+    tools_used: " Java, JavaScript, Tomcat, MySQL"
+  sustainecho:
+    since_2021: "June 2020 - July 2020"
+    it_consultant: "Intern within SustainEcho"
+    mission: "From scratch creation of API Rest endpoints as part of the gradual roll-out of a commercial tool"
+    tools_used: " Python, Django, SQLite, Postgres, OpenAPI"
