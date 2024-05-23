@@ -7,7 +7,7 @@ use crate::i18n::use_i18n;
 pub fn index() -> impl IntoView {
     let i18n = use_i18n();
 
-    view! { 
+    view! {
         <div class="h-full grid grid-cols-10 grid-rows-10 text-xl">
             <div class="col-start-1 col-end-7 row-span-5 row-start-2 text-left space-y-2">
                 <p class="text-8xl">"LABEYE Loïc"</p>
