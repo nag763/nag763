@@ -1,11 +1,15 @@
 use leptos::*;
 use leptos_i18n::{t, Locale};
-use leptos_router::{Route, Router, Routes};
+use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Router, Routes};
+use leptos_use::{use_document, use_event_listener, use_event_listener_with_options};
+use web_sys::EventListenerOptions;
 
 use crate::components::index::Index;
 use crate::i18n::{provide_i18n_context, use_i18n};
 
 static LOCALES: [crate::i18n::Locale; 2] = [crate::i18n::Locale::fr, crate::i18n::Locale::en];
+
+const ROUTE_ORDER: [&str; 2] = ["/", "/scholarship"];
 
 #[component]
 pub fn language_picker() -> impl IntoView {
@@ -90,22 +94,77 @@ pub fn footer() -> impl IntoView {
 }
 
 #[component]
+pub fn main_component() -> impl IntoView {
+    let i18n = use_i18n();
+
+    let location = use_location().pathname;
+
+    gloo_console::log!("Path : ", location.get());
+
+    let (index_val, index_set) = create_signal(
+        ROUTE_ORDER
+            .iter()
+            .position(|route| *route == location.get()),
+    );
+
+    let _ = {
+        let (index_val, index_set) = (index_val.clone(), index_set.clone());
+        use_event_listener(use_document(), leptos::ev::wheel, move |evt| {
+            if let Some(index_val) = index_val.get() {
+                let new_index = match evt.delta_y().is_sign_positive() {
+                    true => index_val + 1,
+                    _ => index_val - 1,
+                };
+                if let Some(route) = ROUTE_ORDER.get(new_index) {
+                    index_set.set(Some(new_index));
+                    use_navigate()(route, NavigateOptions::default());
+                }
+            }
+        })
+    };
+
+    let _ = {
+        let (index_val, index_set) = (index_val.clone(), index_set.clone());
+        use_event_listener(use_document(), leptos::ev::keydown, move |evt| {
+            if let Some(index_val) = index_val.get() {
+                let new_index = match evt.key_code() {
+                    40 => index_val + 1,
+                    38 => index_val - 1,
+                    _ => index_val,
+                };
+                if new_index != index_val {
+                    if let Some(route) = ROUTE_ORDER.get(new_index) {
+                        index_set.set(Some(new_index));
+                        use_navigate()(route, NavigateOptions::default());
+                    }
+                }
+            }
+        })
+    };
+
+    view! {
+        <main>
+            <Routes>
+            <Route path="/" view=Index />
+            <Route path="/scholarship" view=move || view! {<div>"I am next"</div>}  />
+            <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
+            </Routes>
+        </main>
+    }
+}
+
+#[component]
 pub fn app() -> impl IntoView {
     provide_i18n_context();
-
-    let i18n = use_i18n();
 
     view! {
 
         <Navbar/>
+
         <Router>
-        <main>
-            <Routes>
-            <Route path="/" view=Index />
-            <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
-            </Routes>
-        </main>
+        <MainComponent />
         </Router>
+
         <Footer/>
     }
 }

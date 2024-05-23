@@ -1,11 +1,25 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
+use leptos_router::{use_navigate, NavigateOptions};
+use leptos_use::{use_document, use_event_listener};
 
 use crate::i18n::use_i18n;
 
 #[component]
 pub fn index() -> impl IntoView {
     let i18n = use_i18n();
+
+    let _ = use_event_listener(use_document(), leptos::ev::wheel, |evt| {
+        if evt.delta_y().is_sign_positive() {
+            use_navigate()("/scholarship", NavigateOptions::default());
+        }
+    });
+
+    let _ = use_event_listener(use_document(), leptos::ev::keydown, |evt| {
+        if evt.key_code() == 40 {
+            use_navigate()("/scholarship", NavigateOptions::default());
+        }
+    });
 
     view! {
         <div class="h-full grid grid-cols-10 grid-rows-10 text-xl">
@@ -19,7 +33,7 @@ pub fn index() -> impl IntoView {
             <h1>{t!(i18n, introduction)}</h1>
 
             </div>
-                <p class="flex flex-col row-span-1 col-span-full animate-pulse">{t!(i18n, scroll_down_to_continue)}</p>
+            <p on:click=move |_| use_navigate()("/scholarship", NavigateOptions::default()) class="flex flex-col row-span-1 col-span-full animate-pulse">{t!(i18n, scroll_down_to_continue)}</p>
         </div>
     }
 }
