@@ -1,63 +1,71 @@
-introduction: "Welcome on my personal site. The goal of this site is to introduce you myself through my experiences and projects." 
-footer: "© 2024 LABEYE Loïc. All rights reserved."
-does_not_exist: "The path you are attempting to access is not valid"
+introduction: "Welcome to my personal site. This site aims to introduce you to my experiences and projects."
+footer: "© 2024 Loïc LABEYE. All rights reserved."
+does_not_exist: "The path you are attempting to access is not valid."
 job_title: "Software Engineer"
 age: "26 years old"
 location: "Paris, France"
 see_next: "See next"
 scroll_down_to_continue: "Scroll down to continue"
-tools: "Working environment :"
-post_scholarship_title: "Working experiences"
+tools: "Working environment:"
+post_scholarship_title: "Work Experience"
+last_section: "You have reached the end of this website. To revisit previous sections, either scroll up or use the up arrow key."
 post_scholarship:
   allianz_trade:
     since_2021: "Since September 2021"
     it_consultant: "IT Consultant at Allianz Trade on behalf of Aubay"
-    mission: "Development, integration and elaboration of solutions within the customer's CRM."
-    tools_used: " Java, JavaScript, Spring, Hibernate, Websphere, DB2"
+    mission: "Development, integration, and implementation of solutions within the customer's CRM."
+    tools_used: "Java, JavaScript, Spring, Hibernate, Websphere, DB2"
   internship:
     since_2021: "March 2021 - September 2021"
-    it_consultant: "Intern within Aubay"
+    it_consultant: "Intern at Aubay"
     mission: "Maintenance and development of an internal tool."
-    tools_used: " Java, JavaScript, Tomcat, MySQL"
+    tools_used: "Java, JavaScript, Tomcat, MySQL"
   sustainecho:
     since_2021: "June 2020 - July 2020"
-    it_consultant: "Intern within SustainEcho"
-    mission: "From scratch creation of API Rest endpoints as part of the gradual roll-out of a commercial tool"
-    tools_used: " Python, Django, SQLite, Postgres, OpenAPI"
-scholarship_title: "Scholarship"
+    it_consultant: "Intern at SustainEcho"
+    mission: "Creation of API Rest endpoints from scratch as part of the gradual roll-out of a commercial tool."
+    tools_used: "Python, Django, SQLite, Postgres, OpenAPI"
+scholarship_title: "Education"
 scholarship:
-  graduated: Graduated as Engineer from ESIGELEC (Rouen) school
-  belgium: ERASMUS Exchange Program in ECAM Brussels 
-  ireland: ERASMUS Summer language exchange program in DCU Dublin 
-  rouen: Joined ESIGELEC (Rouen) 
-projects_title: Projects
+  graduated: "Graduated as Engineer from ESIGELEC (Rouen)"
+  belgium: "ERASMUS Exchange Program at ECAM Brussels"
+  ireland: "ERASMUS Summer language exchange program at DCU Dublin"
+  rouen: "Joined ESIGELEC (Rouen)"
+projects_title: "Projects"
 projects:
   tchatche:
-    description: "A privacy compliant chatting application written in Rust"
+    description: "A privacy-compliant chatting application written in Rust."
   verbihr:
-    description: "A tool to learn german irregular verbs in Rust"
+    description: "A tool to learn German irregular verbs in Rust."
   snake:
-    description: "A simple snake game playable in a browser"
+    description: "A simple snake game playable in a browser."
   doteur:
-    description: "An helper CLI and Web application to visualize easily SQL schemas"
-projects_subtitle: "I enjoy learning things on my own by realizing free and open source projects. All of the projects source code below can be found on my Github."
+    description: "A helper CLI and web application to easily visualize SQL schemas."
+projects_subtitle: "I enjoy learning on my own by creating free and open source projects. The source code for all projects below can be found on my GitHub."
 hobbies_title: "Hobbies"
 hobbies:
   coding:
-    title: Coding
-    description: I enjoy a lot developing new products and taking time to check latest news about development on my free time.
+    title: "Coding"
+    description: "I enjoy developing new products and keeping up with the latest news in development during my free time."
   travelling:
-    title: Travelling
-    description: Travelling broadens the mind, I enjoy discovering new places and getting to know other culutures.
+    title: "Traveling"
+    description: "Traveling broadens the mind. I enjoy discovering new places and learning about different cultures."
   music:
-    title: Music
-    description: I do enjoy a lot pop-rock music, but I am open to most styles.
+    title: "Music"
+    description: "I really enjoy pop-rock music, but I'm open to most styles."
   books:
-    title: Books and Philosophy
-    description: Reading books especially philosophical ones is helping me to relax and take a break.
+    title: "Books and Philosophy"
+    description: "Reading, especially philosophical books, helps me relax and take a break."
   hiking:
-    title: Hiking
-    description: Especially when sunny days are back, I love going out during week-ends and going off the tracks !
+    title: "Hiking"
+    description: "When the weather is nice, I love going out on weekends and exploring off the beaten path."
   football:
-    title: Football and other sports
-    description: Even though I never played it, I am always backing my teams and love discovering new sports.
+    title: "Football and Other Sports"
+    description: "Even though I've never played it, I always support my teams and love discovering new sports."
+contact_title: "Contact"
+contact_subtitle: "Use the form below to contact me. After filling it out, a prompt will open for you to send me an email. If you prefer to skip the form, just click 'Send an email' below."
+contact:
+  topic: "Message Topic"
+  content: "Your Message"
+  fill_here: "Write here..."
+  send: "Send"

@@ -1,3 +1,71 @@
-hello_world: "Bonjour et bienvenue !"
-footer: "© 2024 LABEYE Loïc. All rights reserved."
-does_not_exist: "La resource à laquelle vous tentez d'accéder n'existe pas"
+introduction: "Bienvenue sur mon site personnel. Ce site a pour but de vous présenter mes expériences et projets."
+footer: "© 2024 Loïc LABEYE. Tous droits réservés."
+does_not_exist: "Le chemin que vous essayez d'accéder n'est pas valide."
+job_title: "Ingénieur logiciel"
+age: "26 ans"
+location: "Paris, France"
+see_next: "Voir suivant"
+scroll_down_to_continue: "Faites défiler vers le bas pour continuer"
+tools: "Environnement de travail :"
+post_scholarship_title: "Expérience professionnelle"
+last_section: "Vous avez atteint la fin de ce site web. Pour revoir les sections précédentes, faites défiler vers le haut ou utilisez la touche de flèche vers le haut."
+post_scholarship:
+  allianz_trade:
+    since_2021: "Depuis septembre 2021"
+    it_consultant: "Consultant IT chez Allianz Trade pour le compte d'Aubay"
+    mission: "Développement, intégration et mise en œuvre de solutions au sein du CRM du client."
+    tools_used: "Java, JavaScript, Spring, Hibernate, Websphere, DB2"
+  internship:
+    since_2021: "Mars 2021 - septembre 2021"
+    it_consultant: "Stagiaire chez Aubay"
+    mission: "Maintenance et développement d'outils interne."
+    tools_used: "Java, JavaScript, Tomcat, MySQL"
+  sustainecho:
+    since_2021: "Juin 2020 - juillet 2020"
+    it_consultant: "Stagiaire chez SustainEcho"
+    mission: "Création de points de terminaison API Rest à partir de zéro dans le cadre du déploiement progressif d'un outil commercial."
+    tools_used: "Python, Django, SQLite, Postgres, OpenAPI"
+scholarship_title: "Scolarité"
+scholarship:
+  graduated: "Diplômé Ingénieur de l'ESIGELEC (Rouen)"
+  belgium: "Programme d'échange ERASMUS à l'ECAM Bruxelles"
+  ireland: "Programme d'échange linguistique estival ERASMUS à DCU Dublin"
+  rouen: "Entrée à l'ESIGELEC (Rouen)"
+projects_title: "Projets"
+projects:
+  tchatche:
+    description: "Une application de chat respectueuse de la vie privée écrite en Rust."
+  verbihr:
+    description: "Un outil pour apprendre les verbes irréguliers allemands en Rust."
+  snake:
+    description: "Un jeu de serpent jouable dans un navigateur."
+  doteur:
+    description: "Une application CLI et web pour visualiser facilement les schémas SQL."
+projects_subtitle: "J'aime apprendre par moi-même en réalisant des projets libres et open source. Le code source de tous les projets ci-dessous peut être trouvé sur mon GitHub."
+hobbies_title: "Loisirs"
+hobbies:
+  coding:
+    title: "Développement"
+    description: "J'aime développer de nouveaux produits et suivre les dernières actualités du développement pendant mon temps libre."
+  travelling:
+    title: "Voyages"
+    description: "Voyager élargit l'esprit. J'aime découvrir de nouveaux endroits et apprendre davantage sur différentes cultures."
+  music:
+    title: "Musique"
+    description: "J'apprécie beaucoup la musique pop-rock, mais je suis ouvert à la plupart des styles."
+  books:
+    title: "Livres et Philosophie"
+    description: "Lire, en particulier des livres philosophiques, m'aide à me détendre et à faire une pause dans ma journée."
+  hiking:
+    title: "Randonnée"
+    description: "Quand il fait beau, j'aime sortir les week-ends et explorer hors des sentiers battus."
+  football:
+    title: "Football et autres sports"
+    description: "Même si je n'y ai jamais joué, je soutiens toujours mes équipes et j'adore découvrir de nouveaux sports."
+contact_title: "Contact"
+contact_subtitle: "Utilisez le formulaire ci-dessous pour me contacter. Après l'avoir rempli, une invit s'ouvrira pour vous permettre de m'envoyer un e-mail. Si vous préférez ignorer le formulaire, cliquez simplement sur 'Envoyer un e-mail' ci-dessous."
+contact:
+  topic: "Sujet du message"
+  content: "Votre message"
+  fill_here: "Écrivez ici..."
+  send: "Envoyer"

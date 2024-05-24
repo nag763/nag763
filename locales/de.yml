@@ -1,0 +1,71 @@
+introduction: "Willkommen auf meiner persönlichen Website. Diese Website soll Ihnen meine Erfahrungen und Projekte vorstellen."
+footer: "© 2024 Loïc LABEYE. Alle Rechte vorbehalten."
+does_not_exist: "Der Pfad, den Sie zu erreichen versuchen, ist ungültig."
+job_title: "Software-Ingenieur"
+age: "26 Jahre alt"
+location: "Paris, Frankreich"
+see_next: "Weiter"
+scroll_down_to_continue: "Scrollen Sie nach unten, um fortzufahren"
+tools: "Arbeitsumgebung:"
+post_scholarship_title: "Berufserfahrung"
+last_section: "Sie haben das Ende dieser Website erreicht. Um die vorherigen Abschnitte erneut anzusehen, scrollen Sie nach oben oder verwenden Sie die Pfeiltaste nach oben."
+post_scholarship:
+  allianz_trade:
+    since_2021: "Seit September 2021"
+    it_consultant: "IT-Berater bei Allianz Trade im Auftrag von Aubay"
+    mission: "Entwicklung, Integration und Implementierung von Lösungen im CRM des Kunden."
+    tools_used: "Java, JavaScript, Spring, Hibernate, Websphere, DB2"
+  internship:
+    since_2021: "März 2021 - September 2021"
+    it_consultant: "Praktikant bei Aubay"
+    mission: "Wartung und Entwicklung interner Werkzeuge."
+    tools_used: "Java, JavaScript, Tomcat, MySQL"
+  sustainecho:
+    since_2021: "Juni 2020 - Juli 2020"
+    it_consultant: "Praktikant bei SustainEcho"
+    mission: "Erstellung von API-Rest-Endpunkten von Grund auf im Rahmen der schrittweisen Einführung eines kommerziellen Werkzeugs."
+    tools_used: "Python, Django, SQLite, Postgres, OpenAPI"
+scholarship_title: "Ausbildung"
+scholarship:
+  graduated: "Abschluss als Ingenieur an der ESIGELEC (Rouen)"
+  belgium: "ERASMUS-Austauschprogramm an der ECAM Brüssel"
+  ireland: "ERASMUS-Sommer-Sprachprogramm an der DCU Dublin"
+  rouen: "Eintritt in die ESIGELEC (Rouen)"
+projects_title: "Projekte"
+projects:
+  tchatche:
+    description: "Eine datenschutzkonforme Chat-Anwendung, geschrieben in Rust."
+  verbihr:
+    description: "Ein Werkzeug zum Lernen deutscher unregelmäßiger Verben in Rust."
+  snake:
+    description: "Ein einfaches Snake-Spiel, das im Browser gespielt werden kann."
+  doteur:
+    description: "Eine CLI- und Web-Anwendung, um SQL-Schemata einfach zu visualisieren."
+projects_subtitle: "Ich lerne gerne selbstständig, indem ich freie und Open-Source-Projekte realisiere. Der Quellcode aller unten stehenden Projekte ist auf meinem GitHub zu finden."
+hobbies_title: "Hobbys"
+hobbies:
+  coding:
+    title: "Programmierung"
+    description: "Ich entwickle gerne neue Produkte und verfolge in meiner Freizeit die neuesten Nachrichten aus der Entwicklung."
+  travelling:
+    title: "Reisen"
+    description: "Reisen erweitert den Horizont. Ich entdecke gerne neue Orte und lerne mehr über verschiedene Kulturen."
+  music:
+    title: "Musik"
+    description: "Ich schätze Pop-Rock-Musik sehr, bin aber für die meisten Musikstile offen."
+  books:
+    title: "Bücher und Philosophie"
+    description: "Lesen, insbesondere philosophische Bücher, hilft mir, mich zu entspannen und eine Pause in meinem Tag einzulegen."
+  hiking:
+    title: "Wandern"
+    description: "Wenn das Wetter schön ist, gehe ich gerne an den Wochenenden raus und erkunde abseits der ausgetretenen Pfade."
+  football:
+    title: "Fußball und andere Sportarten"
+    description: "Auch wenn ich es nie gespielt habe, unterstütze ich immer meine Teams und liebe es, neue Sportarten zu entdecken."
+contact_title: "Kontakt"
+contact_subtitle: "Verwenden Sie das untenstehende Formular, um mich zu kontaktieren. Nachdem Sie es ausgefüllt haben, wird eine Aufforderung geöffnet, damit Sie mir eine E-Mail senden können. Wenn Sie das Formular überspringen möchten, klicken Sie einfach unten auf 'E-Mail senden'."
+contact:
+  topic: "Betreff der Nachricht"
+  content: "Ihre Nachricht"
+  fill_here: "Hier schreiben..."
+  send: "Senden"

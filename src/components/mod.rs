@@ -1,3 +1,4 @@
+pub mod contact;
 pub mod hobbies;
 pub mod index;
 pub mod post_scholarship;
