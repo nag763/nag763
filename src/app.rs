@@ -5,12 +5,13 @@ use leptos_use::{use_document, use_event_listener, use_timeout_fn, UseTimeoutFnR
 
 use crate::components::index::Index;
 use crate::components::post_scholarship::PostScholarship;
+use crate::components::projects::Projects;
 use crate::components::scholarship::Scholarship;
 use crate::i18n::{provide_i18n_context, use_i18n};
 
 static LOCALES: [crate::i18n::Locale; 2] = [crate::i18n::Locale::fr, crate::i18n::Locale::en];
 
-const ROUTE_ORDER: [&str; 3] = ["/", "/post_scholarship", "/scholarship"];
+const ROUTE_ORDER: [&str; 4] = ["/", "/post_scholarship", "/scholarship", "/projects"];
 
 #[component]
 pub fn language_picker() -> impl IntoView {
@@ -161,6 +162,7 @@ pub fn main_component() -> impl IntoView {
             <Route path="/" view=Index />
             <Route path="/post_scholarship" view=PostScholarship />
             <Route path="/scholarship" view=Scholarship  />
+            <Route path="/projects" view=Projects />
             <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
             </Routes>
         </main>

@@ -30,3 +30,14 @@ scholarship:
   belgium: ERASMUS Exchange Program in ECAM Brussels 
   ireland: ERASMUS Summer language exchange program in DCU Dublin 
   rouen: Joined ESIGELEC (Rouen) 
+projects_title: Projects
+projects:
+  tchatche:
+    description: "A privacy compliant chatting application written in Rust"
+  verbihr:
+    description: "A tool to learn german irregular verbs in Rust"
+  snake:
+    description: "A simple snake game playable in a browser"
+  doteur:
+    description: "An helper CLI and Web application to visualize easily SQL schemas"
+projects_subtitle: "I enjoy learning things on my own by realizing free and open source projects. All of the projects source code below can be found on my Github."
