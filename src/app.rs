@@ -115,8 +115,6 @@ pub fn main_component() -> impl IntoView {
     );
 
     let _ = {
-        let (index_val, index_set) = (index_val.clone(), index_set.clone());
-
         let UseTimeoutFnReturn {
             start, is_pending, ..
         } = {
@@ -146,22 +144,19 @@ pub fn main_component() -> impl IntoView {
         })
     };
 
-    let _ = {
-        let (index_val, index_set) = (index_val.clone(), index_set.clone());
-        use_event_listener(use_document(), leptos::ev::keydown, move |evt| {
-            if let Some(index_val) = index_val.get() {
-                let new_index = match evt.key_code() {
-                    40 => index_val + 1,
-                    38 if index_val != 0 => index_val - 1,
-                    _ => return,
-                };
-                if let Some(route) = ROUTE_ORDER.get(new_index) {
-                    index_set.set(Some(new_index));
-                    use_navigate()(route, NavigateOptions::default());
-                }
+    let _ = use_event_listener(use_document(), leptos::ev::keydown, move |evt| {
+        if let Some(index_val) = index_val.get() {
+            let new_index = match evt.key_code() {
+                40 => index_val + 1,
+                38 if index_val != 0 => index_val - 1,
+                _ => return,
+            };
+            if let Some(route) = ROUTE_ORDER.get(new_index) {
+                index_set.set(Some(new_index));
+                use_navigate()(route, NavigateOptions::default());
             }
-        })
-    };
+        }
+    });
 
     view! {
         <main >
