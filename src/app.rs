@@ -3,6 +3,7 @@ use leptos_i18n::{t, Locale};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Router, Routes};
 use leptos_use::{use_document, use_event_listener, use_timeout_fn, UseTimeoutFnReturn};
 
+use crate::components::hobbies::Hobbies;
 use crate::components::index::Index;
 use crate::components::post_scholarship::PostScholarship;
 use crate::components::projects::Projects;
@@ -11,7 +12,13 @@ use crate::i18n::{provide_i18n_context, use_i18n};
 
 static LOCALES: [crate::i18n::Locale; 2] = [crate::i18n::Locale::fr, crate::i18n::Locale::en];
 
-const ROUTE_ORDER: [&str; 4] = ["/", "/post_scholarship", "/scholarship", "/projects"];
+const ROUTE_ORDER: [&str; 5] = [
+    "/",
+    "/post_scholarship",
+    "/scholarship",
+    "/projects",
+    "/hobbies",
+];
 
 #[component]
 pub fn language_picker() -> impl IntoView {
@@ -163,6 +170,7 @@ pub fn main_component() -> impl IntoView {
             <Route path="/post_scholarship" view=PostScholarship />
             <Route path="/scholarship" view=Scholarship  />
             <Route path="/projects" view=Projects />
+            <Route path="/hobbies" view=Hobbies />
             <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
             </Routes>
         </main>

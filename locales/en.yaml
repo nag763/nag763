@@ -41,3 +41,23 @@ projects:
   doteur:
     description: "An helper CLI and Web application to visualize easily SQL schemas"
 projects_subtitle: "I enjoy learning things on my own by realizing free and open source projects. All of the projects source code below can be found on my Github."
+hobbies_title: "Hobbies"
+hobbies:
+  coding:
+    title: Coding
+    description: I enjoy a lot developing new products and taking time to check latest news about development on my free time.
+  travelling:
+    title: Travelling
+    description: Travelling broadens the mind, I enjoy discovering new places and getting to know other culutures.
+  music:
+    title: Music
+    description: I do enjoy a lot pop-rock music, but I am open to most styles.
+  books:
+    title: Books and Philosophy
+    description: Reading books especially philosophical ones is helping me to relax and take a break.
+  hiking:
+    title: Hiking
+    description: Especially when sunny days are back, I love going out during week-ends and going off the tracks !
+  football:
+    title: Football and other sports
+    description: Even though I never played it, I am always backing my teams and love discovering new sports.
