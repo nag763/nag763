@@ -1,5 +1,5 @@
 introduction: "Welcome on my personal site. The goal of this site is to introduce you myself through my experiences and projects." 
-footer: "© 2024 LABEYE Loïc. Tous droits réservés."
+footer: "© 2024 LABEYE Loïc. All rights reserved."
 does_not_exist: "The path you are attempting to access is not valid"
 job_title: "Software Engineer"
 age: "26 years old"
@@ -7,6 +7,7 @@ location: "Paris, France"
 see_next: "See next"
 scroll_down_to_continue: "Scroll down to continue"
 tools: "Working environment :"
+post_scholarship_title: "Working experiences"
 post_scholarship:
   allianz_trade:
     since_2021: "Since September 2021"
@@ -23,3 +24,9 @@ post_scholarship:
     it_consultant: "Intern within SustainEcho"
     mission: "From scratch creation of API Rest endpoints as part of the gradual roll-out of a commercial tool"
     tools_used: " Python, Django, SQLite, Postgres, OpenAPI"
+scholarship_title: "Scholarship"
+scholarship:
+  graduated: Graduated as Engineer from ESIGELEC (Rouen) school
+  belgium: ERASMUS Exchange Program in ECAM Brussels 
+  ireland: ERASMUS Summer language exchange program in DCU Dublin 
+  rouen: Joined ESIGELEC (Rouen) 

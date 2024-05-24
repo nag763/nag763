@@ -5,6 +5,7 @@ use leptos_use::{use_document, use_event_listener, use_timeout_fn, UseTimeoutFnR
 
 use crate::components::index::Index;
 use crate::components::post_scholarship::PostScholarship;
+use crate::components::scholarship::Scholarship;
 use crate::i18n::{provide_i18n_context, use_i18n};
 
 static LOCALES: [crate::i18n::Locale; 2] = [crate::i18n::Locale::fr, crate::i18n::Locale::en];
@@ -159,7 +160,7 @@ pub fn main_component() -> impl IntoView {
             <Routes>
             <Route path="/" view=Index />
             <Route path="/post_scholarship" view=PostScholarship />
-            <Route path="/scholarship" view=move || view! {<div>"I am next"</div>}  />
+            <Route path="/scholarship" view=Scholarship  />
             <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
             </Routes>
         </main>
