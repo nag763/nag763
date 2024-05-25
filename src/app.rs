@@ -166,14 +166,14 @@ pub fn main_component() -> impl IntoView {
 
     view! {
         <main >
-            <Routes>
-            <Route path="" view=Index />
-            <Route path="post_scholarship" view=PostScholarship />
-            <Route path="scholarship" view=Scholarship  />
-            <Route path="projects" view=Projects />
-            <Route path="hobbies" view=Hobbies />
-            <Route path="contact" view=Contact />
-            <Route path="*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
+            <Routes base=option_env!("SERVE_PATH").unwrap_or_default().into() >
+            <Route path="/" view=Index />
+            <Route path="/post_scholarship" view=PostScholarship />
+            <Route path="/scholarship" view=Scholarship  />
+            <Route path="/projects" view=Projects />
+            <Route path="/hobbies" view=Hobbies />
+            <Route path="/contact" view=Contact />
+            <Route path="/*any" view=move || view! { <div class="h-full flex flex-col text-center justify-center align-center text-4xl text-bold"><p>"404"</p><p>{t!(i18n, does_not_exist)}</p></div> }/>
             </Routes>
         </main>
     }
