@@ -1,6 +1,3 @@
-use std::ops::Div;
-
-use leptos::html::body;
 use leptos::*;
 use leptos_i18n::{t, Locale};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Router, Routes};
@@ -8,6 +5,7 @@ use leptos_use::{
     use_document, use_element_size, use_event_listener, use_timeout_fn, UseElementSizeReturn,
     UseTimeoutFnReturn,
 };
+use std::ops::Div;
 
 use crate::components::contact::Contact;
 use crate::components::hobbies::Hobbies;
@@ -173,7 +171,7 @@ pub fn main_component() -> impl IntoView {
             is_pending,
             stop,
             ..
-        } = { use_timeout_fn(move |_: ()| {}, 600.0) };
+        } = { use_timeout_fn(move |_: ()| {}, 400.0) };
 
         let UseElementSizeReturn { height, .. } = use_element_size(el);
 
