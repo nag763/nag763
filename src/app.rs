@@ -85,7 +85,7 @@ pub fn logo_to(
     href: &'static str,
     #[prop(default = "0 0 24 24")] viewbox: &'static str,
     #[prop(default = "w-3 h-3")] class: &'static str,
-    #[prop(optional)] aria_label: &'static str
+    #[prop(optional)] aria_label: &'static str,
 ) -> impl IntoView {
     view! {
 
