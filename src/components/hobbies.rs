@@ -7,9 +7,9 @@ use crate::{components::common::ProjectCard, i18n::use_i18n};
 pub fn hobbies() -> impl IntoView {
     let i18n = use_i18n();
     view! {
-        <div class="flex flex-col h-full justify-between py-4 overflow-scroll md:overflow-visible">
-        <p class="text-xl md:text-4xl">{t!(i18n, hobbies_title)}</p>
-        <div class="flex flex-col md:grid md:grid-cols-3 gap-2 overflow-scroll md:overflow-visible">
+        <div class="flex flex-col h-full justify-between py-4 overflow-scroll 2xl:overflow-visible">
+        <p class="text-xl 2xl:text-4xl">{t!(i18n, hobbies_title)}</p>
+        <div class="flex flex-col 2xl:grid 2xl:grid-cols-3 gap-2 overflow-scroll 2xl:overflow-visible">
             <ProjectCard title={t!(i18n, hobbies.coding.title)()}  img_src="/assets/florian-olivo-4hbJ-eymZ1o-unsplash.webp" description={t!(i18n, hobbies.coding.description)()}  />
             <ProjectCard title={t!(i18n, hobbies.travelling.title)()}  img_src="/assets/ross-parmly-rf6ywHVkrlY-unsplash.webp" description={t!(i18n, hobbies.travelling.description)()} />
             <ProjectCard title={t!(i18n, hobbies.music.title)()} img_src="/assets/blocks-T3mKJXfdims-unsplash.webp" description={t!(i18n, hobbies.music.description)()} />

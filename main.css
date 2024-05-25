@@ -34,7 +34,7 @@
         @apply col-start-3 col-end-11 row-span-1;
     }
     h1 {
-      @apply md:text-2xl;
+      @apply 2xl:text-2xl;
     }
     h2 {
       @apply text-xl;
