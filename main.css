@@ -16,7 +16,7 @@
 @layer base {
 
     body {
-        @apply h-dvh grid grid-rows-12 grid-cols-12 dark:bg-gray-700 dark:text-white;
+        @apply h-dvh grid grid-rows-12 grid-cols-12 bg-slate-200 dark:bg-gray-700 dark:text-white;
     }
     body > * {
         @apply text-center;

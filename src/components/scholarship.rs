@@ -12,10 +12,10 @@ pub fn chat_like_li(
 ) -> impl IntoView {
     view! {
         <li class="mb-10 ms-6">
-        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full md:-start-3 ring-2 ring-white dark:ring-gray-900 dark:bg-blue-900">
+        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full md:-start-3 ring-2 ring-black dark:ring-gray-900 dark:bg-blue-900">
             <img class="rounded-full shadow-lg" src=image_ref alt=image_alt/>
         </span>
-        <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-800 dark:border-gray-600">
+        <div class="items-center justify-between p-4 bg-white border border-gray-500 rounded-lg shadow-sm sm:flex dark:bg-gray-800 dark:border-gray-600">
             <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{time}</time>
             <div class="text-sm font-normal text-gray-500 dark:text-gray-300">{content}</div>
         </div>
