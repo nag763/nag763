@@ -22,6 +22,9 @@ module.exports = {
       },
       gridRow: {
         'span-10': 'span 10 / span 10',
+      },
+      height: {
+        'dvh': '100dvh'
       }
     },
   },

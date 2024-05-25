@@ -1,7 +1,11 @@
 use leptos::*;
 use leptos_i18n::{t, Locale};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Router, Routes};
-use leptos_use::{use_document, use_event_listener, use_timeout_fn, UseTimeoutFnReturn};
+use leptos_use::{
+    use_document, use_element_size, use_event_listener, use_timeout_fn, UseElementSizeReturn,
+    UseTimeoutFnReturn,
+};
+use std::ops::Div;
 
 use crate::components::contact::Contact;
 use crate::components::hobbies::Hobbies;
@@ -120,20 +124,19 @@ pub fn main_component() -> impl IntoView {
             .position(|route| *route == location.get()),
     );
 
+    let el = create_node_ref();
+
+    let navigate_to_index = move |index: usize| {
+        if let Some(route) = ROUTE_ORDER.get(index) {
+            index_set.set(Some(index));
+            use_navigate()(route, NavigateOptions::default());
+        }
+    };
+
     let _ = {
         let UseTimeoutFnReturn {
             start, is_pending, ..
-        } = {
-            use_timeout_fn(
-                move |new_index: usize| {
-                    if let Some(route) = ROUTE_ORDER.get(new_index) {
-                        index_set.set(Some(new_index));
-                        use_navigate()(route, NavigateOptions::default());
-                    }
-                },
-                400.0,
-            )
-        };
+        } = { use_timeout_fn(navigate_to_index, 400.0) };
 
         use_event_listener(use_document(), leptos::ev::wheel, move |evt| {
             if is_pending.get() {
@@ -157,15 +160,42 @@ pub fn main_component() -> impl IntoView {
                 38 if index_val != 0 => index_val - 1,
                 _ => return,
             };
-            if let Some(route) = ROUTE_ORDER.get(new_index) {
-                index_set.set(Some(new_index));
-                use_navigate()(route, NavigateOptions::default());
-            }
+            navigate_to_index(new_index)
         }
     });
 
+    let _ = {
+        // Used to detect double tap
+        let UseTimeoutFnReturn {
+            start,
+            is_pending,
+            stop,
+            ..
+        } = { use_timeout_fn(move |_: ()| {}, 400.0) };
+
+        let UseElementSizeReturn { height, .. } = use_element_size(el);
+
+        let _ = use_event_listener(el, leptos::ev::touchstart, move |evt| {
+            if is_pending.get() {
+                if let (Some(touch), Some(index_val)) = (evt.touches().get(0), index_val.get()) {
+                    let half_height = height.get().div(2.0).trunc() as i32;
+                    let new_index = match half_height < touch.client_y() {
+                        true => index_val + 1,
+                        _ if index_val != 0 => index_val - 1,
+                        _ => return,
+                    };
+                    navigate_to_index(new_index)
+                }
+                evt.prevent_default();
+                stop();
+            } else {
+                start(());
+            }
+        });
+    };
+
     view! {
-        <main >
+        <main node_ref=el>
             <Routes >
             <Route path="/" view=Index />
             <Route path="/post_scholarship" view=PostScholarship />
