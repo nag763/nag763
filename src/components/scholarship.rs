@@ -31,10 +31,10 @@ pub fn scholarship() -> impl IntoView {
         <div class="flex flex-col h-full justify-between py-4">
         <p class="text-4xl">{t!(i18n, scholarship_title )}</p>
         <ol class="relative border-s border-gray-200 dark:border-gray-700">
-        <ChatLikeLi image_ref="assets/university.png" image_alt="University" content={t!(i18n, scholarship.graduated)()} time="2021" />
-        <ChatLikeLi image_ref="assets/atomium.png" image_alt="Belgium" content={t!(i18n, scholarship.belgium)()} time="2019-2020"  />
-        <ChatLikeLi image_ref="assets/irish.png" image_alt="Dublin" content={t!(i18n, scholarship.ireland)()} time="Summer 2017" />
-        <ChatLikeLi image_ref="assets/university.png" image_alt="University" content={t!(i18n, scholarship.rouen)()} time="2016" />
+        <ChatLikeLi image_ref="assets/university.webp" image_alt="University" content={t!(i18n, scholarship.graduated)()} time="2021" />
+        <ChatLikeLi image_ref="assets/atomium.webp" image_alt="Belgium" content={t!(i18n, scholarship.belgium)()} time="2019-2020"  />
+        <ChatLikeLi image_ref="assets/irish.webp" image_alt="Dublin" content={t!(i18n, scholarship.ireland)()} time="Summer 2017" />
+        <ChatLikeLi image_ref="assets/university.webp" image_alt="University" content={t!(i18n, scholarship.rouen)()} time="2016" />
         </ol>
         <p class="flex flex-col row-span-1 col-span-full animate-pulse">{t!(i18n, scroll_down_to_continue)}</p>
     </div>

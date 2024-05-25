@@ -166,7 +166,7 @@ pub fn main_component() -> impl IntoView {
 
     view! {
         <main >
-            <Routes base=option_env!("SERVE_PATH").unwrap_or_default().into() >
+            <Routes >
             <Route path="/" view=Index />
             <Route path="/post_scholarship" view=PostScholarship />
             <Route path="/scholarship" view=Scholarship  />
