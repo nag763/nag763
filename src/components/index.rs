@@ -9,14 +9,14 @@ pub fn index() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
-        <div class="h-full grid grid-cols-10 grid-rows-10 text-xl">
+        <div class="h-full grid grid-cols-10 grid-rows-10 md:text-xl">
             <div class="col-start-1 col-end-7 row-span-5 row-start-2 text-left space-y-2">
-                <p class="text-8xl">"LABEYE Loïc"</p>
+                <p class="text-2xl md:text-8xl">"LABEYE Loïc"</p>
                 <p class="pl-6 animate-fade-in-1">"💼  "{t!(i18n, job_title)}</p>
                 <p class="pl-6 animate-fade-in-2">"🎂  "{t!(i18n, age)}</p>
                 <p class="pl-6 animate-fade-in-3">"📍  "{t!(i18n, location)}</p>
             </div>
-            <div class="col-start-6 col-end-10 text-left space-y-2 row-span-3 animate-fade-in-5">
+            <div class="col-start-6 col-end-10 text-left space-y-2 row-span-3 animate-fade-in-5 text-sm">
             <h1>{t!(i18n, introduction)}</h1>
 
             </div>

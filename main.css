@@ -19,19 +19,22 @@
         @apply h-screen grid grid-rows-12 grid-cols-12 dark:bg-gray-700 dark:text-white;
     }
     body > * {
-        @apply col-start-3 col-end-11 text-center;
+        @apply text-center;
     }
     select {
         @apply bg-transparent;
     }
     main {
-        @apply row-span-10 font-mono;
+        @apply grid grid-cols-12 col-span-12 row-span-10 font-mono;
+    }
+    main > * {
+      @apply col-start-3 col-end-11;
     }
     nav, footer {
-        @apply row-span-1;
+        @apply col-start-3 col-end-11 row-span-1;
     }
     h1 {
-      @apply text-2xl;
+      @apply md:text-2xl;
     }
     h2 {
       @apply text-xl;
