@@ -3,6 +3,13 @@ name = "nag763"
 version = "0.1.0"
 edition = "2021"
 
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+opt-level = "z" 
+
 [dependencies]
 console_error_panic_hook = "0.1.7"
 gloo-console = "0.3.0"
