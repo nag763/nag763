@@ -133,26 +133,6 @@ pub fn main_component() -> impl IntoView {
         }
     };
 
-    let _ = {
-        let UseTimeoutFnReturn {
-            start, is_pending, ..
-        } = { use_timeout_fn(navigate_to_index, 400.0) };
-
-        use_event_listener(use_document(), leptos::ev::wheel, move |evt| {
-            if is_pending.get() {
-                return;
-            }
-            if let Some(index_val) = index_val.get() {
-                let new_index = match evt.delta_y().is_sign_positive() {
-                    true => index_val + 1,
-                    _ if index_val != 0 => index_val - 1,
-                    _ => return,
-                };
-                start(new_index);
-            }
-        })
-    };
-
     let _ = use_event_listener(use_document(), leptos::ev::keydown, move |evt| {
         if let Some(index_val) = index_val.get() {
             let new_index = match evt.key_code() {
