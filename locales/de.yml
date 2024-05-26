@@ -8,6 +8,7 @@ see_next: "Weiter"
 scroll_down_to_continue: "Doppelt tippen oder Pfeil nach unten drücken, um fortzufahren"
 tools: "Arbeitsumgebung:"
 post_scholarship_title: "Berufserfahrung"
+last_built_on: "Diese Website wurde zuletzt am {{ date }} aktualisiert"
 last_section: "Sie haben das Ende dieser Website erreicht. Um die vorherigen Abschnitte erneut anzusehen, scrollen Sie nach oben oder verwenden Sie die Pfeiltaste nach oben."
 post_scholarship:
   allianz_trade:
