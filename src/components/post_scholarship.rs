@@ -7,31 +7,48 @@ use crate::i18n::use_i18n;
 pub fn post_scholarship() -> impl IntoView {
     let i18n = use_i18n();
     view! {
-        <div class="grid grid-rows-6 2xl:flex 2xl:flex-col items-center 2xl:items-stretch 2xl:justify-between py-4 overflow-y-auto 2xl:overflow-visible">
-        <h1 class="row-span-1 max-h-full text-xl 2xl:text-4xl">{t!(i18n, post_scholarship_title)}</h1>
-        <ol class="relative border-s border-black dark:border-gray-800 text-left row-span-4 h-full 2xl:h-auto overflow-y-auto 2xl:overflow-visible  2xl:text-left">
-        <li class="mb-10 ms-4">
-            <div class="absolute w-3 h-3 bg-gray-500 rounded-full mt-1.5 -start-1.5 border border-black dark:border-gray-900 dark:bg-gray-800"></div>
-            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{t!(i18n, post_scholarship.allianz_trade.since_2021)}</time>
-            <h3 class="2xl:text-lg font-semibold text-gray-900 dark:text-white">{t!(i18n, post_scholarship.allianz_trade.it_consultant)}</h3>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{t!(i18n, post_scholarship.allianz_trade.mission)}</p>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.allianz_trade.tools_used)}</p>
+        <div class="grid grid-rows-6 2xl:flex 2xl:flex-col items-center 2xl:items-stretch 2xl:justify-between py-4 overflow-y-auto ">
+        <h1 class="row-span-1 text-xl 2xl:text-4xl">{t!(i18n, post_scholarship_title)}</h1>
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical row-span-4 overflow-y-auto max-h-full ">
+        <li >
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-start text-end mb-10">
+            <time class="font-mono italic">{{t!(i18n, post_scholarship.allianz_trade.since_2021)}}</time>
+            <div class="text-lg font-black">{{t!(i18n, post_scholarship.allianz_trade.it_consultant)}}</div>
+            <p>{t!(i18n, post_scholarship.allianz_trade.mission)}</p>
+            <p><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.allianz_trade.tools_used)}</p>
+          </div>
+          <hr/>
         </li>
-        <li class="mb-10 ms-4">
-            <div class="absolute w-3 h-3 bg-gray-500 rounded-full mt-1.5 -start-1.5 border border-black dark:border-gray-900 dark:bg-gray-800"></div>
-            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{t!(i18n, post_scholarship.internship.since_2021)}</time>
-            <h3 class="2xl:text-lg font-semibold text-gray-900 dark:text-white">{t!(i18n, post_scholarship.internship.it_consultant)}</h3>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{t!(i18n, post_scholarship.internship.mission)}</p>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.internship.tools_used)}</p>
+        <li>
+          <hr />
+          <div class="timeline-middle text-start">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-end mb-10 md:text-start">
+          <time class="font-mono italic">{{t!(i18n, post_scholarship.internship.since_2021)}}</time>
+          <div class="text-lg font-black">{{t!(i18n, post_scholarship.internship.it_consultant)}}</div>
+          <p>{t!(i18n, post_scholarship.internship.mission)}</p>
+          <p><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.internship.tools_used)}</p>
+          </div>
+          <hr />
         </li>
-        <li class="ms-4">
-            <div class="absolute w-3 h-3 bg-gray-500 rounded-full mt-1.5 -start-1.5 border border-black dark:border-gray-900 dark:bg-gray-800"></div>
-            <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{t!(i18n, post_scholarship.sustainecho.since_2021)}</time>
-            <h3 class="2xl:text-lg font-semibold text-gray-900 dark:text-white">{t!(i18n, post_scholarship.sustainecho.it_consultant)}</h3>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{t!(i18n, post_scholarship.sustainecho.mission)}</p>
-            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400"><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.sustainecho.tools_used)}</p>
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-start text-end mb-10">
+          <time class="font-mono italic">{{t!(i18n, post_scholarship.sustainecho.since_2021)}}</time>
+          <div class="text-lg font-black">{{t!(i18n, post_scholarship.sustainecho.it_consultant)}}</div>
+          <p>{t!(i18n, post_scholarship.sustainecho.mission)}</p>
+          <p><span class="underline">{t!(i18n, tools)}</span>{t!(i18n, post_scholarship.sustainecho.tools_used)}</p>
+          </div>
+          <hr />
         </li>
-    </ol>
+      </ul>
     <div class="flex flex-col row-span-1 col-span-full animate-pulse"><p>{t!(i18n, scroll_down_to_continue)}</p></div>
     </div>
 

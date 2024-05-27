@@ -19,6 +19,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install target
       run: rustup target add wasm32-unknown-unknown
+    - name: Install npm deps
+      run: npm i
     - name: Install trunk
       run: cargo install trunk
     - name: Build
