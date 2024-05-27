@@ -17,7 +17,7 @@ pub fn chat_like_li(
         </span>
         <div class="items-center justify-between p-4 bg-white border border-gray-500 rounded-lg shadow-sm sm:flex dark:bg-gray-800 dark:border-gray-600">
             <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{time}</time>
-            <div class="text-sm font-normal text-gray-500 dark:text-gray-300">{content}</div>
+            <div class="text-sm font-normal text-gray-800 dark:text-gray-600">{content}</div>
         </div>
     </li>
     }
