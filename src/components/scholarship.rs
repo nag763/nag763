@@ -28,9 +28,9 @@ pub fn scholarship() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
-    <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-scroll 2xl:overflow-visible items-center  2xl:items-stretch">
+    <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto 2xl:overflow-visible items-center  2xl:items-stretch">
         <p class="text-xl 2xl:text-4xl row-span-1">{t!(i18n, scholarship_title )}</p>
-        <ol class="relative border-s border-gray-200 dark:border-gray-700 row-span-4 h-full 2xl:h-auto overflow-scroll 2xl:overflow-visible  ">
+        <ol class="relative border-s border-gray-200 dark:border-gray-700 row-span-4 h-full 2xl:h-auto overflow-y-auto 2xl:overflow-visible  ">
         <ChatLikeLi image_ref="assets/university.webp" image_alt="University" content={t!(i18n, scholarship.graduated)()} time="2021" />
         <ChatLikeLi image_ref="assets/atomium.webp" image_alt="Belgium" content={t!(i18n, scholarship.belgium)()} time="2019-2020"  />
         <ChatLikeLi image_ref="assets/irish.webp" image_alt="Dublin" content={t!(i18n, scholarship.ireland)()} time="Summer 2017" />

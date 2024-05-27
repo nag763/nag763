@@ -8,10 +8,10 @@ pub fn contact() -> impl IntoView {
     let i18n = use_i18n();
     view! {
 
-        <div class="flex flex-col h-full justify-between py-4 overflow-scroll 2xl:overflow-visible">
+        <div class="flex flex-col h-full justify-between py-4 overflow-y-auto 2xl:overflow-visible">
         <p class="text-xl 2xl:text-4xl">{t!(i18n, contact_title)}</p>
         <p class="text-xs 2xl:text-xl">{t!(i18n, contact_subtitle)}</p>
-        <div class="overflow-scroll 2xl:overflow-visible">
+        <div class="overflow-y-auto 2xl:overflow-visible">
             <form class="flex flex-col space-y-4" action="mailto:loic.labeye@pm.me" >
                 <div>
                     <label for="base-input" class="block text-left mb-2 text-sm font-medium text-gray-900 dark:text-white">{t!(i18n, contact.topic)}</label>
