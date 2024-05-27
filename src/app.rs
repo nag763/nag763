@@ -111,7 +111,7 @@ pub fn footer() -> impl IntoView {
         </div>
         <div class="flex flex-col">
             <p>{t!(i18n, footer)} </p>
-            <p class="hidden taller:block">{move || if let Some(build_time) = option_env!("BUILD_EPOCH") {
+            <p class="hidden taller:block" title=move || option_env!("GIT_REV")>{move || if let Some(build_time) = option_env!("BUILD_EPOCH") {
                 let js_val = Number::from_str(build_time).unwrap();
                 let date = Date::new(&js_val);
                 let date = date.to_locale_date_string(i18n.get_locale().as_str(), &Object::new()).as_string();
