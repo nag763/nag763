@@ -1,6 +1,6 @@
 use leptos::*;
 use leptos_i18n::{t, Locale};
-use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Router, Routes};
+use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
 use leptos_use::{
     use_document, use_element_size, use_event_listener, use_timeout_fn, UseElementSizeReturn,
     UseTimeoutFnReturn,
@@ -65,13 +65,13 @@ pub fn language_picker() -> impl IntoView {
 }
 
 #[component]
-pub fn navbar() -> impl IntoView {
+pub fn navbar(index_set: WriteSignal<Option<usize>>) -> impl IntoView {
     view! {
         <nav class="flex justify-between col-start-2 col-end-12 items-center">
             <div class="font-extrabold content-center">
-                <a href="/">
+                <A on:click=move|_| index_set.set(Some(0)) href="/">
                 "LABEYE Loïc"
-                </a>
+                </A>
             </div>
 
             <div class="flex space-x-2 items-center">
@@ -92,7 +92,7 @@ pub fn logo_to(
     view! {
 
         <a href=href>
-            <svg xmlns="http://www.w3.org/2000/svg" class=class fill="fill-black dark:none" aria-label=aria_label viewBox=viewbox stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class=class fill="fill-black wdark:none" aria-label=aria_label viewBox=viewbox stroke="currentColor">
                 <path d=path/>
             </svg>
         </a>
@@ -121,24 +121,19 @@ pub fn footer() -> impl IntoView {
             }}
             </p>
         </div>
-        
+
         </footer>
     }
 }
 
 #[component]
-pub fn main_component() -> impl IntoView {
-    let i18n = use_i18n();
-
-    let location = use_location().pathname;
-
-    let (index_val, index_set) = create_signal(
-        ROUTE_ORDER
-            .iter()
-            .position(|route| *route == location.get()),
-    );
-
+pub fn main_component(
+    index_val: ReadSignal<Option<usize>>,
+    index_set: WriteSignal<Option<usize>>,
+) -> impl IntoView {
     let el = create_node_ref();
+
+    let i18n = use_i18n();
 
     let navigate_to_index = move |index: usize| {
         if let Some(route) = ROUTE_ORDER.get(index) {
@@ -205,16 +200,20 @@ pub fn main_component() -> impl IntoView {
 
 #[component]
 pub fn app() -> impl IntoView {
+    let location = use_location().pathname;
+
+    let (index_val, index_set) = create_signal(
+        ROUTE_ORDER
+            .iter()
+            .position(|route| *route == location.get()),
+    );
+
     provide_i18n_context();
 
     view! {
 
-        <Navbar/>
-
-        <Router>
-        <MainComponent />
-        </Router>
-
+        <Navbar index_set/>
+        <MainComponent index_val index_set/>
         <Footer/>
     }
 }
