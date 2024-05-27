@@ -27,7 +27,12 @@ module.exports = {
         'dvh': '100dvh'
       },
       screens:{
-        'taller': { 'raw': '(min-height: 800px)' }
+        'taller': { 'raw': '(min-height: 800px)' },
+        mxl: { max: '1279px' },
+        mlg: { max: '1023px' },
+        mmd: { max: '767px' },
+        msm: { max: '639px' },
+      
       }
     },
   },
