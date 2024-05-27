@@ -25,6 +25,9 @@ module.exports = {
       },
       height: {
         'dvh': '100dvh'
+      },
+      screens:{
+        'taller': { 'raw': '(min-height: 800px)' }
       }
     },
   },
