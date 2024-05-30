@@ -1,11 +1,11 @@
 use cookie::SameSite;
 use leptos::*;
-use leptos_i18n::{t, Locale};
+use leptos_i18n::{t, td, Locale};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
 use leptos_use::utils::FromToStringCodec;
 use leptos_use::{
     use_cookie_with_options, use_document, use_element_size, use_event_listener, use_timeout_fn,
-    UseCookieOptions, UseElementSizeReturn, UseTimeoutFnReturn,
+    use_window, UseCookieOptions, UseElementSizeReturn, UseTimeoutFnReturn,
 };
 use std::ops::Div;
 use std::str::FromStr;
@@ -17,7 +17,19 @@ use crate::components::index::Index;
 use crate::components::post_scholarship::PostScholarship;
 use crate::components::projects::Projects;
 use crate::components::scholarship::Scholarship;
-use crate::i18n::{provide_i18n_context, use_i18n};
+use crate::i18n::{self, provide_i18n_context, use_i18n};
+
+fn access_browser_locale() -> crate::i18n::Locale {
+    let Some(navigator) = use_window().navigator() else {
+        return crate::i18n::Locale::default();
+    };
+    let locales: Vec<String> = navigator
+        .languages()
+        .into_iter()
+        .filter_map(|val| val.as_string())
+        .collect();
+    i18n::Locale::find_locale(&locales)
+}
 
 static LOCALES: [crate::i18n::Locale; 3] = [
     crate::i18n::Locale::fr,
@@ -208,18 +220,20 @@ pub fn cookie_consent(
     cookie_consent: Signal<std::option::Option<bool>>,
     set_cookie_consent: WriteSignal<Option<bool>>,
 ) -> impl IntoView {
-    let i18n = use_i18n();
+    let locale = access_browser_locale();
 
     view! {
         <dialog id="modal" class="modal modal-open" class:hidden=move ||cookie_consent.get().is_some()>
         <div class="modal-box w-11/12 max-w-5xl xl:text-left">
-            <h3 class="text-lg">{t!(i18n, cookie_consent_required)}</h3>
-            <p class="py-4">{t!(i18n, cookie_consent_more_info)}</p>
+            <h3 class="text-lg">{td!(locale, cookie_consent_required)}</h3>
+            <p class="py-4">{td!(locale, cookie_consent_more_info)}</p>
             <div class="modal-action">
-            <a href="https://developer.mozilla.org/en-US/docs/Glossary/Cookie" target="_blank"> 
-                <button class="btn btn-warning">{t!(i18n, cookie_what_is)}</button>
+            <a href="https://developer.mozilla.org/en-US/docs/Glossary/Cookie" target="_blank">
+                <button class="btn btn-warning">{td!(locale, cookie_what_is)}</button>
             </a>
-            <button class="btn btn-primary" on:click=move|_| set_cookie_consent.set(Some(true))>{t!(i18n, cookie_consent_accept)}</button>
+            <button class="btn btn-primary" on:click=move|_| {
+                set_cookie_consent.set(Some(true));
+            }>{td!(locale, cookie_consent_accept)}</button>
             </div>
         </div>
         </dialog>
@@ -244,10 +258,30 @@ pub fn app() -> impl IntoView {
             .position(|route| *route == location.get()),
     );
 
-    provide_i18n_context();
-
     move || {
         if cookie_consent.get().is_some() {
+            provide_i18n_context();
+
+            let i18n = use_i18n();
+
+            // Lang is not detected by default by i18n context lib
+            let (lang_lookup_already_perfomed_val, lang_lookup_already_perfomed_set) =
+                use_cookie_with_options::<bool, FromToStringCodec>(
+                    "lang_lookup_performed",
+                    UseCookieOptions::default()
+                        .secure(true)
+                        .same_site(SameSite::Lax)
+                        .max_age(COOKIE_CONSENT_TIME),
+                );
+
+            if lang_lookup_already_perfomed_val.get().is_none() {
+                let locale = access_browser_locale();
+                if locale != i18n.get_locale() {
+                    i18n.set_locale(locale);
+                }
+                lang_lookup_already_perfomed_set.set(Some(true));
+            }
+
             view! {
                     <Navbar index_set/>
                     <MainComponent index_val index_set/>
