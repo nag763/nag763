@@ -65,6 +65,7 @@ pub fn language_picker() -> impl IntoView {
             }
         />
         </select>
+        
     }
 }
 
