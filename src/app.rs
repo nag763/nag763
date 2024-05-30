@@ -65,7 +65,7 @@ pub fn language_picker() -> impl IntoView {
             }
         />
         </select>
-        
+
     }
 }
 
@@ -216,6 +216,9 @@ pub fn cookie_consent(
             <h3 class="text-lg">{t!(i18n, cookie_consent_required)}</h3>
             <p class="py-4">{t!(i18n, cookie_consent_more_info)}</p>
             <div class="modal-action">
+            <a href="https://developer.mozilla.org/en-US/docs/Glossary/Cookie" target="_blank"> 
+                <button class="btn btn-warning">{t!(i18n, cookie_what_is)}</button>
+            </a>
             <button class="btn btn-primary" on:click=move|_| set_cookie_consent.set(Some(true))>{t!(i18n, cookie_consent_accept)}</button>
             </div>
         </div>

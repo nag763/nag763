@@ -12,6 +12,7 @@ cookie_consent_required: "Ihre Zustimmung zur Verwendung von Cookies ist erforde
 cookie_consent_more_info: "Es werden nur essentielle Cookies verwendet, um den Betrieb dieser Website sicherzustellen."
 cookie_consent_accept: "Akzeptieren"
 last_built_on: "Diese Website wurde zuletzt am {{ date }} aktualisiert"
+cookie_what_is: "Was ist ein Cookie?"
 last_section: "Sie haben das Ende dieser Website erreicht. Um die vorherigen Abschnitte erneut anzusehen, scrollen Sie nach oben oder verwenden Sie die Pfeiltaste nach oben."
 post_scholarship:
   allianz_trade:
