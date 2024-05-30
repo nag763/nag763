@@ -899,6 +899,7 @@ name = "nag763"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "cookie",
  "leptos",
  "leptos-use",
  "leptos_i18n",

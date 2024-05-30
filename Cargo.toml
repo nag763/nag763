@@ -12,6 +12,7 @@ opt-level = "z"
 
 [dependencies]
 console_error_panic_hook = "0.1.7"
+cookie = "0.18.1"
 leptos = { version = "0.6.11", features = ["csr"] }
 leptos-use = "0.10.10"
 leptos_i18n = { version = "0.3.3", default-features = false, features = ["csr", "yaml_files", "cookie"] }

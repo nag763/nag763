@@ -1,9 +1,11 @@
+use cookie::SameSite;
 use leptos::*;
 use leptos_i18n::{t, Locale};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
+use leptos_use::utils::FromToStringCodec;
 use leptos_use::{
-    use_document, use_element_size, use_event_listener, use_timeout_fn, UseElementSizeReturn,
-    UseTimeoutFnReturn,
+    use_cookie_with_options, use_document, use_element_size, use_event_listener, use_timeout_fn,
+    UseCookieOptions, UseElementSizeReturn, UseTimeoutFnReturn,
 };
 use std::ops::Div;
 use std::str::FromStr;
@@ -31,6 +33,8 @@ const ROUTE_ORDER: [&str; 6] = [
     "/hobbies",
     "/contact",
 ];
+
+const COOKIE_CONSENT_TIME : i64 = 3600_000_i64*365;
 
 #[component]
 pub fn language_picker() -> impl IntoView {
@@ -199,8 +203,36 @@ pub fn main_component(
 }
 
 #[component]
+pub fn cookie_consent(
+    cookie_consent: Signal<std::option::Option<bool>>,
+    set_cookie_consent: WriteSignal<Option<bool>>,
+) -> impl IntoView {
+    let i18n = use_i18n();
+
+    view! {
+        <dialog id="modal" class="modal modal-open" class:hidden=move ||cookie_consent.get().is_some()>
+        <div class="modal-box w-11/12 max-w-5xl xl:text-left">
+            <h3 class="text-lg">{t!(i18n, cookie_consent_required)}</h3>
+            <p class="py-4">{t!(i18n, cookie_consent_more_info)}</p>
+            <div class="modal-action">
+            <button class="btn btn-primary" on:click=move|_| set_cookie_consent.set(Some(true))>{t!(i18n, cookie_consent_accept)}</button>
+            </div>
+        </div>
+        </dialog>
+    }
+}
+
+#[component]
 pub fn app() -> impl IntoView {
     let location = use_location().pathname;
+
+    let (cookie_consent, set_cookie_consent) = use_cookie_with_options::<bool, FromToStringCodec>(
+        "cookie_consent",
+        UseCookieOptions::default()
+            .secure(true)
+            .same_site(SameSite::Lax)
+            .max_age(COOKIE_CONSENT_TIME),
+    );
 
     let (index_val, index_set) = create_signal(
         ROUTE_ORDER
@@ -210,10 +242,19 @@ pub fn app() -> impl IntoView {
 
     provide_i18n_context();
 
-    view! {
-
-        <Navbar index_set/>
-        <MainComponent index_val index_set/>
-        <Footer/>
+    move || {
+        if cookie_consent.get().is_some() {
+            view! {
+                    <Navbar index_set/>
+                    <MainComponent index_val index_set/>
+                    <Footer/>
+            }
+        } else {
+            view! {
+                <>
+                <CookieConsent cookie_consent set_cookie_consent/>
+                </>
+            }
+        }
     }
 }

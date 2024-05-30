@@ -24,10 +24,10 @@
     select {
         @apply bg-transparent;
     }
-    main {
+    main, #skeleton {
         @apply grid grid-cols-12 col-span-12 row-span-10 font-mono max-h-full overflow-clip;
     }
-    main > * {
+    main > *, #skeleton > * {
       @apply col-start-3 col-end-11;
     }
     nav, footer {

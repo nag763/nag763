@@ -9,6 +9,9 @@ scroll_down_to_continue: "Double tap or press arrow down to continue"
 last_built_on: "This site was last updated on {{ date }}"
 tools: "Working environment:"
 post_scholarship_title: "Work Experience"
+cookie_consent_required: "Your consent to use cookies is required for this site to function properly."
+cookie_consent_more_info: "Only essential cookies are used to ensure this site works."
+cookie_consent_accept: "Accept"
 last_section: "You have reached the end of this website. To revisit previous sections, either scroll up or use the up arrow key."
 post_scholarship:
   allianz_trade:
