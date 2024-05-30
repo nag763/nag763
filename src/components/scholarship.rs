@@ -4,38 +4,57 @@ use leptos_i18n::t;
 use crate::i18n::use_i18n;
 
 #[component]
-pub fn chat_like_li(
-    image_ref: &'static str,
-    #[prop(default = "image")] image_alt: &'static str,
-    content: &'static str,
-    time: &'static str,
-) -> impl IntoView {
-    view! {
-        <li class="mb-10 ms-6">
-        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full 2xl:-start-3 ring-2 ring-black dark:ring-gray-900 dark:bg-base-100">
-            <img class="rounded-full shadow-lg" src=image_ref alt=image_alt/>
-        </span>
-        <div class="items-center justify-between p-4 bg-white border border-gray-500 rounded-lg shadow-sm sm:flex dark:bg-gray-800 dark:border-gray-600">
-            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{time}</time>
-            <div class="">{content}</div>
-        </div>
-    </li>
-    }
-}
-
-#[component]
 pub fn scholarship() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
-    <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto 2xl:overflow-visible items-center  2xl:items-stretch">
+    <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto items-center  2xl:items-stretch">
         <p class="text-xl 2xl:text-4xl row-span-1">{t!(i18n, scholarship_title )}</p>
-        <ol class="relative border-s border-gray-200 dark:border-gray-700 row-span-4 h-full 2xl:h-auto overflow-y-auto 2xl:overflow-visible  ">
-        <ChatLikeLi image_ref="assets/university.webp" image_alt="University" content={t!(i18n, scholarship.graduated)()} time="2021" />
-        <ChatLikeLi image_ref="assets/atomium.webp" image_alt="Belgium" content={t!(i18n, scholarship.belgium)()} time="2019-2020"  />
-        <ChatLikeLi image_ref="assets/irish.webp" image_alt="Dublin" content={t!(i18n, scholarship.ireland)()} time="Summer 2017" />
-        <ChatLikeLi image_ref="assets/university.webp" image_alt="University" content={t!(i18n, scholarship.rouen)()} time="2016" />
-        </ol>
+        <ul class="timeline timeline-snap-icon mmd:timeline-compact timeline-vertical row-span-4 overflow-y-auto max-h-full">
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-start md:timeline-end text-start mb-10 animate-fade-left animate-once animate-ease-in">
+            <time class="font-mono italic">2021</time>
+            <div class="text-lg font-black">{{t!(i18n, scholarship.graduated)}}</div>
+          </div>
+          <hr/>
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-middle md:text-start">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-start mb-10 text-start md:text-end animate-fade-left md:animate-fade-right  animate-once animate-delay-[500ms] animate-ease-in">
+          <time class="font-mono italic">2019-2020</time>
+          <div class="text-lg font-black">{{t!(i18n, scholarship.belgium)}}</div>
+          </div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <div class="timeline-start md:timeline-end text-start mb-10 animate-fade-left animate-once animate-delay-[1000ms] animate-ease-in">
+          <time class="font-mono italic">2017</time>
+          <div class="text-lg font-black">{{t!(i18n, scholarship.ireland)}}</div>
+          </div>
+          <hr />
+        </li>
+        <li>
+        <hr />
+            <div class="timeline-middle md:text-start">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="timeline-start mb-10 text-start md:text-end animate-fade-left md:animate-fade-right animate-once animate-delay-[1500ms] animate-ease-in">
+            <time class="font-mono italic">2016</time>
+            <div class="text-lg font-black">{{t!(i18n, scholarship.rouen)}}</div>
+            </div>
+        </li>
+      </ul>
         <p class="flex flex-col row-span-1 col-span-full animate-pulse">{t!(i18n, scroll_down_to_continue)}</p>
     </div>
 

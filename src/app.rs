@@ -34,7 +34,7 @@ const ROUTE_ORDER: [&str; 6] = [
     "/contact",
 ];
 
-const COOKIE_CONSENT_TIME : i64 = 3600_000_i64*365;
+const COOKIE_CONSENT_TIME: i64 = 3600_000_i64 * 365;
 
 #[component]
 pub fn language_picker() -> impl IntoView {
