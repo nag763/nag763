@@ -51,15 +51,13 @@ const COOKIE_CONSENT_TIME: i64 = 3600_000_i64 * 365;
 #[component]
 pub fn language_picker() -> impl IntoView {
     let i18n = use_i18n();
-    let current_locale = i18n.get_locale().as_str();
-    let (lang_val, set_lang) = create_signal(current_locale.to_string());
+    let current_locale = move || i18n.get_locale().as_str();
 
     view! {
         <select class="h-fit" aria-label="Language picker" on:change=move |ev| {
             let new_value = event_target_value(&ev);
             let locale = crate::i18n::Locale::find_locale(&[new_value.as_str()]);
             i18n.set_locale(locale);
-            set_lang.set(new_value);
         }>
         <For
             each=move || LOCALES
@@ -69,7 +67,7 @@ pub fn language_picker() -> impl IntoView {
                 view!{
                     <option
                     value=locale_as_str
-                    selected=move || lang_val.get() == locale_as_str
+                    selected=move || current_locale() == locale_as_str
                 >
                     {locale_as_str}
                 </option>
@@ -242,6 +240,8 @@ pub fn cookie_consent(
 
 #[component]
 pub fn app() -> impl IntoView {
+    provide_i18n_context();
+
     let location = use_location().pathname;
 
     let (cookie_consent, set_cookie_consent) = use_cookie_with_options::<bool, FromToStringCodec>(
@@ -258,30 +258,32 @@ pub fn app() -> impl IntoView {
             .position(|route| *route == location.get()),
     );
 
-    move || {
-        if cookie_consent.get().is_some() {
-            provide_i18n_context();
+    create_effect(move |_| {
+        // Lang is not detected by default by i18n context lib
+        let (lang_lookup_already_perfomed_val, lang_lookup_already_perfomed_set) =
+            use_cookie_with_options::<bool, FromToStringCodec>(
+                "lang_lookup_performed",
+                UseCookieOptions::default()
+                    .secure(true)
+                    .same_site(SameSite::Lax)
+                    .max_age(COOKIE_CONSENT_TIME),
+            );
 
-            let i18n = use_i18n();
+        if lang_lookup_already_perfomed_val.get().is_none() {
+            if cookie_consent.get().is_some() {
+                let i18n = use_i18n();
 
-            // Lang is not detected by default by i18n context lib
-            let (lang_lookup_already_perfomed_val, lang_lookup_already_perfomed_set) =
-                use_cookie_with_options::<bool, FromToStringCodec>(
-                    "lang_lookup_performed",
-                    UseCookieOptions::default()
-                        .secure(true)
-                        .same_site(SameSite::Lax)
-                        .max_age(COOKIE_CONSENT_TIME),
-                );
-
-            if lang_lookup_already_perfomed_val.get().is_none() {
                 let locale = access_browser_locale();
                 if locale != i18n.get_locale() {
                     i18n.set_locale(locale);
                 }
                 lang_lookup_already_perfomed_set.set(Some(true));
             }
+        }
+    });
 
+    move || {
+        if cookie_consent.get().is_some() {
             view! {
                     <Navbar index_set/>
                     <MainComponent index_val index_set/>
