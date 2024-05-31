@@ -21,7 +21,7 @@ pub fn contact() -> impl IntoView {
                 </div>
                 <div>
                     <label for="message" class="block text-left mb-2 text-sm font-medium text-gray-900 dark:text-white">{t!(i18n, contact.content)}</label>
-                    <textarea type="text" name="body" id="body" rows="4" class="input input-bordered w-full" placeholder={t!(i18n, contact.fill_here)}/>
+                    <textarea type="text" name="body" id="body" rows="4" class="textarea textarea-bordered w-full" placeholder={t!(i18n, contact.fill_here)}/>
                 </div>
                 <button type="submit" class="btn btn-outline animate-pulse animate-duration-[2000ms] animate-ease-in-out animate-twice animate-delay-1000 animate-ease-in">{t!(i18n, contact.send)}</button>
             </form>
