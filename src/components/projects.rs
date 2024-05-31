@@ -11,7 +11,6 @@ fn card(
     description: &'static str,
     github_repo: &'static str,
 ) -> impl IntoView {
-
     let i18n = use_i18n();
     view! {
         <div class="card md:card-side max-h-full">
@@ -29,7 +28,12 @@ fn card(
     }
 }
 
-const WEBSITES : [&str; 4] = ["https://tchatche.xyz", "https://nag763.github.io/verbihr", "https://nag763.github.io/texas-snake", "https://nag763.github.io/doteur"]; 
+const WEBSITES: [&str; 4] = [
+    "https://tchatche.xyz",
+    "https://nag763.github.io/verbihr",
+    "https://nag763.github.io/texas-snake",
+    "https://nag763.github.io/doteur",
+];
 
 #[component]
 pub fn projects() -> impl IntoView {
@@ -37,7 +41,7 @@ pub fn projects() -> impl IntoView {
     let (tab_index_val, tab_index_set) = create_signal(0usize);
 
     let get_tabs = move || {
-        view!{
+        view! {
             <div role="tablist" class="tabs tabs-lifted px-2">
             <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
             <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>verbihr</a>
@@ -47,14 +51,20 @@ pub fn projects() -> impl IntoView {
         }
     };
 
-    let get_card = move||  {
-        match tab_index_val.get() {
-            0 => view!{<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" />},
-            1 => view!{<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />},
-            2 => view!{<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />},
-            3 => view!{<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" />},
-            _ =>view!{<></>}.into_view() 
+    let get_card = move || match tab_index_val.get() {
+        0 => {
+            view! {<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" />}
         }
+        1 => {
+            view! {<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />}
+        }
+        2 => {
+            view! {<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />}
+        }
+        3 => {
+            view! {<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" />}
+        }
+        _ => view! {<></>}.into_view(),
     };
 
     view! {
@@ -66,7 +76,7 @@ pub fn projects() -> impl IntoView {
                     {get_tabs()}
                     {move || get_card()}
             </div>
-            
+
         </div>
         <div class="mockup-browser border border-base-300 row-span-4 max-h-full hidden md:block">
             <div class="mockup-browser-toolbar">

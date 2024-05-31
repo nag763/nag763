@@ -1,6 +1,7 @@
 use cookie::SameSite;
 use leptos::*;
 use leptos_i18n::{t, td, Locale};
+use leptos_meta::{provide_meta_context, Link};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
 use leptos_use::utils::FromToStringCodec;
 use leptos_use::{
@@ -44,6 +45,19 @@ const ROUTE_ORDER: [&str; 6] = [
     "/projects",
     "/hobbies",
     "/contact",
+];
+
+const IMAGES_TO_PRELOAD: [&str; 10] = [
+    "blocks-T3mKJXfdims-unsplash.webp",
+    "doteur.webp",
+    "florian-olivo-4hbJ-eymZ1o-unsplash.webp",
+    "gulfer-ergin-LUGuCtvlk1Q-unsplash.webp",
+    "ross-parmly-rf6ywHVkrlY-unsplash.webp",
+    "snake.webp",
+    "tchatche.webp",
+    "tobias-cornille-j2KI6FTc3jA-unsplash.webp",
+    "verbihr.webp",
+    "vienna-reyes-qCrKTET_09o-unsplash.webp",
 ];
 
 const COOKIE_CONSENT_TIME: i64 = 3600_000_i64 * 24 * 365;
@@ -200,6 +214,7 @@ pub fn main_component(
 
     view! {
         <main node_ref=el>
+
             <Routes >
             <Route path="/" view=Index />
             <Route path="/post_scholarship" view=PostScholarship />
@@ -239,8 +254,27 @@ pub fn cookie_consent(
 }
 
 #[component]
+fn preloader() -> impl IntoView {
+    view! {
+        <For
+            each=move || IMAGES_TO_PRELOAD
+            key=|img| *img
+            children=move |img: &str| view!{
+                <Link rel="preload"
+                href=format!("assets/{img}")
+                as_="image"
+                type_="image/webp"
+                crossorigin="anonymous"
+            />
+            }
+        />
+    }
+}
+
+#[component]
 pub fn app() -> impl IntoView {
     provide_i18n_context();
+    provide_meta_context();
 
     let location = use_location().pathname;
 
@@ -286,6 +320,7 @@ pub fn app() -> impl IntoView {
         if cookie_consent.get().is_some() {
             view! {
                     <Navbar index_set/>
+                    <Preloader />
                     <MainComponent index_val index_set/>
                     <Footer/>
             }
