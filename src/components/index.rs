@@ -20,7 +20,7 @@ pub fn index() -> impl IntoView {
             <h1>{t!(i18n, introduction)}</h1>
 
             </div>
-            <p on:click=move |_| use_navigate()("/scholarship", NavigateOptions::default()) class="flex flex-col row-span-1 col-span-full animate-pulse">{t!(i18n, scroll_down_to_continue)}</p>
+            <p on:click=move |_| use_navigate()("/scholarship", NavigateOptions::default()) class="flex flex-col row-span-1 col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue)}</p>
         </div>
     }
 }
