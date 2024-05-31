@@ -5,7 +5,7 @@ job_title: "Ingénieur logiciel"
 age: "26 ans"
 location: "Paris, France"
 see_next: "Voir suivant"
-scroll_down_to_continue: "Appuyez deux fois ou appuyez sur la flèche vers le bas pour continuer"
+scroll_down_to_continue: "Appuyez deux fois ou appuyez sur la flèche du bas pour continuer"
 tools: "Environnement de travail :"
 last_built_on: "Ce site a été mis à jour pour la dernière fois le {{ date }}"
 post_scholarship_title: "Expérience professionnelle"
@@ -13,7 +13,7 @@ cookie_consent_required: "Votre consentement à l'utilisation des cookies est n�
 cookie_consent_more_info: "Seuls les cookies essentiels sont utilisés pour assurer le bon fonctionnement de ce site."
 cookie_consent_accept: "Accepter"
 cookie_what_is: "Qu'est-ce qu'un cookie ?"
-last_section: "Vous avez atteint la fin de ce site web. Pour revoir les sections précédentes, faites défiler vers le haut ou utilisez la touche de flèche vers le haut."
+last_section: "Vous avez atteint la fin de ce site web. Pour revoir les sections précédentes, faites défiler vers le haut ou utilisez la flèche du haut."
 post_scholarship:
   allianz_trade:
     since_2021: "Depuis septembre 2021"
