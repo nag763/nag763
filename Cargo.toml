@@ -17,6 +17,7 @@ gloo-console = "0.3.0"
 leptos = { version = "0.6.11", features = ["csr"] }
 leptos-use = "0.10.10"
 leptos_i18n = { version = "0.3.3", default-features = false, features = ["csr", "yaml_files", "cookie"] }
+leptos_meta = { version = "0.6.11", features = ["csr"] }
 leptos_router = { version = "0.6.11", features = ["csr"] }
 
 [package.metadata.leptos-i18n]

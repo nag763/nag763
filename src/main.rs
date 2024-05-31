@@ -1,4 +1,5 @@
 use leptos::{mount_to_body, view};
+use leptos_meta::Title;
 use leptos_router::Router;
 
 use crate::app::App;
@@ -14,6 +15,7 @@ pub fn main() {
     mount_to_body(move || {
         view! {
             <Router>
+                <Title formatter=|text| format!("LABEYE Loïc CV - {text}") />
                 <App/>
             </Router>
         }

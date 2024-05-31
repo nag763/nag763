@@ -1,5 +1,6 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
+use leptos_meta::Title;
 use leptos_router::{use_navigate, NavigateOptions};
 
 use crate::i18n::use_i18n;
@@ -7,8 +8,8 @@ use crate::i18n::use_i18n;
 #[component]
 pub fn index() -> impl IntoView {
     let i18n = use_i18n();
-
     view! {
+        <Title text=t!(i18n, title.main_page)/>
         <div class="h-full grid grid-cols-10 grid-rows-10 2xl:text-xl">
             <div class="col-start-1 col-end-9 2xl:col-end-7 row-span-5 row-start-2 text-left space-y-2">
                 <p class="text-2xl 2xl:text-8xl">"LABEYE Loïc"</p>

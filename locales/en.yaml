@@ -15,6 +15,13 @@ cookie_consent_accept: "Accept"
 cookie_what_is: "What is a cookie ?"
 last_section: "You have reached the end of this website. To revisit previous sections, either scroll up or use the up arrow key."
 check_out_on_github: "Check it out on GitHub"
+title:
+  main_page: "Main page"
+  hobbies: "Hobbies"
+  contact: "Contact"
+  post_scholarship: "Work experience"
+  projects: "Projects"
+  scholarship: "Education"
 post_scholarship:
   allianz_trade:
     since_2021: "Since September 2021"

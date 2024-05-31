@@ -15,7 +15,13 @@ last_built_on: "Diese Website wurde zuletzt am {{ date }} aktualisiert"
 cookie_what_is: "Was ist ein Cookie?"
 last_section: "Sie haben das Ende dieser Website erreicht. Um die vorherigen Abschnitte erneut anzusehen, scrollen Sie nach oben oder verwenden Sie die Pfeiltaste nach oben."
 check_out_on_github: "Auf GitHub ansehen"
-
+title:
+  main_page: "Startseite"
+  hobbies: "Hobbys"
+  contact: "Kontakt"
+  post_scholarship: "Berufserfahrung"
+  projects: "Projekte"
+  scholarship: "Ausbildung"
 post_scholarship:
   allianz_trade:
     since_2021: "Seit September 2021"

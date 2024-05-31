@@ -1,5 +1,6 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
+use leptos_meta::Title;
 
 use crate::{components::common::ProjectCard, i18n::use_i18n};
 
@@ -7,6 +8,8 @@ use crate::{components::common::ProjectCard, i18n::use_i18n};
 pub fn hobbies() -> impl IntoView {
     let i18n = use_i18n();
     view! {
+
+        <Title text=t!(i18n, title.hobbies)/>
         <div class="flex flex-col h-full justify-between py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl">{t!(i18n, hobbies_title)}</p>
         <div class="flex flex-col 2xl:grid 2xl:grid-cols-3 gap-2 overflow-y-auto 2xl:overflow-visible">

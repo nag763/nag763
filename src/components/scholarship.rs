@@ -1,5 +1,6 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
+use leptos_meta::Title;
 
 use crate::i18n::use_i18n;
 
@@ -8,6 +9,8 @@ pub fn scholarship() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
+
+    <Title text=t!(i18n, title.scholarship)/>
     <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto items-center  2xl:items-stretch animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1">{t!(i18n, scholarship_title )}</p>
         <ul class="timeline timeline-snap-icon mmd:timeline-compact timeline-vertical row-span-4 overflow-y-auto max-h-full">

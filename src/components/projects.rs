@@ -1,5 +1,6 @@
 use leptos::{component, create_signal, view, IntoView, SignalGet, SignalSet};
 use leptos_i18n::t;
+use leptos_meta::Title;
 
 use crate::i18n::use_i18n;
 
@@ -57,6 +58,7 @@ pub fn projects() -> impl IntoView {
     };
 
     view! {
+        <Title text=t!(i18n, title.projects)/>
         <div class="flex flex-col items-center justify-between  py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1 justify-items-center ">{t!(i18n, projects_title)}</p>
         <div class="mockup-phone md:hidden h-full">

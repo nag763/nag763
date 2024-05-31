@@ -1,5 +1,6 @@
 use leptos::{component, view, IntoView};
 use leptos_i18n::t;
+use leptos_meta::Title;
 
 use crate::i18n::use_i18n;
 
@@ -8,6 +9,7 @@ pub fn contact() -> impl IntoView {
     let i18n = use_i18n();
     view! {
 
+        <Title text=t!(i18n, title.contact)/>
         <div class="flex flex-col h-full justify-between py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl">{t!(i18n, contact_title)}</p>
         <p class="text-xs 2xl:text-xl">{t!(i18n, contact_subtitle)}</p>

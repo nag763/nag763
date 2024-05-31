@@ -917,6 +917,7 @@ dependencies = [
  "leptos",
  "leptos-use",
  "leptos_i18n",
+ "leptos_meta",
  "leptos_router",
 ]
 
