@@ -10,13 +10,15 @@ fn card(
     title: &'static str,
     description: &'static str,
     github_repo: &'static str,
+    #[prop(optional)]
+    shield: &'static str
 ) -> impl IntoView {
     let i18n = use_i18n();
     view! {
         <div class="card md:card-side max-h-full items-center">
             <figure class="md:w-1/3"><img class="w-full h-auto" src=img_ref alt="Illustration"/></figure>
             <div class="card-body text-left md:w-2/3">
-            <h2 class="card-title mmd:text-sm">{title}</h2>
+            <h2 class="card-title mmd:text-sm">{title}<img src=shield/></h2>
             <p class="mmd:text-xs">{description}</p>
             <div class="card-actions justify-end">
             <a href=github_repo target="_blank">
@@ -53,7 +55,7 @@ pub fn projects() -> impl IntoView {
 
     let get_card = move || match tab_index_val.get() {
         0 => {
-            view! {<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" />}
+            view! {<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />}
         }
         1 => {
             view! {<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />}
@@ -62,7 +64,7 @@ pub fn projects() -> impl IntoView {
             view! {<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />}
         }
         3 => {
-            view! {<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" />}
+            view! {<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" shield="https://img.shields.io/github/stars/nag763/doteur?style=social" />}
         }
         _ => view! {<></>}.into_view(),
     };
