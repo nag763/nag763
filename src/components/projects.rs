@@ -10,12 +10,11 @@ fn card(
     title: &'static str,
     description: &'static str,
     github_repo: &'static str,
-    #[prop(optional)]
-    shield: &'static str
+    #[prop(optional)] shield: &'static str,
 ) -> impl IntoView {
     let i18n = use_i18n();
     view! {
-        <div class="card md:card-side max-h-full items-center">
+        <div class="card md:card-side max-h-full items-center mmd:text-white">
             <figure class="md:w-1/3"><img class="w-full h-auto" src=img_ref alt="Illustration"/></figure>
             <div class="card-body text-left md:w-2/3">
             <h2 class="card-title mmd:text-sm">{title}<img src=shield/></h2>
