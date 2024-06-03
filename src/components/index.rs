@@ -20,7 +20,7 @@ pub fn index() -> impl IntoView {
             <h1>{t!(i18n, introduction)}</h1>
 
             </div>
-            <p class="flex flex-col row-span-1 col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue)}</p>
+            <p class="row-span-1  h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
         </div>
     }
 }

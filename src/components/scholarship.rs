@@ -11,7 +11,7 @@ pub fn scholarship() -> impl IntoView {
     view! {
 
     <Title text=t!(i18n, title.scholarship)/>
-    <div class="grid grid-rows-6 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto overflow-x-clip items-center  2xl:items-stretch animate-fade animate-duration-100 animate-ease-in">
+    <div class="grid grid-rows-6 mmd:gap-1 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto overflow-x-clip items-center  2xl:items-stretch animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1">{t!(i18n, scholarship_title )}</p>
         <ul class="timeline timeline-snap-icon mmd:timeline-compact timeline-vertical row-span-4 overflow-y-auto overflow-x-clip max-h-full">
         <li>
@@ -58,7 +58,7 @@ pub fn scholarship() -> impl IntoView {
             </div>
         </li>
       </ul>
-        <p class="flex flex-col row-span-1 col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue)}</p>
+      <p class="row-span-1 mmd:text-sm h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
     </div>
 
 

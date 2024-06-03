@@ -71,7 +71,7 @@ pub fn projects() -> impl IntoView {
 
     view! {
         <Title text=t!(i18n, title.projects)/>
-        <div class="flex flex-col items-center justify-between  py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
+        <div class="flex flex-col gap-1 items-center justify-between  py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1 justify-items-center ">{t!(i18n, projects_title)}</p>
         <div class="mockup-phone w-full md:hidden h-full">
         {get_tabs()}
@@ -89,8 +89,7 @@ pub fn projects() -> impl IntoView {
                 {get_tabs()}
                 {move || get_card()}
         </div>
-        <p class="row-span-1 col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue)}</p>
-
+        <p class="row-span-1 mmd:text-sm h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
         </div>
     }
 }
