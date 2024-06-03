@@ -16,7 +16,7 @@ pub fn index() -> impl IntoView {
                 <p class="pl-6 animate-fade-in-2">"🎂  "{t!(i18n, age)}</p>
                 <p class="pl-6 animate-fade-in-3">"📍  "{t!(i18n, location)}</p>
             </div>
-            <div class="col-start-4 2xl:col-start-6 col-end-10 text-left space-y-2 row-span-3 animate-fade-in-5">
+            <div class="col-start-2 2xl:col-start-6 col-end-10 text-left space-y-2 row-span-3 animate-fade-in-5">
             <h1>{t!(i18n, introduction)}</h1>
 
             </div>
