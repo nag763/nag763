@@ -23,7 +23,7 @@ jobs:
       run: npm i
     - name: Install binstall
       run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-    - name: Install binstall
+    - name: Install trunk
       run: cargo binstall trunk -y
     - name: Build
       run: trunk build --release -M
