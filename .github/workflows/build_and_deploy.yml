@@ -21,8 +21,10 @@ jobs:
       run: rustup target add wasm32-unknown-unknown
     - name: Install npm deps
       run: npm i
-    - name: Install trunk
-      run: cargo install trunk
+    - name: Install binstall
+      run: curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+    - name: Install binstall
+      run: cargo binstall trunk -y
     - name: Build
       run: trunk build --release -M
     - name: Upload GitHub Pages artifact
