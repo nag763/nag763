@@ -1,7 +1,7 @@
 use cookie::SameSite;
 use leptos::*;
 use leptos_i18n::{t, td, Locale};
-use leptos_meta::{provide_meta_context, Link};
+use leptos_meta::{provide_meta_context, Link, Title};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
 use leptos_use::utils::FromToStringCodec;
 use leptos_use::{
@@ -327,6 +327,7 @@ pub fn app() -> impl IntoView {
         } else {
             view! {
                 <>
+                <Title text=""/>
                 <CookieConsent cookie_consent set_cookie_consent/>
                 </>
             }
