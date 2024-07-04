@@ -31,9 +31,9 @@ fn card(
 
 const WEBSITES: [&str; 4] = [
     "https://tchatche.xyz",
+    "https://nag763.github.io/doteur/live",
     "https://nag763.github.io/verbihr",
     "https://nag763.github.io/texas-snake",
-    "https://nag763.github.io/doteur",
 ];
 
 #[component]
@@ -45,9 +45,9 @@ pub fn projects() -> impl IntoView {
         view! {
             <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
             <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>verbihr</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>snake</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>doteur</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
             </div>
         }
     };
@@ -57,14 +57,15 @@ pub fn projects() -> impl IntoView {
             view! {<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />}
         }
         1 => {
-            view! {<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />}
-        }
-        2 => {
-            view! {<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />}
-        }
-        3 => {
             view! {<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" shield="https://img.shields.io/github/stars/nag763/doteur?style=social" />}
         }
+        2 => {
+            view! {<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />}
+        }
+        3 => {
+            view! {<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />}
+        }
+
         _ => view! {<></>}.into_view(),
     };
 
