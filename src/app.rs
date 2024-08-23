@@ -1,9 +1,9 @@
+use codee::string::FromToStringCodec;
 use cookie::SameSite;
 use leptos::*;
 use leptos_i18n::{t, td, Locale};
 use leptos_meta::{provide_meta_context, Link, Title};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
-use leptos_use::utils::FromToStringCodec;
 use leptos_use::{
     use_cookie_with_options, use_document, use_element_size, use_event_listener, use_timeout_fn,
     use_window, UseCookieOptions, UseElementSizeReturn, UseTimeoutFnReturn,
