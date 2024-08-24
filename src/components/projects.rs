@@ -11,10 +11,11 @@ fn card(
     description: &'static str,
     github_repo: &'static str,
     #[prop(optional)] shield: &'static str,
+    hidden: impl Fn() -> bool + 'static,
 ) -> impl IntoView {
     let i18n = use_i18n();
     view! {
-        <div class="card md:card-side max-h-full items-center mmd:text-white">
+        <div class="card md:card-side max-h-full items-center mmd:text-white" class:hidden=hidden>
             <figure class="md:w-1/3"><img class="w-full h-auto" src=img_ref alt="Illustration"/></figure>
             <div class="card-body text-left md:w-2/3">
             <h2 class="card-title mmd:text-sm">{title}<img src=shield/></h2>
@@ -41,43 +42,22 @@ pub fn projects() -> impl IntoView {
     let i18n = use_i18n();
     let (tab_index_val, tab_index_set) = create_signal(0usize);
 
-    let get_tabs = move || {
-        view! {
-            <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
-            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
-            </div>
-        }
-    };
-
-    let get_card = move || match tab_index_val.get() {
-        0 => {
-            view! {<Card img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />}
-        }
-        1 => {
-            view! {<Card img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" shield="https://img.shields.io/github/stars/nag763/doteur?style=social" />}
-        }
-        2 => {
-            view! {<Card img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />}
-        }
-        3 => {
-            view! {<Card img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />}
-        }
-
-        _ => view! {<></>}.into_view(),
-    };
-
     view! {
         <Title text=t!(i18n, title.projects)/>
         <div class="flex flex-col gap-1 items-center justify-between  py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1 justify-items-center ">{t!(i18n, projects_title)}</p>
         <div class="mockup-phone w-full md:hidden h-full">
-        {get_tabs()}
+                <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
+                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
+                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
+                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
+                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
+                </div>
                 <div class="phone-1 flex flex-col">
-
-                    {move || get_card()}
+                <Card hidden=move || tab_index_val.get() != 0 img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />
+                <Card hidden=move || tab_index_val.get() != 1  img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" shield="https://img.shields.io/github/stars/nag763/doteur?style=social" />
+                <Card hidden=move || tab_index_val.get() != 2  img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />
+                <Card hidden=move || tab_index_val.get() != 3  img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />
 
             </div>
 
@@ -86,8 +66,17 @@ pub fn projects() -> impl IntoView {
             <div class="mockup-browser-toolbar">
             <div class="input border border-base-300 link"><a class="link" href=move || WEBSITES[tab_index_val.get()] target="_blank">{move || WEBSITES[tab_index_val.get()]}</a></div>
             </div>
-                {get_tabs()}
-                {move || get_card()}
+            <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
+            <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
+            </div>
+                <Card hidden=move || tab_index_val.get() != 0 img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />
+                <Card hidden=move || tab_index_val.get() != 1  img_ref="assets/doteur.webp" title="doteur" description={t!(i18n, projects.doteur.description)()} github_repo="https://github.com/nag763/doteur" shield="https://img.shields.io/github/stars/nag763/doteur?style=social" />
+                <Card hidden=move || tab_index_val.get() != 2  img_ref="assets/verbihr.webp" title="verbihr" description={t!(i18n, projects.verbihr.description)()} github_repo="https://github.com/nag763/verbihr" />
+                <Card hidden=move || tab_index_val.get() != 3  img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />
+
         </div>
         <p class="row-span-1 mmd:text-sm h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
         </div>
