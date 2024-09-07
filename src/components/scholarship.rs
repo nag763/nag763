@@ -13,7 +13,7 @@ pub fn scholarship() -> impl IntoView {
     <Title text=t!(i18n, title.scholarship)/>
     <div class="grid grid-rows-6 mmd:gap-1 2xl:flex 2xl:flex-col flex flex-col h-full justify-center 2xl:justify-between py-4 overflow-y-auto overflow-x-hidden items-center  2xl:items-stretch animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1">{t!(i18n, scholarship_title )}</p>
-        <ul class="timeline timeline-snap-icon mmd:timeline-compact timeline-vertical row-span-4 overflow-y-auto max-h-full">
+        <ul class="timeline timeline-snap-icon mmd:timeline-compact timeline-vertical row-span-4 overflow-y-auto max-h-full overflow-x-hidden">
         <li>
           <hr />
           <div class="timeline-middle">
