@@ -327,7 +327,7 @@ pub fn app() -> impl IntoView {
         } else {
             view! {
                 <>
-                <Title text=""/>
+                <Title text="Cookie consent"/>
                 <CookieConsent cookie_consent set_cookie_consent/>
                 </>
             }
