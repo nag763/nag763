@@ -16,7 +16,7 @@ fn card(
     let i18n = use_i18n();
     view! {
         <div class="card md:card-side max-h-full items-center mmd:text-white" class:hidden=hidden>
-            <figure class="md:w-1/3"><img class="w-full h-auto" src=img_ref alt="Illustration"/></figure>
+            <figure class="mmd:w-full md:w-1/3 md:h-full"><img class="md:h-full object-contain" src=img_ref alt="Illustration"/></figure>
             <div class="card-body text-left md:w-2/3">
             <h2 class="card-title mmd:text-sm">{title}<img src=shield/></h2>
             <p class="mmd:text-xs">{description}</p>
@@ -46,12 +46,12 @@ pub fn projects() -> impl IntoView {
         <Title text=t!(i18n, title.projects)/>
         <div class="flex flex-col gap-1 items-center justify-between  py-4 overflow-y-auto 2xl:overflow-visible animate-fade animate-duration-100 animate-ease-in">
         <p class="text-xl 2xl:text-4xl row-span-1 justify-items-center ">{t!(i18n, projects_title)}</p>
-        <div class="mockup-phone w-full md:hidden h-full">
-                <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
-                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
-                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
-                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
-                <a role="tab" class="tab" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
+        <div class="mockup-phone w-5/6 md:hidden ">
+                <div role="tablist" class="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 overflow-x-auto">
+                <a role="tab" class="tab text-primary" class:tab-active=move|| tab_index_val.get()==0 on:click=move|_| tab_index_set.set(0)>tchatchers</a>
+                <a role="tab" class="tab text-primary" class:tab-active=move|| tab_index_val.get()==1 on:click=move|_| tab_index_set.set(1)>doteur</a>
+                <a role="tab" class="tab text-primary" class:tab-active=move|| tab_index_val.get()==2 on:click=move|_| tab_index_set.set(2)>verbihr</a>
+                <a role="tab" class="tab text-primary" class:tab-active=move|| tab_index_val.get()==3 on:click=move|_| tab_index_set.set(3)>snake</a>
                 </div>
                 <div class="phone-1 flex flex-col">
                 <Card hidden=move || tab_index_val.get() != 0 img_ref="assets/tchatche.webp" title="tchatchers" description={t!(i18n, projects.tchatche.description)()} github_repo="https://github.com/nag763/tchatchers" shield="https://img.shields.io/github/stars/nag763/tchatchers?style=social" />
@@ -62,7 +62,7 @@ pub fn projects() -> impl IntoView {
             </div>
 
         </div>
-        <div class="mockup-browser border border-base-300 row-span-4 max-h-full hidden md:block">
+        <div class="mockup-browser border border-base-300 row-span-4 hidden md:block md:w-full">
             <div class="mockup-browser-toolbar">
             <div class="input border border-base-300 link"><a class="link" href=move || WEBSITES[tab_index_val.get()] target="_blank">{move || WEBSITES[tab_index_val.get()]}</a></div>
             </div>
