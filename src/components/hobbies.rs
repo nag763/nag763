@@ -2,7 +2,10 @@ use leptos::{component, view, IntoView};
 use leptos_i18n::t;
 use leptos_meta::Title;
 
-use crate::{components::common::ProjectCard, i18n::use_i18n};
+use crate::{
+    components::common::{ProjectCard, Stepper},
+    i18n::use_i18n,
+};
 
 #[component]
 pub fn hobbies() -> impl IntoView {
@@ -21,7 +24,8 @@ pub fn hobbies() -> impl IntoView {
             <ProjectCard title={t!(i18n, hobbies.football.title)()} img_src="/assets/vienna-reyes-qCrKTET_09o-unsplash.webp" description={t!(i18n, hobbies.football.description)()} />
 
             </div>
-            <p class="row-span-1 mmd:text-sm h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
+
+            <Stepper/>
         </div>
     }
 }

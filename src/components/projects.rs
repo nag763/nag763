@@ -2,7 +2,7 @@ use leptos::{component, create_signal, view, IntoView, SignalGet, SignalSet};
 use leptos_i18n::t;
 use leptos_meta::Title;
 
-use crate::i18n::use_i18n;
+use crate::{components::common::Stepper, i18n::use_i18n};
 
 #[component]
 fn card(
@@ -78,7 +78,7 @@ pub fn projects() -> impl IntoView {
                 <Card hidden=move || tab_index_val.get() != 3  img_ref="assets/snake.webp" title="snake" description={t!(i18n, projects.snake.description)()} github_repo="https://github.com/nag763/texas-snake" />
 
         </div>
-        <p class="row-span-1 mmd:text-sm h-auto col-span-full animate-pulse animate-duration-[2000ms] animate-ease-in-out">{t!(i18n, scroll_down_to_continue, <kbd> = |children| view!{<kbd class="kbd">{children}</kbd>})}</p>
+        <Stepper  class="w-full "/>
         </div>
     }
 }

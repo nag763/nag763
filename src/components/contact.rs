@@ -1,4 +1,4 @@
-use crate::i18n::use_i18n;
+use crate::{components::common::Stepper, i18n::use_i18n};
 use leptos::{
     component, create_signal, event_target_value, view, window, IntoView, SignalGet, SignalSet,
 };
@@ -38,7 +38,7 @@ pub fn contact() -> impl IntoView {
                 <button type="submit" class="btn btn-outline animate-pulse animate-duration-[2000ms] animate-ease-in-out animate-twice animate-delay-1000 animate-ease-in" on:click=onclick>{t!(i18n, contact.send)}</button>
             </div>
         </div>
-        <p class="flex flex-col row-span-1 col-span-full text-xs 2xl:text-base">{t!(i18n, last_section)}</p>
+        <Stepper class="w-full" />
         </div>
 
     }

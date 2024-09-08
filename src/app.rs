@@ -38,7 +38,7 @@ static LOCALES: [crate::i18n::Locale; 3] = [
     crate::i18n::Locale::de,
 ];
 
-const ROUTE_ORDER: [&str; 6] = [
+pub const ROUTE_ORDER: [&str; 6] = [
     "/",
     "/post_scholarship",
     "/scholarship",
@@ -171,6 +171,13 @@ pub fn main_component(
         }
     };
 
+    create_effect(move |_| {
+        let Some(index) = index_val.get() else {
+            return;
+        };
+        navigate_to_index(index);
+    });
+
     let _ = use_event_listener(use_document(), leptos::ev::keydown, move |evt| {
         if let Some(index_val) = index_val.get() {
             let new_index = match evt.key_code() {
@@ -211,6 +218,7 @@ pub fn main_component(
             }
         });
     };
+    provide_context((index_val, index_set));
 
     view! {
         <main node_ref=el>
