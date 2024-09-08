@@ -60,7 +60,7 @@ const IMAGES_TO_PRELOAD: [&str; 10] = [
     "vienna-reyes-qCrKTET_09o-unsplash.webp",
 ];
 
-const COOKIE_CONSENT_TIME: i64 = 3600_000_i64 * 24 * 365;
+const COOKIE_CONSENT_TIME: i64 = 3_600_000_i64 * 24 * 365;
 
 #[component]
 pub fn language_picker() -> impl IntoView {
@@ -189,7 +189,7 @@ pub fn main_component(
         }
     });
 
-    let _ = {
+    {
         // Used to detect double tap
         let UseTimeoutFnReturn {
             start,
@@ -311,16 +311,14 @@ pub fn app() -> impl IntoView {
                     .max_age(COOKIE_CONSENT_TIME),
             );
 
-        if lang_lookup_already_perfomed_val.get().is_none() {
-            if cookie_consent.get().is_some() {
-                let i18n = use_i18n();
+        if lang_lookup_already_perfomed_val.get().is_none() && cookie_consent.get().is_some() {
+            let i18n = use_i18n();
 
-                let locale = access_browser_locale();
-                if locale != i18n.get_locale() {
-                    i18n.set_locale(locale);
-                }
-                lang_lookup_already_perfomed_set.set(Some(true));
+            let locale = access_browser_locale();
+            if locale != i18n.get_locale() {
+                i18n.set_locale(locale);
             }
+            lang_lookup_already_perfomed_set.set(Some(true));
         }
     });
 

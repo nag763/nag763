@@ -41,7 +41,7 @@ pub(crate) mod common {
             let Some(index) = index_val.get() else {
                 return false;
             };
-            return val <= index;
+            val <= index
         };
 
         let change_index_val_to = move |val: usize| {
