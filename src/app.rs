@@ -2,7 +2,7 @@ use codee::string::FromToStringCodec;
 use cookie::SameSite;
 use leptos::*;
 use leptos_i18n::{t, td, Locale};
-use leptos_meta::{provide_meta_context, Link, Title};
+use leptos_meta::{provide_meta_context, Title};
 use leptos_router::{use_location, use_navigate, NavigateOptions, Route, Routes, A};
 use leptos_use::{
     use_cookie_with_options, use_document, use_element_size, use_event_listener, use_timeout_fn,
@@ -18,7 +18,7 @@ use crate::components::index::Index;
 use crate::components::post_scholarship::PostScholarship;
 use crate::components::projects::Projects;
 use crate::components::scholarship::Scholarship;
-use crate::i18n::{self, provide_i18n_context, use_i18n};
+use crate::i18n::{self, use_i18n, I18nContextProvider};
 
 fn access_browser_locale() -> crate::i18n::Locale {
     let Some(navigator) = use_window().navigator() else {
@@ -45,19 +45,6 @@ pub const ROUTE_ORDER: [&str; 6] = [
     "/projects",
     "/hobbies",
     "/contact",
-];
-
-const IMAGES_TO_PRELOAD: [&str; 10] = [
-    "blocks-T3mKJXfdims-unsplash.webp",
-    "doteur.webp",
-    "florian-olivo-4hbJ-eymZ1o-unsplash.webp",
-    "gulfer-ergin-LUGuCtvlk1Q-unsplash.webp",
-    "ross-parmly-rf6ywHVkrlY-unsplash.webp",
-    "snake.webp",
-    "tchatche.webp",
-    "tobias-cornille-j2KI6FTc3jA-unsplash.webp",
-    "verbihr.webp",
-    "vienna-reyes-qCrKTET_09o-unsplash.webp",
 ];
 
 const COOKIE_CONSENT_TIME: i64 = 3_600_000_i64 * 24 * 365;
@@ -262,26 +249,7 @@ pub fn cookie_consent(
 }
 
 #[component]
-fn preloader() -> impl IntoView {
-    view! {
-        <For
-            each=move || IMAGES_TO_PRELOAD
-            key=|img| *img
-            children=move |img: &str| view!{
-                <Link rel="preload"
-                href=format!("assets/{img}")
-                as_="image"
-                type_="image/webp"
-                crossorigin="anonymous"
-            />
-            }
-        />
-    }
-}
-
-#[component]
 pub fn app() -> impl IntoView {
-    provide_i18n_context();
     provide_meta_context();
 
     let location = use_location().pathname;
@@ -322,21 +290,24 @@ pub fn app() -> impl IntoView {
         }
     });
 
-    move || {
-        if cookie_consent.get().is_some() {
-            view! {
-                    <Navbar index_set/>
-                    <Preloader />
-                    <MainComponent index_val index_set/>
-                    <Footer/>
-            }
-        } else {
-            view! {
-                <>
-                <Title text="Cookie consent"/>
-                <CookieConsent cookie_consent set_cookie_consent/>
-                </>
+    view! {
+        <I18nContextProvider>
+        {move||  if cookie_consent.get().is_some() {
+                view! {
+
+                        <Navbar index_set/>
+                        <MainComponent index_val index_set/>
+                        <Footer/>
+                }
+            } else {
+                view! {
+                    <>
+                    <Title text="Cookie consent"/>
+                    <CookieConsent cookie_consent set_cookie_consent/>
+                    </>
+                }
             }
         }
+        </I18nContextProvider>
     }
 }
