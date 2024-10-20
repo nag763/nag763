@@ -14,7 +14,7 @@ opt-level = "z"
 codee = "0.2.0"
 cookie = "0.18.1"
 leptos = { version = "0.6.15", features = ["csr"] }
-leptos-use = "0.13.5"
+leptos-use = "0.13.6"
 leptos_i18n = { version = "0.4.1", default-features = false, features = ["csr", "yaml_files", "cookie"] }
 leptos_meta = { version = "0.6.15", features = ["csr"] }
 leptos_router = { version = "0.6.15", features = ["csr"] }
