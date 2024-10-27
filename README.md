@@ -1,33 +1,36 @@
-```rust
-struct Profile {
-  pub firstname: String,
-  pub age: u8,
-  pub from: String,
-  pub favorite_languages : Vec<String>,
-  pub speaks: Vec<String>,
-  pub is_active: bool,
-  pub contact: String,
-}
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-let me = Profile {
-  firstname : "Loïc",
-  age: 26,
-  from: "Paris 🗼, France🇫🇷".into(),
-  favorite_languages: vec!["Rust 🦀".into(), "Java ☕".into(), "Python 🐍".into(), "Javascript".into()],
-  speaks: vec!["French 🇫🇷".into(), "English 🏴󠁧󠁢󠁥󠁮󠁧󠁿".into(), "German 🇩🇪".into()],
-  is_active: true
-};
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-I just enjoy doing IT projects on my spare time, whatever the topic is. I try to make them open-source and deliver quality code that can be used by other developers, the way I sometimes inspire myself from existing projects.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-I mostly work with Java and Javascript in my professional environment, however I prefer working with Rust in my spare time, hence why my profile mostly contains Rust projects.
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-Check out my most complete and best documented projects if you have some time :blush: :
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-* [verbihr](https://github.com/nag763/verbihr) : A tool to learn german verbs 📘 
-* [texas-snake](https://github.com/nag763/texas-snake) : A simple Snake game running in the browser, playable [here](https://nag763.github.io/texas-snake/).
-* [tchatche.rs](https://github.com/nag763/tchatchers) : A chat web application based on axum, yew.rs, tailwind, nginx, postgres and redis.
-* [doteur](https://github.com/nag763/doteur) : A database schema renderer, based in Rust.
-* [rat-rs](https://github.com/nag763/rat-rs) : A lightweight yet powerful CLI schedule fetcher for IDF (Paris region) common transportation.
-* [mptvfr](https://github.com/nag763/mptvfr) : An android application written on Dart with purpose to get the TV schedule without any - annoying - ads.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
