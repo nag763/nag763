@@ -1,6 +1,9 @@
 
+'use client'
+import useDarkTheme from "../hooks/darktheme";
+
 export default function Header() {
-    const defaultIsDarkTheme = (typeof window !== undefined) ? window.matchMedia("(prefers-color-scheme: dark)").matches : false;
+    const defaultIsDarkTheme = useDarkTheme();
     return (<div className="navbar py-8">
         <div className="navbar-start font-extrabold">
             LABEYE Loïc
