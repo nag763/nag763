@@ -1,6 +1,8 @@
 
 'use client'
 import useDarkTheme from "../hooks/darktheme";
+import i18next from "i18next";
+
 
 export default function Header() {
     const defaultIsDarkTheme = useDarkTheme();
@@ -9,6 +11,10 @@ export default function Header() {
             LABEYE Loïc
         </div>
         <div className='navbar-end'>
+            <p>{i18next.languages}</p>
+            <select className="select" onClick={console.debug("Touched")}>
+
+            </select>
             <label className="grid cursor-pointer place-items-center">
                 <input
                     type="checkbox"
