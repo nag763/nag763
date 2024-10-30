@@ -11,8 +11,10 @@ module.exports = {
   daisyui: {
     themes: [
       "light",
-      "dracula",
+      "dracula"
     ],
+    darkTheme: "dracula",
   },
+
   plugins: [daisyui, require('tailwindcss-animated')],
 };
