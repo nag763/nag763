@@ -24,7 +24,7 @@ const LNG_FLAG_MAP = [
 ]
 
 export default function Header() {
-    return (<div className="navbar py-8">
+    return (<div className="navbar py-8 flex-1 " >
         <div className="navbar-start font-extrabold">
             LABEYE Loïc
         </div>
@@ -49,6 +49,8 @@ export default function Header() {
                     type="checkbox"
                     value="light"
                     className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 hidden dark:block" />
+
+                {/** TODO : Use Next Images for perfs */}
                 <svg
                     className="stroke-base-100 fill-base-100 row-start-1 col-start-1 dark:col-start-2"
 
@@ -65,6 +67,8 @@ export default function Header() {
                     <path
                         d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                 </svg>
+
+                {/** TODO : Use Next Images for perfs */}
                 <svg
                     className="stroke-base-100 fill-base-100 row-start-1 col-start-2 dark:col-start-1"
 

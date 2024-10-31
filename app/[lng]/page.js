@@ -1,46 +1,18 @@
-import { useTranslation } from '../i18n'
+
+import Experiences from "./components/experiences";
+import Intro from "./components/intro";
 
 export const metadata = {
     title: 'LABEYE Loïc',
     description: 'Homepage of LABEYE Loïc CV\'s page'
 }
 
-function getYearsSince(dateString) {
-    const startDate = new Date(dateString);
-    const today = new Date();
 
-    let yearsDifference = today.getFullYear() - startDate.getFullYear();
-
-    if (
-        today.getMonth() < startDate.getMonth() ||
-        (today.getMonth() === startDate.getMonth() && today.getDate() < startDate.getDate())
-    ) {
-        yearsDifference--;
-    }
-
-    return yearsDifference;
-}
-
-export default async function Home( { params: { lng } }) {
-    const { t } = await useTranslation(lng);
+export default async function Snapper({ params: { lng } }) {
     return (
-        <div className="flex flex-col justify-between h-full py-12 font-mono ">
-            <div className="text-left space-y-8 h-1/2 w-1/2 flex-1">
-                <h1 className="text-8xl animate-fade">LABEYE Loïc</h1>
-
-                <div className="pl-6 space-y-4 font-semibold text-2xl">
-                    <p className="animate-fade-right animate-duration-1000 animate-delay-1000">💼 {t('software_engineer')}</p>
-                    <p className="animate-fade-right animate-fade-right animate-duration-1000 animate-delay-[2000ms]">{t('age', {"age": getYearsSince("1997-11-17")})}</p>
-                    <p className="animate-fade-right animate-fade-right animate-duration-1000 animate-delay-[3000ms]">📍 Paris, France</p>
-                </div>
-            </div>
-            <div className="flex text-2xl h-1/2 flex-1 font-semibold">
-                <div className="w-1/2"></div>
-                <h1 className="animate-fade-up animate-duration-1000 animate-delay-[4000ms] flex-1 ">
-                {t('intro')}
-                </h1>
-                <div className="w-1/5"></div>
-            </div>
-        </div>
+        <>
+            <Intro lng={lng} />
+            <Experiences lng={lng} />
+        </>
     );
 }

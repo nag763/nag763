@@ -1,0 +1,22 @@
+{
+    "work.aubay.date": "Siden september 2021",
+    "work.aubay.title": "IT-konsulent hos Allianz Trade på vegne af Aubay",
+    "work.aubay.description": "Udvikling, integration og implementering af løsninger i kundens CRM.",
+    "work.aubay.technologies": "Java, JavaScript, Spring, Hibernate, Websphere, DB2",
+    "work.aubay.intern.date": "Marts 2021 - September 2021",
+    "work.aubay.intern.title": "Praktikant hos Aubay",
+    "work.aubay.intern.description": "Vedligeholdelse og udvikling af et internt værktøj.",
+    "work.aubay.intern.technologies": "Java, JavaScript, Tomcat, MySQL",
+    "work.sustainecho.date": "Juni 2020 - Juli 2020",
+    "work.sustainecho.title": "Praktikant hos SustainEcho",
+    "work.sustainecho.description": "Oprettelse af API Rest-endepunkter fra bunden som del af den gradvise udrulning af et kommercielt værktøj.",
+    "work.sustainecho.technologies": "Python, Django, SQLite, Postgres, OpenAPI",
+    "education.graduated.date": "2021",
+    "education.graduated.title": "Uddannet som ingeniør fra ESIGELEC (Rouen)",
+    "education.belgium.date": "2019-2020",
+    "education.belgium.title": "ERASMUS udvekslingsprogram på ECAM Bruxelles",
+    "education.ireland.date": "2017",
+    "education.ireland.title": "ERASMUS sommersprogudvekslingsprogram på DCU Dublin",
+    "education.rouen.date": "2016",
+    "education.rouen.title": "Optaget på ESIGELEC (Rouen)"
+}
