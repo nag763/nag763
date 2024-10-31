@@ -1,4 +1,6 @@
 {
     "software_engineer": "Software engineer",
-    "legal": "boring legal stuff here"
+    "legal": "© 2024 Loïc LABEYE. All rights reserved.",
+    "age": "🎂  {{age}} years old",
+    "intro": "Welcome to my personal site. This site aims to introduce you to my experiences and projects." 
 }
