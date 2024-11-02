@@ -1,0 +1,25 @@
+
+const LanguagesMap = [
+    {
+        key: "en",
+        flag: "🇬🇧",
+        label: "English"
+    },
+    {
+        key: "fr",
+        flag: "🇫🇷",
+        label: "Français"
+    },
+    {
+        key: "de",
+        flag: "🇩🇪",
+        label: "Deutsch"
+    },
+    {
+        key: "da",
+        flag: "🇩🇰",
+        label: "Dansk"
+    },
+]
+
+export default LanguagesMap;
