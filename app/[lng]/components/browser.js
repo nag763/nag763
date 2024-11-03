@@ -36,7 +36,7 @@ export default function Browser({ data, translations }) {
                     <p>{shownExperience.description}</p>
                     <div className="card-actions justify-end">
                         <a target="_blank" href={shownExperience.repo}>
-                            <button className="btn btn-primary"><FaGithub />{translations.goto_gh}</button>
+                            <button className="btn btn-primary dark:btn-secondary"><FaGithub />{translations.goto_gh}</button>
                         </a>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ const LanguageDropdown = () => {
 }
 
 export default function Header() {
-    return (<div className="navbar py-8 flex-1 " >
+    return (<div className="navbar p-8 flex-1 " >
         <div className="navbar-start font-extrabold">
             LABEYE Loïc
         </div>

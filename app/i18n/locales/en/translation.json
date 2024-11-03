@@ -8,5 +8,6 @@
     "tchatchers.description": "A privacy-compliant chatting application written in Rust.",
     "verbihr.description": "A tool to learn German irregular verbs in Rust.",
     "snake.description": "A simple snake game playable in a browser.",
-    "doteur.description": "A helper CLI and web application to easily visualize SQL schemas."
+    "doteur.description": "A helper CLI and web application to easily visualize SQL schemas.",
+    "start": "Start"
 }

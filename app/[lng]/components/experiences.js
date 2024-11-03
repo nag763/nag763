@@ -6,10 +6,10 @@ async function TimelineEntry({ date, title, description, technologies, Icon, pos
     return (
         <li>
             <hr hidden={position.isFirst} />
-            <div className="timeline-middle">
+            <div className="timeline-middle py-2 md:py-0">
                 <Icon />
             </div>
-            <div className={`mb-10 space-y-1 ${position.left ? "timeline-start md:text-end" : "timeline-end md:text-start"}`}>
+            <div className={`mb-10 space-y-1 py-2 md:py-0 ${position.left ? "timeline-start md:text-end" : "timeline-end md:text-start"}`}>
                 <time className="font-mono italic">{date}</time>
                 <div className="text-lg font-black">{title}</div>
                 {description && <div>{description}</div>}
@@ -55,7 +55,7 @@ export default async function Experiences({ lng }) {
     }));
 
     return (
-        <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start">
+        <ul id="timeline" className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start ">
             {entries.map(({ key, ...entry }) => (
                 <TimelineEntry key={key} {...entry} />
             ))}
