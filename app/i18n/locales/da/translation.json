@@ -2,5 +2,12 @@
     "software_engineer": "Softwareingeniør",
     "legal": "© 2024 Loïc LABEYE. Alle rettigheder forbeholdes.",
     "age": "🎂  {{age}} år gammel",
-    "intro": "Velkommen til min personlige side. Denne side har til formål at præsentere mine erfaringer og projekter."
+    "intro": "Velkommen til min personlige side. Denne side har til formål at præsentere mine erfaringer og projekter.",
+    "techs": "Brugte teknologier",
+    "goto_gh": "Tjek på GitHub",
+    "tchatchers.description": "En chatapplikation, der overholder privatlivets fred, skrevet i Rust.",
+    "verbihr.description": "Et værktøj til at lære tyske uregelmæssige verber i Rust.",
+    "snake.description": "Et simpelt slange-spil, der kan spilles i en browser.",
+    "doteur.description": "Et hjælpemiddel CLI og webapplikation til nemt at visualisere SQL-skemaer.",
+    "start": "Start"
 }

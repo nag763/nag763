@@ -1,6 +1,13 @@
 {
-    "software_engineer": "Softwareentwickler",
+    "software_engineer": "Software Ingenieur",
     "legal": "© 2024 Loïc LABEYE. Alle Rechte vorbehalten.",
     "age": "🎂  {{age}} Jahre alt",
-    "intro": "Willkommen auf meiner persönlichen Website. Diese Seite soll Ihnen meine Erfahrungen und Projekte vorstellen."
+    "intro": "Willkommen auf meiner persönlichen Seite. Diese Seite soll Ihnen meine Erfahrungen und Projekte vorstellen.",
+    "techs": "Verwendete Technologien",
+    "goto_gh": "Auf GitHub prüfen",
+    "tchatchers.description": "Eine datenschutzkonforme Chat-Anwendung, die in Rust geschrieben ist.",
+    "verbihr.description": "Ein Werkzeug, um deutsche unregelmäßige Verben in Rust zu lernen.",
+    "snake.description": "Ein einfaches Schlangenspiel, das im Browser spielbar ist.",
+    "doteur.description": "Eine Hilfs-CLI und Webanwendung zur einfachen Visualisierung von SQL-Schemas.",
+    "start": "Start"
 }
