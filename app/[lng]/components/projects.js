@@ -1,6 +1,6 @@
 import { useTranslation } from "@/app/i18n";
 import Browser from "./browser";
-import PROJECTS from "@/app/consts/projects";
+import PROJECTS from "@/app/consts/projects.json";
 
 
 export default async function Projects({ lng }) {

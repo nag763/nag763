@@ -1,7 +1,17 @@
 import Link from "next/link";
 import ThemeSwitcher from "./theme_switcher";
 import { IoLanguageOutline } from "react-icons/io5";
-import LanguagesMap from "@/app/consts/languages";
+import LanguagesMap from "@/app/consts/languages.json";
+
+const LanguageDropdown = () => {
+    return (
+        <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-32 space-y-2 p-2 shadow">
+        {LanguagesMap.map(entry => {
+            return (<Link key={entry.key} href={entry.key}>{entry.flag}  {entry.label}</Link>);
+        })}                
+        </ul>
+    )
+}
 
 export default function Header() {
     return (<div className="navbar py-8 flex-1 " >
@@ -13,11 +23,7 @@ export default function Header() {
                 <div tabIndex={0} role="button" className="btn btn-ghost m-1">
                     <IoLanguageOutline size={20}/>
                 </div>
-                <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-32 space-y-2 p-2 shadow">
-                    {LanguagesMap.map(entry => {
-                        return (<Link key={entry.key} href={entry.key}>{entry.flag}  {entry.label}</Link>);
-                    })}                
-                    </ul>
+                <LanguageDropdown/>
             </div>
 
             <ThemeSwitcher/>

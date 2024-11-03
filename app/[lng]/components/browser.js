@@ -1,20 +1,24 @@
 'use client'
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { FaGithub } from "react-icons/fa6";
+
+function Tabs({ shownExperience, handleTabClick, data }) {
+    return data.map((e, i) => (<a key={e.name} role="tab" className={`tab ${e === shownExperience && "tab-active"}`}
+        aria-selected={e === shownExperience} onClick={() => handleTabClick(e)}>{e.name}</a>));
+}
 
 export default function Browser({ data, translations }) {
     let [shownExperience, setShownExperience] = useState(data[0]);
+    const handleTabClick = useCallback((project) => setShownExperience(project), []);
     return (
         <div className="mockup-browser border border-base-300 row-span-4 md:block">
             <div className="mockup-browser-toolbar">
                 <div className="input border border-base-300 link"><a className="link" target="_blank" href={shownExperience.instance}>{shownExperience.instance}</a></div>
             </div>
             <div role="tablist" className="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
-                {data.map((e, i) => {
-                    return (<a key={e.name} role="tab" className={`tab ${e === shownExperience && "tab-active"}`} onClick={() => setShownExperience(data[i])}>{e.name}</a>)
-                })}
+                <Tabs shownExperience={shownExperience} handleTabClick={handleTabClick} data={data} />
             </div>
             <div className="card lg:card-side max-h-full">
                 <figure className=" w-1/3">

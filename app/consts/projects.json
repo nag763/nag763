@@ -1,5 +1,4 @@
-
-const PROJECTS = [
+[
     {
         "name": "tchatchers",
         "img": "/assets/tchatche.webp",
@@ -27,5 +26,3 @@ const PROJECTS = [
         "instance": "https://nag763.github.io/texas-snake"
     }
 ]
-
-export default PROJECTS;

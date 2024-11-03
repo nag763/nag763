@@ -3,7 +3,6 @@ import "../globals.css";
 import "./components/header"
 import Header from "./components/header";
 import Footer from "./components/footer";
-import Intro from "./components/intro";
 
 export default async function RootLayout({ children,
   params: {
