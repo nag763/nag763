@@ -13,19 +13,26 @@ export default function Browser({ data, translations }) {
     let [shownExperience, setShownExperience] = useState(data[0]);
     const handleTabClick = useCallback((project) => setShownExperience(project), []);
     return (
-        <div className="mockup-browser border border-base-300 row-span-4 md:block">
+        <div className="mockup-browser border border-base-300 row-span-4 ">
             <div className="mockup-browser-toolbar">
-                <div className="input border border-base-300 link"><a className="link" target="_blank" href={shownExperience.instance}>{shownExperience.instance}</a></div>
+                <div className="input border border-base-300"><a className="link link-hover" target="_blank" href={shownExperience.instance}>{shownExperience.instance}</a></div>
             </div>
-            <div role="tablist" className="tabs mmd:tabs-bordered mmd:tabs-xs md:tabs-lifted px-2 ">
+            <div role="tablist" className="tabs mmd:tabs-bordered mmd:tabs-xs tabs-lifted px-2 ">
                 <Tabs shownExperience={shownExperience} handleTabClick={handleTabClick} data={data} />
             </div>
-            <div className="card lg:card-side max-h-full">
-                <figure className=" w-1/3">
-                    <Image src={shownExperience.img} height={800} width={600} className="max-h-full" alt={`${shownExperience.title} illustration`} />
+            <div className="card lg:card-side md:h-auto max-h-full">
+                <figure className="h-60 md:h-auto max-h-full md:w-1/3">
+                    <Image src={shownExperience.img} height={800} width={600} className="md:max-h-full" alt={`${shownExperience.title} illustration`} />
                 </figure>
-                <div className="card-body  w-2/3">
-                    <h2 className="card-title">{shownExperience.name}</h2>
+                <div className="card-body h-2/3 md:h-auto md:w-2/3">
+                    <h2 className="card-title">{shownExperience.name}     {shownExperience.shield && (
+                        <Image
+                            alt={`${shownExperience.name} shield`}
+                            src={shownExperience.shield}
+                            width={66}
+                            height={15} 
+                        />
+                    )}</h2>
                     <p>{shownExperience.description}</p>
                     <div className="card-actions justify-end">
                         <a target="_blank" href={shownExperience.repo}>

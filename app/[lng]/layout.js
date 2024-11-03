@@ -15,7 +15,7 @@ export default async function RootLayout({ children,
       <link rel="icon" href="../favicon.ico" sizes="any" />
       <body className="flex flex-col col-start-2 col-end-12 overflow-y-auto">
         <Header />
-        <main className="snap-y  overflow-y-auto">
+        <main className="snap-y  overflow-y-auto space-y-12">
         {children}
         </main>
         <Footer lng={lng} />

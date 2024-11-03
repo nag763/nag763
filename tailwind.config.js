@@ -16,5 +16,5 @@ module.exports = {
     darkTheme: "dracula",
   },
 
-  plugins: [daisyui, require('tailwindcss-animated')],
+  plugins: [daisyui, "prettier-plugin-tailwindcss", require('tailwindcss-animated')],
 };

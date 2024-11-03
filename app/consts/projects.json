@@ -3,14 +3,14 @@
         "name": "tchatchers",
         "img": "/assets/tchatche.webp",
         "repo": "https://github.com/nag763/tchatchers",
-        "shield": "https://img.shields.io/github/stars/nag763/tchatchers?style=social",
+        "shield": "https://img.shields.io/github/stars/nag763/tchatchers?style=flat",
         "instance": "https://tchatche.xyz"
     },
     {
         "name": "doteur",
         "img": "/assets/doteur.webp",
         "repo": "https://github.com/nag763/doteur",
-        "shield": "https://img.shields.io/github/stars/nag763/doteur?style=social",
+        "shield": "https://img.shields.io/github/stars/nag763/doteur?style=flat",
         "instance": "https://nag763.github.io/doteur/live"
     },
     {
