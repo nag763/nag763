@@ -1,11 +1,12 @@
 import { useTranslation } from "@/app/i18n";
 import { IoSchool } from "react-icons/io5";
 import { PiBuildingsFill } from "react-icons/pi";
+import EXPERIENCES from "@/app/consts/experiences.json";
 
-async function TimelineEntry({ date, title, description, technologies, Icon, position, t }) {
+function TimelineEntry({ date, title, description, technologies, Icon, position }) {
     return (
         <li>
-            <hr hidden={position.isFirst} />
+            {!position.isFirst && <hr />}
             <div className="timeline-middle py-2 md:py-0">
                 <Icon />
             </div>
@@ -14,51 +15,51 @@ async function TimelineEntry({ date, title, description, technologies, Icon, pos
                 <div className="text-lg font-black">{title}</div>
                 {description && <div>{description}</div>}
                 {technologies && (
-                    <div className="space-x-2">
-                        <span className="underline">{t('techs')} :</span>
-                        <span>{technologies}</span>
-                    </div>
+                    <TechnologyBadges technologies={technologies} />
                 )}
             </div>
-            <hr hidden={position.isLast} />
+            {!position.isLast && <hr />}
         </li>
+    );
+}
+
+function TechnologyBadges({ technologies }) {
+    return (
+        <div className="space-x-2">
+            {technologies.map((tech) => (
+                <span key={tech} className="badge badge-outline">{tech}</span>
+            ))}
+        </div>
     );
 }
 
 export default async function Experiences({ lng }) {
     const { t } = await useTranslation(lng, 'experiences');
-    
-    const workEntries = ["aubay", "aubay.intern", "sustainecho"].map((key) => ({
-        key,
-        date: t(`work.${key}.date`),
-        title: t(`work.${key}.title`),
-        description: t(`work.${key}.description`),
-        technologies: t(`work.${key}.technologies`),
-        Icon: PiBuildingsFill,
-    }));
 
-    const scholarEntries = ["graduated", "belgium", "ireland", "rouen"].map((key) => ({
-        key,
-        date: t(`education.${key}.date`),
-        title: t(`education.${key}.title`),
-        Icon: IoSchool,
-    }));
-
-    const entries = [...workEntries, ...scholarEntries].map((entry, index, array) => ({
+    const entries = EXPERIENCES.map(({ type, key, ...entry }, index, array) => ({
         ...entry,
-        position: {
-            isFirst: index === 0,
-            isLast: index === array.length - 1,
-            left: index % 2 === 0,
-        },
-        t,
+        key,
+        date: t(`${type}.${key}.date`),
+        title: t(`${type}.${key}.title`),
+        description: type === "work" && t(`${type}.${key}.description`),
+        technologies: entry.technologies,
+        Icon: type === "work" ? PiBuildingsFill : IoSchool,
+        position: calculatePosition(index, array.length),
     }));
 
     return (
-        <ul id="timeline" className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start ">
+        <ul id="timeline" className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start">
             {entries.map(({ key, ...entry }) => (
                 <TimelineEntry key={key} {...entry} />
             ))}
         </ul>
     );
+}
+
+function calculatePosition(index, total) {
+    return {
+        isFirst: index === 0,
+        isLast: index === total - 1,
+        left: index % 2 === 0,
+    };
 }

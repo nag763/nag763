@@ -1,0 +1,51 @@
+[
+    {
+        "key": "aubay",
+        "technologies": [
+            "Java",
+            "JavaScript",
+            "Spring",
+            "Hibernate",
+            "Websphere",
+            "DB2"
+        ],
+        "type": "work"
+    },
+    {
+        "key": "aubay.intern",
+        "technologies": [
+            "Java",
+            "JavaScript",
+            "Tomcat",
+            "MySQL"
+        ],
+        "type": "work"
+    },
+    {
+        "key": "sustainecho",
+        "technologies": [
+            "Python",
+            "Django",
+            "SQLite",
+            "Postgres",
+            "OpenAPI"
+        ],
+        "type": "work"
+    },
+    {
+        "key": "graduated",
+        "type": "education"
+    },
+    {
+        "key": "belgium",
+        "type": "education"
+    },
+    {
+        "key": "ireland",
+        "type": "education"
+    },
+    {
+        "key": "rouen",
+        "type": "education"
+    }
+]
