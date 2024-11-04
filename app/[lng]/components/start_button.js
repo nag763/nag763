@@ -15,7 +15,7 @@ export default function StartButton({ label, className = '' }) {
     return (
         <button 
             type="button" 
-            className={`btn btn-primary btn-lg animate-pulse animate-infinite animate-ease-in-out ${className}`} 
+            className={`btn btn-primary btn-outline btn-lg animate-pulse animate-infinite animate-ease-in-out ${className}`} 
             onClick={scrollToTimeline} 
             aria-label={label}>
             {label}

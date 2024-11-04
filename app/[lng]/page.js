@@ -1,4 +1,5 @@
 
+import Contact from "./components/contact";
 import Experiences from "./components/experiences";
 import Hobbies from "./components/hobbies";
 import Intro from "./components/intro";
@@ -18,6 +19,7 @@ export default async function Snapper({ params: { lng } }) {
             <Experiences lng={lng} />
             <Projects lng={lng} />
             <Hobbies lng={lng} />
+            <Contact lng={lng} />
         </>
     );
 }

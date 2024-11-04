@@ -2,5 +2,19 @@
     "software_engineer": "Ingénieur logiciel",
     "legal": "© 2024 Loïc LABEYE. Tous droits réservés.",
     "age": "🎂  {{age}} ans",
-    "intro": "Bienvenue sur mon site personnel. Ce site a pour but de vous présenter mes expériences et projets."
+    "intro": "Bienvenue sur mon site personnel ! Tu y trouveras mes expériences et projets.",
+    "techs": "Technologies utilisées",
+    "goto_gh": "Voir sur GitHub",
+    "tchatchers.description": "Une application de chat respectueuse de la vie privée, développée en Rust.",
+    "verbihr.description": "Un outil pour apprendre les verbes irréguliers allemands avec Rust.",
+    "snake.description": "Un simple jeu de serpent jouable dans ton navigateur.",
+    "doteur.description": "Un outil CLI et web pour visualiser facilement les schémas SQL.",
+    "start": "Commencer",
+    "name": "Ton nom",
+    "topic": "Ton sujet",
+    "content": "Dis-m'en un peu plus",
+    "send": "Envoie un message",
+    "get_in_touch": "Envie de me contacter ?",
+    "get_in_touch_desc": "Utilise le formulaire ci-dessous pour m’envoyer un message si tu as des questions !",
+    "type_here": "Écris ici..."
 }

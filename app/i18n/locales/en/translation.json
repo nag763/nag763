@@ -1,13 +1,20 @@
 {
-    "software_engineer": "Software engineer",
+    "software_engineer": "Software Engineer",
     "legal": "© 2024 Loïc LABEYE. All rights reserved.",
     "age": "🎂  {{age}} years old",
-    "intro": "Welcome to my personal site. This site aims to introduce you to my experiences and projects." ,
+    "intro": "Welcome to my personal site! Here you’ll find my experiences and projects.",
     "techs": "Technologies used",
-    "goto_gh": "Check on GiHub",
-    "tchatchers.description": "A privacy-compliant chatting application written in Rust.",
-    "verbihr.description": "A tool to learn German irregular verbs in Rust.",
-    "snake.description": "A simple snake game playable in a browser.",
-    "doteur.description": "A helper CLI and web application to easily visualize SQL schemas.",
-    "start": "Start"
+    "goto_gh": "Check it out on GitHub",
+    "tchatchers.description": "A privacy-friendly chat app built in Rust.",
+    "verbihr.description": "A tool to learn German irregular verbs using Rust.",
+    "snake.description": "A simple snake game you can play in your browser.",
+    "doteur.description": "A CLI and web tool for easy SQL schema visualization.",
+    "start": "Get Started",
+    "name": "Your name",
+    "topic": "Your subject",
+    "content": "Tell me more about it",
+    "send": "Send an email",
+    "get_in_touch": "Want to get in touch?",
+    "get_in_touch_desc": "Use the form below to send me a message if you have any questions!",
+    "type_here": "Type here..."
 }

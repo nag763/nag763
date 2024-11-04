@@ -5,7 +5,7 @@ import HOBBIES from "@/app/consts/hobbies.json";
 
 function GridCard({ title, description, img_src }) {
     return (
-        <div className="card bg-base-100 image-full flex-1 shadow-xl ">
+        <div className="card glass bg-base-100 image-full flex-1 shadow-xl ">
             <figure>
                 <Image src={img_src} alt={`${title} image`} loading = "lazy"  fill={true} className="h-full rounded-2xl" />
             </figure>
