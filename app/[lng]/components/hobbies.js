@@ -59,7 +59,7 @@ export default async function Hobbies({ lng }) {
     }));
 
     return (
-        <div className="snap-center space-y-4 ">
+        <div className="snap-center space-y-4 min-h-full flex flex-col items-center justify-center ">
             <GridContainer data={data} itemsPerRow={2} />
         </div>
     );
