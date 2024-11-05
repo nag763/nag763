@@ -7,7 +7,7 @@ export default async function Projects({ lng }) {
     const { t } = await useTranslation(lng);
 
     return (
-        <div className="snap-center h-full">
+        <div className="snap-center h-full section-header" data-section-name={t("projects.section")}>
             <Browser data={PROJECTS.map(project => ({
                 ...project,
                 description: t(`${project.name}.description`)

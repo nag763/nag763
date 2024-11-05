@@ -59,8 +59,10 @@ export default async function Hobbies({ lng }) {
     }));
 
     return (
-        <div className="snap-center space-y-4 min-h-full flex flex-col items-center justify-center ">
+        <div className="min-h-full snap-center section-header flex flex-col" data-section-name={t('hobbies.section')}>
+        <div className="space-y-4  flex flex-col ">
             <GridContainer data={data} itemsPerRow={2} />
+        </div>
         </div>
     );
 }

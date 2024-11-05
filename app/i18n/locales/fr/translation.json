@@ -16,5 +16,6 @@
     "send": "Envoie un message",
     "get_in_touch": "Envie de me contacter ?",
     "get_in_touch_desc": "Utilise le formulaire ci-dessous pour m’envoyer un message si tu as des questions !",
-    "type_here": "Écris ici..."
+    "type_here": "Écris ici...",
+    "projects.section": "Projets"
 }
