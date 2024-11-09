@@ -17,5 +17,9 @@
     "get_in_touch": "Vil du i kontakt?",
     "get_in_touch_desc": "Brug formularen herunder til at sende mig en besked, hvis du har spørgsmål!",
     "type_here": "Skriv her...",
-    "hobbies.section": "Hobbyer"
+    "projects.section": "Projekter",
+    "thank_you_for_your_mail": "Tak for din besked. Den bliver gennemgået, og du vil få svar hurtigst muligt.",
+    "error_while_sending": "Der opstod en fejl, da beskeden skulle sendes.",
+    "success": "Din besked er sendt.",
+    "email": "Din e-mail"
 }

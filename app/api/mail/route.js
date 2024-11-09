@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export const maxDuration = 5;
 
@@ -15,8 +15,15 @@ function sendError(message, status = 400) {
 }
 
 export async function POST(request) {
-    if(process.env.MAIL_ENABLED !== 'true') {
-        return sendError("Service is disabled", 503)
+    const allowedDomain = process.env.ALLOWED_DOMAIN;
+    const refererHeader = request.headers.get('referer') || '';
+
+    if (!refererHeader.startsWith(allowedDomain)) {
+        return sendError("Unauthorized request origin", 403);
+    }
+
+    if (process.env.MAIL_ENABLED !== 'true') {
+        return sendError("Service is disabled", 503);
     }
 
     const { name, email, topic, content } = await request.json();
@@ -30,22 +37,31 @@ export async function POST(request) {
     }
 
     const transporter = nodemailer.createTransport({
-        host: process.env.MAIL_HOST, 
+        host: process.env.MAIL_HOST,
         auth: {
-            user: process.env.MAIL_USER, 
-            pass: process.env.MAIL_PASSWORD, 
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASSWORD,
         },
     });
 
     const mailOptions = {
         from: process.env.MAIL_FROM,
-        to: email,
-        subject: topic,
+        to: process.env.MAIL_TO,
+        subject: `${name} ${email} - ${topic}`,
         text: content,
+    };
+
+    const acknowledgmentMailOptions = {
+        from: process.env.MAIL_FROM,
+        to: email,
+        subject: "Your message has been received",
+        text: `Dear ${name},\n\nThank you for reaching out! I have received your message and will review it shortly.\n\nTopic: ${topic}\n\nI will get back to you if further information is required.\n\nIf this email was sent to you in error, please ignore it.\n\nBest regards,\nLABEYE Loïc`,
     };
 
     try {
         await transporter.sendMail(mailOptions);
+        await transporter.sendMail(acknowledgmentMailOptions);
+
         let uuid = uuidv4();
         console.log({
             name,
@@ -53,12 +69,12 @@ export async function POST(request) {
             topic,
             content,
             uuid,
-            request
+            request,
         });
-        return new NextResponse;
+
+        return NextResponse.json({ message: "Emails sent successfully" });
     } catch (error) {
         console.error(error);
         return sendError("Internal Error", 500);
     }
-
 }

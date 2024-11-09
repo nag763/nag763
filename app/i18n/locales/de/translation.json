@@ -17,5 +17,9 @@
     "get_in_touch": "Möchtest du Kontakt aufnehmen?",
     "get_in_touch_desc": "Nutze das Formular unten, um mir bei Fragen eine Nachricht zu senden!",
     "type_here": "Schreib hier...",
-    "projects.section": "Projekte"
+    "projects.section": "Projekte",
+    "thank_you_for_your_mail": "Danke für deine Nachricht, sie wird geprüft und so schnell wie möglich beantwortet.",
+    "error_while_sending": "Beim Versenden der Nachricht ist ein Fehler aufgetreten.",
+    "success": "Deine Nachricht wurde gesendet.",
+    "email": "Deine E-Mail"
 }

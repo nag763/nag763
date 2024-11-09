@@ -17,5 +17,9 @@
     "get_in_touch": "Want to get in touch?",
     "get_in_touch_desc": "Use the form below to send me a message if you have any questions!",
     "type_here": "Type here...",
-    "projects.section" : "Projects"
+    "projects.section": "Projects",
+    "thank_you_for_your_mail": "Thank you for your mail, it will be reviewed and replied within the shortest delays.",
+    "error_while_sending": "An error happened while attempting to send the mail.",
+    "success": "Your mail has been sent",
+    "email": "Your email"
 }

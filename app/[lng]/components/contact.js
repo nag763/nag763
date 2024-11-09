@@ -1,44 +1,24 @@
 import { useTranslation } from "@/app/i18n";
+import MailForm from "./mail_form";
 
 export default async function Contact({ lng }) {
     const { t } = await useTranslation(lng);
+    const translations = {
+        name: t('name'),
+        type_here: t('type_here'),
+        topic: t('topic'),
+        content: t('content'),
+        send: t('send'),
+        thank_you_for_your_mail: t('thank_you_for_your_mail'),
+        error_while_sending: t('error_while_sending'),
+        success: t('success'),
+        email: t('email'),
+        get_in_touch_desc: t('get_in_touch_desc')
+    };
     return (
-        <div className="h-full snap-center items-center  justify-center w-full flex flex-col space-y-8 md:space-y-8 ">
+        <div className="min-h-full snap-center items-center justify-center w-full flex flex-col space-y-8 md:space-y-8 ">
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r text-transparent bg-clip-text from-pink-500 via-purple-500 to-indigo-500">{t('get_in_touch')}</h1>
-            <h1 className="md:text-xl font-semibold">{t('get_in_touch_desc')}</h1>
-            <form className="space-y-4 w-4/5 md:w-2/5">
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{t('name')}</span>
-                    </div>
-                    <input
-                        type="text"
-                        placeholder={(t('type_here'))}
-                        required={true}
-                        minLength={2}
-                        className="input input-bordered input-info w-full " />
-                </label>
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{t('topic')}</span>
-                    </div>
-                    <input
-                        type="text"
-                        required={true} 
-                        placeholder={(t('type_here'))}
-                        minLength={2}
-                        className="input input-bordered input-info w-full" />
-                </label>
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{(t('content'))}</span>
-                    </div>
-                    <textarea className="textarea textarea-info resize-none" required={true}
-                        minLength={2} 
-                        placeholder={(t('type_here'))} ></textarea>
-                </label>
-                <button className="btn btn-info btn-outline animate-pulse w-full">{(t('send'))}</button>
-            </form>
+            <MailForm translations={translations} mailApiEnabled={process.env.API_ENABLED === 'true' && process.env.MAIL_ENABLED === 'true'}/>
         </div>
     )
 }

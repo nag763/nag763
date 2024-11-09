@@ -17,5 +17,9 @@
     "get_in_touch": "Envie de me contacter ?",
     "get_in_touch_desc": "Utilise le formulaire ci-dessous pour m’envoyer un message si tu as des questions !",
     "type_here": "Écris ici...",
-    "projects.section": "Projets"
+    "projects.section": "Projets",
+    "thank_you_for_your_mail": "Merci pour ton message, il sera examiné et une réponse te parviendra dans les plus brefs délais.",
+    "error_while_sending": "Une erreur est survenue lors de l'envoi du message.",
+    "success": "Ton message a bien été envoyé.",
+    "email": "Ton email"
 }
