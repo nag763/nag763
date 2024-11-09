@@ -3,59 +3,105 @@
 import { useState, useEffect } from 'react';
 import Toast from './toast';
 
+// Composant FormField pour un champ de formulaire réutilisable
+function FormField({ label, name, value, onChange, type = 'text', placeholder, required = false }) {
+    return (
+        <label className="form-control w-full">
+            <div className="label">
+                <span className="label-text">{label}</span>
+            </div>
+            {type === 'textarea' ? (
+                <textarea
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                    className="textarea textarea-info resize-none w-full"
+                    required={required}
+                    minLength={2}
+                    placeholder={placeholder}
+                ></textarea>
+            ) : (
+                <input
+                    type={type}
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                    placeholder={placeholder}
+                    required={required}
+                    minLength={2}
+                    className="input input-bordered input-info w-full"
+                />
+            )}
+        </label>
+    );
+}
+
 export default function MailForm({ translations, mailApiEnabled = false }) {
-    const [formData, setFormData] = useState({ name: '', topic: '', content: '', email: '' });
-    const [toastMessage, setToastMessage] = useState(null);
-    const [isError, setIsError] = useState(false);
-    const [isMailSent, setIsMailSent] = useState(false);
+    const [formState, setFormState] = useState({
+        formData: { name: '', topic: '', content: '', email: '' },
+        toastMessage: null,
+        isError: false,
+        isMailSent: false,
+        isLoading: false
+    });
 
     useEffect(() => {
         // Vérifie si le cookie "mailSent" est présent
         const mailSentCookie = document.cookie.split('; ').find(row => row.startsWith('mailSent='));
-        if (mailSentCookie) setIsMailSent(true);
+        if (mailSentCookie) setFormState(prevState => ({ ...prevState, isMailSent: true }));
     }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+        setFormState(prevState => ({
+            ...prevState,
+            formData: { ...prevState.formData, [name]: value }
+        }));
+    };
+
+    const sendMailApi = async (data) => {
+        try {
+            const response = await fetch('/api/mail', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            return response.ok;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = mailApiEnabled ? formData : { name: formData.name, topic: formData.topic, content: formData.content };
+        setFormState(prevState => ({ ...prevState, isLoading: true }));
 
-        if (mailApiEnabled) {
-            try {
-                const response = await fetch('/api/mail', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                });
+        const data = mailApiEnabled ? formState.formData : { name: formState.formData.name, topic: formState.formData.topic, content: formState.formData.content };
 
-                if (response.ok) {
-                    setIsError(false);
-                    setToastMessage('Message envoyé avec succès');
-                    setIsMailSent(true);
-                    document.cookie = "mailSent=true; max-age=604800; path=/"; // Crée le cookie "mailSent" pour 7 jours
-                    setFormData({ name: '', topic: '', content: '', email: '' });
-                } else {
-                    setIsError(true);
-                    setToastMessage('Erreur lors de l\'envoi du message');
-                }
-            } catch {
-                setIsError(true);
-                setToastMessage('Erreur réseau');
-            }
+        const isSuccess = mailApiEnabled ? await sendMailApi(data) : true;
+
+        if (isSuccess) {
+            setFormState(prevState => ({
+                ...prevState,
+                toastMessage: 'Message envoyé avec succès',
+                isMailSent: true,
+                formData: { name: '', topic: '', content: '', email: '' }
+            }));
+            document.cookie = "mailSent=true; max-age=604800; path=/"; // Crée le cookie "mailSent" pour 7 jours
         } else {
-            window.location.href = `mailto:loic.labeye@pm.me?subject=${formData.topic}&body=${formData.content}`;
-            setIsError(false);
-            setToastMessage('Succès');
-            setIsMailSent(true);
-            document.cookie = "mailSent=true; max-age=604800; path=/"; // Définit le cookie après succès
+            setFormState(prevState => ({
+                ...prevState,
+                toastMessage: 'Erreur lors de l\'envoi du message',
+                isError: true
+            }));
         }
+
+        setFormState(prevState => ({ ...prevState, isLoading: false }));
     };
 
-    if (isMailSent) {
+    if (formState.isMailSent) {
         return <p className="text-center text-xl font-semibold">{translations.thank_you_for_your_mail}</p>;
     }
 
@@ -63,80 +109,52 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
         <>
             <h1 className="md:text-xl font-semibold">{translations.get_in_touch_desc}</h1>
             <form onSubmit={handleSubmit} className="space-y-4 w-4/5 md:w-2/5">
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{translations.name}</span>
-                    </div>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder={translations.type_here}
-                        required
-                        minLength={2}
-                        className="input input-bordered input-info w-full"
-                    />
-                </label>
-
+                <FormField
+                    label={translations.name}
+                    name="name"
+                    value={formState.formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder={translations.type_here}
+                />
                 {mailApiEnabled && (
-                    <label className="form-control w-full">
-                        <div className="label">
-                            <span className="label-text">{translations.email}</span>
-                        </div>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder={translations.type_here}
-                            required={mailApiEnabled}
-                            className="input input-bordered input-info w-full"
-                        />
-                    </label>
-                )}
-
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{translations.topic}</span>
-                    </div>
-                    <input
-                        type="text"
-                        name="topic"
-                        value={formData.topic}
+                    <FormField
+                        label={translations.email}
+                        name="email"
+                        value={formState.formData.email}
                         onChange={handleChange}
+                        type="email"
+                        required={mailApiEnabled}
                         placeholder={translations.type_here}
-                        required
-                        minLength={2}
-                        className="input input-bordered input-info w-full"
                     />
-                </label>
-
-                <label className="form-control w-full">
-                    <div className="label">
-                        <span className="label-text">{translations.content}</span>
-                    </div>
-                    <textarea
-                        name="content"
-                        value={formData.content}
-                        onChange={handleChange}
-                        className="textarea textarea-info resize-none w-full"
-                        required
-                        minLength={2}
-                        placeholder={translations.type_here}
-                    ></textarea>
-                </label>
-
+                )}
+                <FormField
+                    label={translations.topic}
+                    name="topic"
+                    value={formState.formData.topic}
+                    onChange={handleChange}
+                    required
+                    placeholder={translations.type_here}
+                />
+                <FormField
+                    label={translations.content}
+                    name="content"
+                    value={formState.formData.content}
+                    onChange={handleChange}
+                    type="textarea"
+                    required
+                    placeholder={translations.type_here}
+                />
                 <button type="submit" className="btn btn-info btn-outline animate-pulse w-full">
                     {translations.send}
                 </button>
             </form>
 
-            {toastMessage && (
+            {formState.toastMessage && (
                 <Toast
-                    message={toastMessage}
-                    isError={isError}
-                    onClose={() => setToastMessage(null)}
+                    message={formState.toastMessage}
+                    isError={formState.isError}
+                    onClose={() => setFormState(prevState => ({ ...prevState, toastMessage: null }))}
                 />
             )}
         </>
