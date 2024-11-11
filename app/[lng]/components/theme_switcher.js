@@ -24,7 +24,7 @@ export default function ThemeSwitcher() {
             <input
                 type="checkbox"
                 value={darkPreferred ? "light" : "dark"}
-                className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 hidden dark:block" />
+                className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 " />
 
             <IoMdSunny aria-label="Sunny icon"
                 className="stroke-base-100 fill-base-100 row-start-1 col-start-1 dark:col-start-2">
