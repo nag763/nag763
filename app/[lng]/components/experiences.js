@@ -48,7 +48,7 @@ export default async function Experiences({ lng }) {
     }));
 
     return (
-        <ul id="timeline" className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start section-header" data-section-name={t('experiences.section')}>
+        <ul id="timeline" className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical snap-start section-header xl:px-[16%]" data-section-name={t('experiences.section')}>
             {entries.map(({ key, ...entry }) => (
                 <TimelineEntry key={key} {...entry} />
             ))}
