@@ -15,7 +15,7 @@ function FormField({ label, name, value, onChange, type = 'text', placeholder, r
                     name={name}
                     value={value}
                     onChange={onChange}
-                    className="textarea textarea-info resize-none w-full"
+                    className="textarea textarea-secondary resize-none w-full"
                     required={required}
                     minLength={2}
                     placeholder={placeholder}
@@ -29,7 +29,7 @@ function FormField({ label, name, value, onChange, type = 'text', placeholder, r
                     placeholder={placeholder}
                     required={required}
                     minLength={2}
-                    className="input input-bordered input-info w-full"
+                    className="input input-bordered input-secondary w-full"
                 />
             )}
         </label>
@@ -145,7 +145,7 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
                     required
                     placeholder={translations.type_here}
                 />
-                <button type="submit" className="btn btn-info btn-outline animate-pulse w-full">
+                <button type="submit" className="btn btn-secondary btn-outline animate-pulse w-full">
                     {translations.send}
                 </button>
             </form>

@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 import { FaGithub } from "react-icons/fa6";
 
 function Tabs({ shownExperience, handleTabClick, data }) {
-    return data.map((e, i) => (<a key={e.name} role="tab" className={`tab ${e === shownExperience && "tab-active"}`}
+    return data.map((e, i) => (<a key={e.name} role="tab" className={`tab ${e === shownExperience && "tab-active font-semibold"}`}
         aria-selected={e === shownExperience} onClick={() => handleTabClick(e)}>{e.name}</a>));
 }
 
@@ -13,7 +13,7 @@ export default function Browser({ data, translations }) {
     let [shownExperience, setShownExperience] = useState(data[0]);
     const handleTabClick = useCallback((project) => setShownExperience(project), []);
     return (
-        <div className="mockup-browser border border-base-300 row-span-4 ">
+        <div className="mockup-browser border border-base-300 shadow-md row-span-4 ">
             <div className="mockup-browser-toolbar">
                 <div className="input border border-base-300"><a className="link link-hover" target="_blank" href={shownExperience.instance}>{shownExperience.instance}</a></div>
             </div>

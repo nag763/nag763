@@ -10,10 +10,22 @@ module.exports = {
 
   daisyui: {
     themes: [
-      "light",
-      "dracula"
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          "primary": "#8AAAE5",
+          "secondary": "#00246B"
+        },
+      },
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          "base-100": "#2a303c",
+          "primary": "#CADCFC",
+          "secondary": "#735DA5"
+        },
+      },
     ],
-    darkTheme: "dracula",
   },
 
   plugins: [daisyui, "prettier-plugin-tailwindcss", require('tailwindcss-animated')],

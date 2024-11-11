@@ -23,7 +23,7 @@ export default function ThemeSwitcher() {
         <label className="grid cursor-pointer place-items-center">
             <input
                 type="checkbox"
-                value={darkPreferred ? "light" : "dracula"}
+                value={darkPreferred ? "light" : "dark"}
                 className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 hidden dark:block" />
 
             <IoMdSunny aria-label="Sunny icon"
