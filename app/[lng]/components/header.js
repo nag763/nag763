@@ -7,7 +7,7 @@ const LanguageDropdown = () => {
     return (
         <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[100] w-32 space-y-2 p-2 shadow">
         {LanguagesMap.map(entry => {
-            return (<Link key={entry.key} href={entry.key}>{entry.flag}  {entry.label}</Link>);
+            return (<Link key={entry.key} href={entry.key} prefetch={false}>{entry.flag}  {entry.label}</Link>);
         })}                
         </ul>
     )
