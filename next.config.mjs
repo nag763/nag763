@@ -17,7 +17,7 @@ const cspHeader = `
 
 const nextConfig = {
   images: {
-    domains: ['img.shields.io'], 
+    domains: ['img.shields.io', 'images.unsplash.com'], 
     dangerouslyAllowSVG: true,
   },
   async headers() { 
