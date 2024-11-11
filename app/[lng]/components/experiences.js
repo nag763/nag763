@@ -27,7 +27,7 @@ function TechnologyBadges({ technologies }) {
     return (
         <div className="space-x-2">
             {technologies.map((tech) => (
-                <span key={tech} className="badge badge-outline">{tech}</span>
+                <span key={tech} className="badge badge-outline hover:animate-wiggle animate-infinite">{tech}</span>
             ))}
         </div>
     );
