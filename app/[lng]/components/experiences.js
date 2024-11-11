@@ -1,4 +1,4 @@
-import { useTranslation } from "@/app/i18n";
+import { getTranslations } from "@/app/i18n";
 import { IoSchool } from "react-icons/io5";
 import { PiBuildingsFill } from "react-icons/pi";
 import EXPERIENCES from "@/app/consts/experiences.json";
@@ -34,7 +34,7 @@ function TechnologyBadges({ technologies }) {
 }
 
 export default async function Experiences({ lng }) {
-    const { t } = await useTranslation(lng, 'experiences');
+    const { t } = await getTranslations(lng, 'experiences');
 
     const entries = EXPERIENCES.map(({ type, key, ...entry }, index, array) => ({
         ...entry,

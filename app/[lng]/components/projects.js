@@ -1,10 +1,10 @@
-import { useTranslation } from "@/app/i18n";
+import { getTranslations } from "@/app/i18n";
 import Browser from "./browser";
 import PROJECTS from "@/app/consts/projects.json";
 
 
 export default async function Projects({ lng }) {
-    const { t } = await useTranslation(lng);
+    const { t } = await getTranslations(lng);
 
     return (
         <div className="snap-center h-full section-header" data-section-name={t("projects.section")}>

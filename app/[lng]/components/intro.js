@@ -1,4 +1,4 @@
-import { useTranslation } from "@/app/i18n";
+import { getTranslations } from "@/app/i18n";
 import StartButton from "./start_button";
 
 function getYearsSince(dateString) {
@@ -18,7 +18,7 @@ function getYearsSince(dateString) {
 }
 
 export default async function Intro({ lng }) {
-    const { t } = await useTranslation(lng);
+    const { t } = await getTranslations(lng);
     return (
 
         <div className="flex flex-col h-full p-12 font-mono snap-center">

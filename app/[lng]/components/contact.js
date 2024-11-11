@@ -1,8 +1,8 @@
-import { useTranslation } from "@/app/i18n";
+import { getTranslations } from "@/app/i18n";
 import MailForm from "./mail_form";
 
 export default async function Contact({ lng }) {
-    const { t } = await useTranslation(lng);
+    const { t } = await getTranslations(lng);
     const translations = {
         name: t('name'),
         type_here: t('type_here'),

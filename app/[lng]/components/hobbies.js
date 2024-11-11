@@ -1,4 +1,4 @@
-import { useTranslation } from "@/app/i18n";
+import { getTranslations } from "@/app/i18n";
 import Image from "next/image";
 import React from "react";
 import HOBBIES from "@/app/consts/hobbies.json";
@@ -50,7 +50,7 @@ function GridContainer({ data, itemsPerRow = 2 }) {
 }
 
 export default async function Hobbies({ lng }) {
-    const { t } = await useTranslation(lng, 'hobbies');
+    const { t } = await getTranslations(lng, 'hobbies');
 
     const data = HOBBIES.map(project => ({
         ...project,
