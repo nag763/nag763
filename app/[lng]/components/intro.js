@@ -21,7 +21,7 @@ export default async function Intro({ lng }) {
     const { t } = await getTranslations(lng);
     return (
 
-        <div className="flex flex-col h-full p-12 font-mono snap-center">
+        <div className="flex flex-col h-full p-12  snap-center">
             <div className="hero h-full">
                 <div className="hero-content ">
                     <div className="max-w-md md:max-w space-y-4 md:space-y-8">

@@ -11,7 +11,7 @@ function TimelineEntry({ date, title, description, technologies, Icon, position 
                 <Icon />
             </div>
             <div className={`mb-10 space-y-1 py-2 md:py-0 ${position.left ? "timeline-start md:text-end" : "timeline-end md:text-start"}`}>
-                <time className="font-mono italic">{date}</time>
+                <time className="italic">{date}</time>
                 <div className="text-lg font-black">{title}</div>
                 {description && <div>{description}</div>}
                 {technologies && (
