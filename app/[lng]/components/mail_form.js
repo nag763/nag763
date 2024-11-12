@@ -60,17 +60,22 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
     };
 
     const sendMailApi = async (data) => {
-        try {
-            const response = await fetch('/api/mail', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-            });
+        if (mailApiEnabled) {
+            try {
+                const response = await fetch('/api/mail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
 
-            return response.ok;
-        } catch (error) {
-            console.error(error);
-            return false;
+                return response.ok;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        } else {
+            window.location.href = `mailto:loic.labeye@pm.me?subject=${data.topic}&body=${data.content}`;
+            return true;
         }
     };
 
@@ -80,12 +85,12 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
 
         const data = mailApiEnabled ? formState.formData : { name: formState.formData.name, topic: formState.formData.topic, content: formState.formData.content };
 
-        const isSuccess = mailApiEnabled ? await sendMailApi(data) : true;
+        const isSuccess = await sendMailApi(data);
 
         if (isSuccess) {
             setFormState(prevState => ({
                 ...prevState,
-                toastMessage: 'Message envoyé avec succès',
+                toastMessage: translations.success,
                 isMailSent: true,
                 formData: { name: '', topic: '', content: '', email: '' }
             }));
@@ -93,7 +98,7 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
         } else {
             setFormState(prevState => ({
                 ...prevState,
-                toastMessage: 'Erreur lors de l\'envoi du message',
+                toastMessage: translations.error_while_sending,
                 isError: true
             }));
         }
@@ -102,7 +107,17 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
     };
 
     if (formState.isMailSent) {
-        return <p className="text-center text-xl font-semibold">{translations.thank_you_for_your_mail}</p>;
+        return (<>
+            <p className="text-center text-xl font-semibold">{translations.thank_you_for_your_mail}</p>
+            {formState.toastMessage && (
+                <Toast
+                    message={formState.toastMessage}
+                    isError={formState.isError}
+                    onClose={() => setFormState(prevState => ({ ...prevState, toastMessage: null }))}
+                />
+            )}
+        </>
+        );
     }
 
     return (
