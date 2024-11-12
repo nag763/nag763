@@ -22,7 +22,7 @@ module.exports = {
           ...require("daisyui/src/theming/themes")["dark"],
           "base-100": "#2a303c",
           "primary": "#CADCFC",
-          "secondary": "#735DA5"
+          "secondary": "#5b21b6"
         },
       },
     ],

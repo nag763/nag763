@@ -160,7 +160,7 @@ export default function MailForm({ translations, mailApiEnabled = false }) {
                     required
                     placeholder={translations.type_here}
                 />
-                <button type="submit" className="btn btn-secondary btn-outline animate-pulse w-full">
+                <button type="submit" className="btn btn-secondary animate-pulse animate-thrice w-full">
                     {translations.send}
                 </button>
             </form>
