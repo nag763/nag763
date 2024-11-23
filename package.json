@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "accept-language": "^3.0.20",
-    "i18next": "^23.16.4",
+    "i18next": "^24",
     "i18next-resources-to-backend": "^1.2.1",
     "next": "^15",
     "nodemailer": "^6.9.16",
