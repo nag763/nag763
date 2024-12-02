@@ -1,0 +1,12 @@
+# robots.txt pour le site Loic Labeye
+
+User-agent: *
+Disallow: /api/          # Empêche l'accès aux API (ajustez si nécessaire)
+Disallow: /admin/        # Empêche l'accès à l'admin (ajustez si nécessaire)
+
+# Indique où se trouve le sitemap
+Sitemap: https://loic.labeye.dev/sitemap.xml
+
+# Permet l'accès à tout le reste du site
+Allow: /
+
