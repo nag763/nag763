@@ -1,3 +1,8 @@
+[![Exercism](https://img.shields.io/badge/Exercism-009CAB?style=for-the-badge&logo=exercism&logoColor=white)](https://exercism.org/profiles/nag763)
+![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
 ```rust
 struct Profile {
   pub firstname: String,
@@ -31,3 +36,5 @@ Check out my most complete and best documented projects if you have some time :b
 * [doteur](https://github.com/nag763/doteur) : A database schema renderer, based in Rust.
 * [rat-rs](https://github.com/nag763/rat-rs) : A lightweight yet powerful CLI schedule fetcher for IDF (Paris region) common transportation.
 * [mptvfr](https://github.com/nag763/mptvfr) : An android application written on Dart with purpose to get the TV schedule without any - annoying - ads.
+
+Chec
