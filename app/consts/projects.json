@@ -7,6 +7,12 @@
         "instance": "https://tchatche.xyz"
     },
     {
+        "name": "mydnr",
+        "img": "/assets/mydnr.webp",
+        "repo": "https://github.com/nag763/mydnr",
+        "instance": "https://github.com/nag763/mydnr"
+    },
+    {
         "name": "doteur",
         "img": "/assets/doteur.webp",
         "repo": "https://github.com/nag763/doteur",

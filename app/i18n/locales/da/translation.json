@@ -8,6 +8,7 @@
     "techs": "Brugte teknologier",
     "goto_gh": "Se på GitHub",
     "tchatchers.description": "En privatlivsvenlig chatapp udviklet i Rust.",
+    "mydnr.description": "En simpel RSS-feed-aggregator drevet af AI.",
     "verbihr.description": "Et værktøj til at lære tyske uregelmæssige verber med Rust.",
     "snake.description": "Et simpelt slangespil, du kan spille i browseren.",
     "doteur.description": "Et CLI- og webværktøj til let visualisering af SQL-skemaer.",

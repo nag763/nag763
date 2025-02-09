@@ -8,6 +8,7 @@
     "techs": "Technologies utilisées",
     "goto_gh": "Voir sur GitHub",
     "tchatchers.description": "Une application de chat respectueuse de la vie privée, développée en Rust.",
+    "mydnr.description": "Un simple agrégateur de flux RSS alimenté par l'IA.",
     "verbihr.description": "Un outil pour apprendre les verbes irréguliers allemands avec Rust.",
     "snake.description": "Un simple jeu de serpent jouable dans ton navigateur.",
     "doteur.description": "Un outil CLI et web pour visualiser facilement les schémas SQL.",

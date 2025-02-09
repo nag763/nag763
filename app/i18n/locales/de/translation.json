@@ -8,6 +8,7 @@
     "techs": "Verwendete Technologien",
     "goto_gh": "Auf GitHub ansehen",
     "tchatchers.description": "Eine datenschutzfreundliche Chat-Anwendung in Rust entwickelt.",
+    "mydnr.description": "Ein einfacher RSS-Feed-Aggregator, der von KI unterstützt wird.",
     "verbihr.description": "Ein Werkzeug zum Lernen deutscher unregelmäßiger Verben in Rust.",
     "snake.description": "Ein einfaches Schlangenspiel, das du im Browser spielen kannst.",
     "doteur.description": "Ein CLI- und Web-Tool zur einfachen Visualisierung von SQL-Schemas.",
