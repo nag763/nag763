@@ -1,5 +1,20 @@
 [
     {
+        "key": "vie",
+        "technologies": [
+            "React",
+            "Next",
+            "Node",
+            "Python",
+            "JavaScript",
+            "FastAPI",
+            "Postgres",
+            "Azure"
+        ],
+        "type": "work"
+
+    },
+    {
         "key": "aubay",
         "technologies": [
             "Java",
