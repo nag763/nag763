@@ -6,7 +6,8 @@ import Projects from "./components/projects"
 import { getTranslations } from "../i18n";
 
 
-export async function generateMetadata({ params : {lng} }) {
+export async function generateMetadata({ params  }) {
+    const { lng } = await params;
     const {t} = await getTranslations(lng);
     return {
       title: t('meta.title'),
@@ -18,14 +19,15 @@ export async function generateMetadata({ params : {lng} }) {
    
 
 
-export default async function Snapper({ params: { lng } }) {
-    return (
-        <>
-            <Intro lng={lng} />
-            <Experiences lng={lng} />
-            <Projects lng={lng} />
-            <Hobbies lng={lng} />
-            <Contact lng={lng} />
-        </>
-    );
+export default async function Snapper({ params }) {
+  const { lng } = await params;
+  return (
+    <>
+      <Intro lng={lng} />
+      <Experiences lng={lng} />
+      <Projects lng={lng} />
+      <Hobbies lng={lng} />
+      <Contact lng={lng} />
+    </>
+  );
 }
