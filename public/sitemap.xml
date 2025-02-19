@@ -4,7 +4,7 @@
   
   <!-- URL de redirection principale -->
   <url>
-    <loc>http://loic.labeye.dev/</loc>
+    <loc>https://loic.labeye.dev/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
     <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
@@ -13,7 +13,7 @@
   
   <!-- URL pour la version anglaise -->
   <url>
-    <loc>http://loic.labeye.dev/en</loc>
+    <loc>https://loic.labeye.dev/en</loc>
     <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
     <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
@@ -22,7 +22,7 @@
 
   <!-- URL pour la version française -->
   <url>
-    <loc>http://loic.labeye.dev/fr</loc>
+    <loc>https://loic.labeye.dev/fr</loc>
     <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
     <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
@@ -31,7 +31,7 @@
 
   <!-- URL pour la version allemande -->
   <url>
-    <loc>http://loic.labeye.dev/de</loc>
+    <loc>https://loic.labeye.dev/de</loc>
     <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
     <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
@@ -40,7 +40,7 @@
 
   <!-- URL pour la version danoise -->
   <url>
-    <loc>http://loic.labeye.dev/da</loc>
+    <loc>https://loic.labeye.dev/da</loc>
     <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
     <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
     <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
