@@ -2,7 +2,7 @@
     "meta.title": "Loïc LABEYEs persönliche Website",
     "meta.description": "Diese Website zeigt die persönlichen Erfahrungen und Projekte von Loïc LABEYE.",
     "software_engineer": "Software Ingenieur",
-    "legal": "© 2024 Loïc LABEYE. Alle Rechte vorbehalten.",
+    "legal": "© 2024-{{currYear}} Loïc LABEYE. Alle Rechte vorbehalten.",
     "age": "🎂  {{age}} Jahre alt",
     "intro": "Willkommen auf meiner persönlichen Seite! Hier findest du meine Erfahrungen und Projekte.",
     "techs": "Verwendete Technologien",
