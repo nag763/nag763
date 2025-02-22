@@ -12,7 +12,7 @@ export async function generateMetadata({ params  }) {
     return {
       title: t('meta.title'),
       description: t('meta.description'),
-      keywords: "LABEYE Loïc, rust, javascript, Aubay, nextjs, python"
+      keywords: "LABEYE Loïc, Rust, Javascript, TotalEnergies, NextJS, Python, Web, Software Engineer"
       
     }
   }
