@@ -4,6 +4,7 @@
     "software_engineer": "Ingénieur logiciel",
     "legal": "© 2024-{{currYear}} Loïc LABEYE. Tous droits réservés.",
     "age": "🎂  {{age}} ans",
+    "denmark": "Danemark",
     "intro": "Bienvenue sur mon site personnel ! Tu y trouveras mes expériences et projets.",
     "techs": "Technologies utilisées",
     "goto_gh": "Voir sur GitHub",

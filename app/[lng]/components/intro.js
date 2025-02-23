@@ -29,7 +29,7 @@ export default async function Intro({ lng }) {
                         <div className="pl-6 text-lg md:text-xl lg:text-3xl font-semibold space-y-2">
                             <p className="animate-fade-right animate-duration-1000 animate-delay-1000">💼 {t('software_engineer')}</p>
                             <p className="animate-fade-right animate-duration-1000 animate-delay-[2000ms]">{t('age', { "age": getYearsSince("1997-11-17") })}</p>
-                            <p className="animate-fade-right animate-duration-1000 animate-delay-[3000ms]">📍 Paris, France</p>
+                            <p className="animate-fade-right animate-duration-1000 animate-delay-[3000ms]">📍 {t('denmark')}</p>
                         </div>
                         <p className="animate-fade-up md:text-lg lg:text-xl animate-duration-1000 animate-delay-[4000ms] text-justify">
                             {t('intro')}

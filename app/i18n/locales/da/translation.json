@@ -5,6 +5,7 @@
     "legal": "© 2024-{{currYear}} Loïc LABEYE. Alle rettigheder forbeholdes.",
     "age": "🎂  {{age}} år gammel",
     "intro": "Velkommen til min personlige side! Her finder du mine erfaringer og projekter.",
+    "denmark": "Danmark",
     "techs": "Brugte teknologier",
     "goto_gh": "Se på GitHub",
     "tchatchers.description": "En privatlivsvenlig chatapp udviklet i Rust.",
