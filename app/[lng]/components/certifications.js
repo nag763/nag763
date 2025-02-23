@@ -7,25 +7,25 @@ async function CertificationCard({ certification, t }) {
     return (
         <div className={`card shadow-lg bg-base-${certification.earned ? "200 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out"  : "100"}`}>
             <div className="card-body ">
-                <div className="flex justify-between space-x-4">
-                    <div className="flex-1">
+                <div className="flex flex-none justify-between space-x-4">
+                    <div>
                         <h2 className="card-title">{t(certification.name)}</h2>
                         {certification.earned && <p>{new Date(certification.earned).toLocaleDateString()}</p>}
                     </div>
                     {
                         certification.earned ?
-                            <div className="flex-1 md:justify-end flex flex-col-reverse md:flex-row gap-y-2 md:gap-y-0 md:gap-x-2">
+                            <div className="flex flex-col-reverse  md:flex-row  justify-center md:justify-end  gap-y-2 md:gap-y-0 md:gap-x-2  max-sm:text-sm">
                                 <Link href={t(`${certification.name}.page`)} target="_blank">
-                                    <button className="btn btn-secondary w-full md:w-auto">
+                                    <button className="btn btn-secondary w-full md:w-auto max-md:btn-sm">
                                         {t("view_ceritification_page")}
                                     </button>
                                 </Link>
                                 <Link href={t(`${certification.name}.check`)} target="_blank">
-                                    <button className="btn btn-primary w-full md:w-auto">
+                                    <button className="btn btn-primary w-full md:w-auto  max-md:btn-sm">
                                         {t("check_myself")}
                                     </button>
                                 </Link>
-                            </div> : <p className="text-right flex-1">{t("not_earned_yet")}</p>
+                            </div> : <p className="text-right flex-1 max-sm:text-sm">{t("not_earned_yet")}</p>
                     }
 
                 </div>
