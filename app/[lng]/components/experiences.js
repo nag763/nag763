@@ -25,7 +25,7 @@ function TimelineEntry({ date, title, description, technologies, Icon, position 
 
 function TechnologyBadges({ technologies }) {
     return (
-        <div className="space-x-2">
+        <div className="flex flex-wrap gap-1 md:block md:space-x-2">
             {technologies.map((tech) => (
                 <span key={tech} className="badge badge-outline hover:animate-wiggle animate-infinite">{tech}</span>
             ))}
