@@ -1,0 +1,14 @@
+{
+    "certifications.section": "Zertifizierungen",
+    "check_myself": "Gültigkeit überprüfen",
+    "view_ceritification_page": "Zertifizierungsseite anzeigen",
+    "not_earned_yet": "Diese Zertifizierung wurde noch nicht erworben",
+    "az900": "AZ-900 : Azure-Grundlagen",
+    "az900.page": "https://learn.microsoft.com/de/credentials/certifications/azure-fundamentals/",
+    "az900.check": "https://learn.microsoft.com/api/credentials/share/de/llabeye/485804E946B9FB1D?sharingId=607BD74E791FA26E",
+    "ai900": "AI-900 : Azure KI-Grundlagen",
+    "az204": "AZ-204 : Entwicklung von Lösungen für Microsoft Azure",
+    "aws_cp": "AWS Certified Cloud Practitioner",
+    "aws_aip": "AWS Certified AI Practitioner",
+    "aws_da": "AWS Certified Developer Associate"
+}

@@ -1,0 +1,14 @@
+{
+    "certifications.section": "Certificeringer",
+    "check_myself": "Tjek gyldigheden",
+    "view_ceritification_page": "Se certificeringsside",
+    "not_earned_yet": "Denne certificering er endnu ikke opnået",
+    "az900": "AZ-900 : Azure Fundamentals",
+    "az900.page": "https://learn.microsoft.com/en/credentials/certifications/azure-fundamentals/",
+    "az900.check": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/485804E946B9FB1D?sharingId=607BD74E791FA26E",
+    "ai900": "AI-900 : Azure AI Fundamentals",
+    "az204": "AZ-204 : Udvikling af løsninger til Microsoft Azure",
+    "aws_cp": "AWS Certified Cloud Practitioner",
+    "aws_aip": "AWS Certified AI Practitioner",
+    "aws_da": "AWS Certified Developer Associate"
+}

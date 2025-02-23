@@ -4,6 +4,7 @@ import Hobbies from "./components/hobbies";
 import Intro from "./components/intro";
 import Projects from "./components/projects"
 import { getTranslations } from "../i18n";
+import Certifications from "./components/certifications";
 
 
 export async function generateMetadata({ params  }) {
@@ -27,6 +28,7 @@ export default async function Snapper({ params }) {
     <>
       <Intro lng={lng} />
       <Experiences lng={lng} />
+      <Certifications lng={lng} />
       <Projects lng={lng} />
       <Hobbies lng={lng} />
       <Contact lng={lng} />
