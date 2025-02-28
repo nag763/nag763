@@ -6,6 +6,8 @@
     "az900": "AZ-900 : Fondamentaux d'Azure",
     "az900.page": "https://learn.microsoft.com/fr/credentials/certifications/azure-fundamentals/",
     "az900.check": "https://learn.microsoft.com/api/credentials/share/fr/llabeye/485804E946B9FB1D?sharingId=607BD74E791FA26E",
+    "ai900.page": "https://learn.microsoft.com/fr-fr/credentials/certifications/azure-ai-fundamentals/",
+    "ai900.check": "https://learn.microsoft.com/api/credentials/share/fr-fr/llabeye/4D546F07B9FC2D16?sharingId=607BD74E791FA26E",
     "ai900": "AI-900 : Fondamentaux de l'IA Azure",
     "az204": "AZ-204 : Développement de solutions pour Microsoft Azure",
     "aws_cp": "AWS Certified Cloud Practitioner",
