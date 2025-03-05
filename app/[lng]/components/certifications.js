@@ -8,7 +8,7 @@ async function CertificationCard({ certification, t }) {
         <div className={`card shadow-lg bg-base-${certification.earned ? "200 hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out" : "100"}`}>
             <div className="card-body ">
                 <div className="flex flex-none justify-between space-x-4">
-                    <div>
+                    <div className="flex-1">
                         <h2 className="card-title">{t(certification.name)}</h2>
                         {certification.earned && <p>{new Date(certification.earned).toLocaleDateString()}</p>}
                     </div>
