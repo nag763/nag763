@@ -9,7 +9,9 @@
     "ai900.page": "https://learn.microsoft.com/fr-fr/credentials/certifications/azure-ai-fundamentals/",
     "ai900.check": "https://learn.microsoft.com/api/credentials/share/fr-fr/llabeye/4D546F07B9FC2D16?sharingId=607BD74E791FA26E",
     "ai900": "AI-900 : Fondamentaux de l'IA Azure",
-    "az204": "AZ-204 : Développement de solutions pour Microsoft Azure",
+    "sc900": "SC-900 : Security, Compliance, and Identity Fundamentals",
+    "sc900.page": "https://learn.microsoft.com/fr-fr/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification",
+    "sc900.check": "https://learn.microsoft.com/api/credentials/share/fr-frf/llabeye/D3D2E5191ECE725A?sharingId=607BD74E791FA26E",
     "aws_cp": "AWS Certified Cloud Practitioner",
     "aws_aip": "AWS Certified AI Practitioner",
     "aws_da": "AWS Certified Developer Associate"
