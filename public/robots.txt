@@ -9,4 +9,3 @@ Sitemap: https://loic.labeye.dev/sitemap.xml
 
 # Permet l'accès à tout le reste du site
 Allow: /
-

@@ -1,51 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- URL de redirection principale -->
-  <url>
-    <loc>https://loic.labeye.dev/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
-    <xhtml:link rel="alternate" hreflang="da" href="http://loic.labeye.dev/da" />
-  </url>
-  
-  <!-- URL pour la version anglaise -->
-  <url>
-    <loc>https://loic.labeye.dev/en</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
-    <xhtml:link rel="alternate" hreflang="da" href="http://loic.labeye.dev/da" />
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <!-- URL pour la version française -->
-  <url>
-    <loc>https://loic.labeye.dev/fr</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
-    <xhtml:link rel="alternate" hreflang="da" href="http://loic.labeye.dev/da" />
-  </url>
 
-  <!-- URL pour la version allemande -->
-  <url>
-    <loc>https://loic.labeye.dev/de</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
-    <xhtml:link rel="alternate" hreflang="da" href="http://loic.labeye.dev/da" />
-  </url>
+<url>
+  <loc>https://loic.labeye.dev/en</loc>
+  <lastmod>2025-03-23T13:25:57+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://loic.labeye.dev/fr</loc>
+  <lastmod>2025-03-23T13:25:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://loic.labeye.dev/de</loc>
+  <lastmod>2025-03-23T13:25:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://loic.labeye.dev/da</loc>
+  <lastmod>2025-03-23T13:25:57+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
-  <!-- URL pour la version danoise -->
-  <url>
-    <loc>https://loic.labeye.dev/da</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="http://loic.labeye.dev/en" />
-    <xhtml:link rel="alternate" hreflang="fr" href="http://loic.labeye.dev/fr" />
-    <xhtml:link rel="alternate" hreflang="de" href="http://loic.labeye.dev/de" />
-    <xhtml:link rel="alternate" hreflang="da" href="http://loic.labeye.dev/da" />
-  </url>
 
 </urlset>
-
