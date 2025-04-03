@@ -17,6 +17,8 @@
     "taa.check": "https://www.credly.com/badges/06d18ae9-4e80-47d5-bf49-d8582fdacc39/public_url",
     "az204": "AZ-204 : Entwicklung von Lösungen für Microsoft Azure",
     "aws_cp": "AWS Certified Cloud Practitioner",
-    "aws_aip": "AWS Certified AI Practitioner",
-    "aws_da": "AWS Certified Developer Associate"
+    "aws_cp.page": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+    "aws_cp.check": "https://www.credly.com/badges/4420a690-8cba-48ad-bd4a-f20b12d44491/public_url",
+    "aws_da": "AWS Certified Developer - Associate",
+    "aws_sa": "AWS Certified Solutions Architect - Associate"
 }

@@ -16,12 +16,13 @@
         "earned": "2025-03-21"
     },
     {
-        "name": "aws_cp"
-    },
-    {
-        "name": "aws_aip"
+        "name": "aws_cp",
+        "earned": "2025-04-02"
     },
     {
         "name": "aws_da"
+    },
+    {
+        "name": "aws_sa"
     }
 ]
