@@ -65,27 +65,27 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
   acl    = "public-read"
 }
 
-# IAM User
-resource "aws_iam_user" "user" {
-  name = "gh-actions-user"
-}
+# # IAM User
+# resource "aws_iam_user" "user" {
+#   name = "gh-actions-user"
+# }
 
-# IAM Policy, the user can upload to S3
-resource "aws_iam_policy" "s3_upload_policy" {
-  name        = "s3-upload-policy"
-  description = "Policy to allow uploading to S3 bucket"
+# # IAM Policy, the user can upload to S3
+# resource "aws_iam_policy" "s3_upload_policy" {
+#   name        = "s3-upload-policy"
+#   description = "Policy to allow uploading to S3 bucket"
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect   = "Allow"
-        Action   = "s3:PutObject"
-        Resource = "${aws_s3_bucket.bucket.arn}/*"
-      }
-    ]
-  })
-}
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Effect   = "Allow"
+#         Action   = "s3:PutObject"
+#         Resource = "${aws_s3_bucket.bucket.arn}/*"
+#       }
+#     ]
+#   })
+# }
 
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.bucket.id
