@@ -1,8 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.section-header::before {
-    content: attr(data-section-name);
-    @apply flex justify-center items-center text-center py-6 font-light text-lg ;
-}
