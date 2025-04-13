@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 .whoami-group-container {
-    @apply h-[600vh] relative;
+    @apply h-[500vh] relative;
 }
 
 .whoami-group-container>div {
