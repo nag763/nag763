@@ -100,7 +100,7 @@ const timeline = [
     scroll(
         animate("#certs, .rtl-anim", {
             transform: [`translateX(20vw)`, "none", "none"],
-            opacity: [0, 1],
+            opacity: [0, 1, 0],
             duration: 0.3,
         }),
         {
@@ -131,7 +131,7 @@ const timeline = [
         },
     );
 </script>
-<section id="recap" name="recap" class="h-dvh flex flex-col gap-2 p-4">
+<section id="recap" name="recap" class="h-dvh flex flex-col gap-2 p-4 overflow-x-hidden">
     <div class="flex gap-2">
         <div
             id="id_card"
