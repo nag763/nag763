@@ -1,5 +1,10 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");    
 @plugin "daisyui";
+
+@theme {
+--font-roboto: "Roboto", sans-serif; 
+}
 
 .whoami-group-container {
     @apply h-[500vh] relative;
