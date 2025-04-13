@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Main domain -->
+  <url>
+    <loc>https://www.labeye.info/</loc>
+    <lastmod>2025-04-13</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.labeye.info/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.loic.labeye.info/"/>
+  </url>
+
+  <!-- Alternative domain 1 -->
+  <url>
+    <loc>https://www.loic.labeye.info/</loc>
+    <lastmod>2025-04-13</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.labeye.info/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.loic.labeye.info/"/>
+  </url>
+  
+</urlset>
