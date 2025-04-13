@@ -1,0 +1,66 @@
+<script>
+    import { scroll, animate } from "motion";
+
+    const items = document.querySelectorAll(".whoami-container");
+
+    // Animate gallery horizontally during vertical scroll
+    scroll(
+        animate(".whoami-group", {
+            transform: ["none", `translateX(-${items.length - 1}00vw)`],
+        }),
+        { target: document.querySelector(".whoami-group-container") },
+    );
+
+    // Progress bar representing gallery scroll
+    scroll(animate(".progress", { scaleX: [0, 1] }), {
+        target: document.querySelector(".whoami-group-container"),
+    });
+</script>
+<!-- WHOAMI -->
+<section class="whoami-group-container">
+    <div>
+        <ul class="whoami-group">
+            <li class="whoami-container">
+                <h2 class="text-5xl">Well, tell me more...</h2>
+            </li>
+            <li class="whoami-container">
+                <h2 class="text-3xl">Who am I ? 🤔</h2>
+                <div>
+                    <p>I am 27 years old french software engineer.</p>
+                </div>
+            </li>
+            <li class="whoami-container">
+                <h2 class="text-3xl">Where did I study ? 🎓</h2>
+                <div class="text-center">
+                    <p>I had been studying for 5 years in ESIGELEC Rouen.</p>
+                    <p>I graduated in 2021.</p>
+                </div>
+            </li>
+            <li class="whoami-container">
+                <h2 class="text-3xl">What is my work experience ? 🧑🏼‍💻</h2>
+                <div>
+                    <p>
+                        Right after being graduated, I have been working for
+                        Allianz Trade for three years and half as consultant on
+                        behalf of Aubay.
+                    </p>
+                </div>
+            </li>
+            <li class="whoami-container">
+                <h2 class="text-3xl">Right, but what about now ? 🧐</h2>
+                <div>
+                    <p>
+                        Since February 2025, I have been working as a fullstack
+                        software engineer for TotalEnergies in Denmark.
+                    </p>
+                </div>
+            </li>
+            <li class="whoami-container">
+                <h2 class="text-3xl">Wait that's already the end ? 😮</h2>
+                <p>Yes, but no worries, there is a recap below!</p>
+            </li>
+        </ul>
+
+        <div class="progress"></div>
+    </div>
+</section>
