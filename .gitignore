@@ -47,6 +47,8 @@ next-env.d.ts
 
 .parcel-cache
 
+.astro
+
 # Terraform
 *.tfstate
 *.tfstate.backup
