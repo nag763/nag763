@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import avatar from '../images/avatar.jpg';
-import denmark from '../images/denmark.webp';
-import githubLogo from '../images/github-mark.svg';
-import linkedinLogo from '../images/linkedin.png';
-import outlookLogo from '../images/outlook.svg';
-import githubLogoWhite from '../images/github-mark-white.svg';
+import { Image } from "astro:assets";
+import avatar from "../images/avatar.jpg";
+import denmark from "../images/denmark.webp";
+import githubLogo from "../images/github-mark.svg";
+import linkedinLogo from "../images/linkedin.png";
+import outlookLogo from "../images/outlook.svg";
+import githubLogoWhite from "../images/github-mark-white.svg";
 const skills = [
     "AWS",
     "Azure",
@@ -83,9 +83,60 @@ const timeline = [
 ];
 ---
 
-<section name="recap" class="h-dvh flex flex-col gap-2 p-4">
+<script>
+    import { animate, scroll } from "motion";
+
+    scroll(
+        animate("#id_card, #timeline, #skills", {
+            transform: [`translateX(-20vw)`, "none", "none"],
+            opacity: [0, 1],
+            duration: 0.3,
+        }),
+        {
+            target: document.querySelector("#recap"),
+            offset: ["start end", "end start"],
+        },
+    );
+    scroll(
+        animate("#certs, .rtl-anim", {
+            transform: [`translateX(20vw)`, "none", "none"],
+            opacity: [0, 1],
+            duration: 0.3,
+        }),
+        {
+            target: document.querySelector("#recap"),
+            offset: ["start end", "end start"],
+        },
+    );
+    scroll(
+        animate("#flag", {
+            transform: [`translateY(-20vh)`, "none", "none"],
+            opacity: [0, 1],
+            duration: 0.3,
+        }),
+        {
+            target: document.querySelector("#recap"),
+            offset: ["start end", "end start"],
+        },
+    );
+    scroll(
+        animate("#languages", {
+            transform: [`translateY(20vh)`, "none", "none"],
+            opacity: [0, 1],
+            duration: 0.3,
+        }),
+        {
+            target: document.querySelector("#recap"),
+            offset: ["start end", "end start"],
+        },
+    );
+</script>
+<section id="recap" name="recap" class="h-dvh flex flex-col gap-2 p-4">
     <div class="flex gap-2">
-        <div class="card bg-base-200 shadow-sm w-full md:w-2/3 lg:w-5/6">
+        <div
+            id="id_card"
+            class="card bg-base-200 shadow-sm w-full md:w-2/3 lg:w-5/6"
+        >
             <div class="card-body card-side space-x-4">
                 <div class="avatar">
                     <div
@@ -101,7 +152,10 @@ const timeline = [
                 </div>
             </div>
         </div>
-        <div class="card bg-base-200 max-md:hidden w-1/3 lg:w-1/6 shadow-sm">
+        <div
+            id="flag"
+            class="card bg-base-200 max-md:hidden w-1/3 lg:w-1/6 shadow-sm"
+        >
             <figure>
                 <Image loading="lazy" src={denmark} alt="Denmark flag" />
             </figure>
@@ -112,17 +166,15 @@ const timeline = [
             </div>
         </div>
     </div>
-    <div class="w-full">
+    <div id="timeline" , class="w-full">
         <div class="card bg-base-200 shadow-sm w-full">
             <div class="card-body overflow-x-auto max-w-full">
                 <ul class="timeline timeline-horizontal max-w-full">
                     {
                         timeline.map((event, i) => (
                             <li>
-                                {i != 0 && <hr/>}
-                                <div class="timeline-start">
-                                    {event.start}
-                                </div>
+                                {i != 0 && <hr />}
+                                <div class="timeline-start">{event.start}</div>
                                 <div class="timeline-middle">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +201,10 @@ const timeline = [
         </div>
     </div>
     <div class="flex flex-col md:flex-row gap-2">
-        <div class="w-full md:w-1/2 h-full flex flex-col justify-between">
+        <div
+            id="skills"
+            class="w-full md:w-1/2 h-full flex flex-col justify-between"
+        >
             <div class="card bg-base-200 shadow-sm w-full h-full">
                 <div class="card-body max-w-full">
                     <h2 class="text-xl lg:text-3xl">Skills</h2>
@@ -165,7 +220,7 @@ const timeline = [
                 </div>
             </div>
         </div>
-        <div class="w-full md:w-1/2">
+        <div id="certs" class="w-full md:w-1/2">
             <div class="card bg-base-200 shadow-sm w-full">
                 <div class="card-body max-w-full">
                     <h2 class="text-xl lg:text-3xl">Certifications</h2>
@@ -199,7 +254,7 @@ const timeline = [
     <div class="flex gap-2 items-center">
         <div
             class="w-2/3 md:w-1/4 h-full flex flex-col justify-center"
-            id="max-height-container"
+            id="languages"
         >
             <div class="card bg-base-200 shadow-sm w-full h-full">
                 <div class="card-body max-w-full">
@@ -216,7 +271,7 @@ const timeline = [
         </div>
         <a
             href="https://www.github.com/nag763"
-            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80"
+            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80 rtl-anim"
             aria-label="GitHub"
         >
             <Image
@@ -234,7 +289,7 @@ const timeline = [
         </a>
         <a
             href="https://www.linked.in/labeyel"
-            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80"
+            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80 rtl-anim"
             aria-label="LinkedIn"
         >
             <Image
@@ -246,7 +301,7 @@ const timeline = [
         </a>
         <a
             href="mailto:loic.labeye@pm.me"
-            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80"
+            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80 rtl-anim"
             aria-label="Email"
         >
             <Image
