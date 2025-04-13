@@ -1,0 +1,37 @@
+name: Build then deploy
+
+on:
+  push:
+    branches: ["gh_actions"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install npm deps
+        run: npm i
+      - name: Build
+        run: npx parcel build src/index.html
+      - name: Gzip assets
+        run: gzip dist/*
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - name: Sync files to S3 bucket
+        run: aws s3 sync ./dist s3://nag763 --delete
