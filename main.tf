@@ -189,6 +189,66 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "Access identity for S3 bucket"
 }
 
+resource "aws_iam_role" "lambda_role" {
+  name = "lambda-execution-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy" "lambda_policy" {
+  name        = "lambda-policy"
+  description = "Policy for Lambda to access S3 and CloudWatch"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = [
+          "ses:SendEmail",
+          "ses:SendRawEmail"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.lambda_policy.arn
+}
+
+resource "aws_lambda_function" "lambda_function" {
+  function_name = "nag763-lambda"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "bootstrap"
+  runtime       = "provided.al2023"
+  timeout       = 10
+
+  environment {
+    variables = {
+      MAIL_SENDER = var.mail_sender,
+      MAIL_TO = var.mail_to,
+      REGION = var.region,
+    }
+  }
+
+  filename = "./lambda/target/lambda/nag763-lambda/bootstrap.zip"
+  source_code_hash = filebase64sha256("./lambda/target/lambda/nag763-lambda/bootstrap.zip")
+}
+
 output "access_key" {
   value = aws_iam_access_key.gh_access_keys.id
 }

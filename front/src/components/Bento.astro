@@ -130,8 +130,42 @@ const timeline = [
             offset: ["start end", "end start"],
         },
     );
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const jsonData = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch(form.action || "/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit form");
+            }
+
+            alert("Form submitted successfully!");
+        } catch (error) {
+            console.error(error);
+            alert("An error occurred while submitting the form.");
+        }
+    }
+
+    document
+        .getElementById("sendmail")
+        .addEventListener("submit", handleSubmit);
 </script>
-<section id="recap" name="recap" class="md:h-dvh max-md:min-h-dvh flex flex-col gap-2 p-4 overflow-x-hidden overflow-y-clip">
+
+<section
+    id="recap"
+    name="recap"
+    class="md:h-dvh max-md:min-h-dvh flex flex-col gap-2 p-4 overflow-x-hidden overflow-y-clip"
+>
     <div class="flex gap-2">
         <div
             id="id_card"
@@ -299,17 +333,88 @@ const timeline = [
                 alt="gh_logo"
             />
         </a>
-        <a
-            href="mailto:loic.labeye@pm.me"
-            class="w-1/6 md:w-1/4 flex justify-center items-center hover:opacity-80 rtl-anim"
-            aria-label="Email"
+        <button
+            class="btn md:btn-wide btn-accent rounded-xl"
+            onclick="mymodal.showModal()"
         >
-            <Image
-                class="w-1/2 md:w-1/4"
-                src={outlookLogo}
-                loading="lazy"
-                alt="email"
-            />
-        </a>
+            <svg
+                aria-label="Email icon"
+                width="16"
+                height="16"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                ><g
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                    stroke-width="2"
+                    fill="none"
+                    stroke="black"
+                    ><rect width="20" height="16" x="2" y="4" rx="2"
+                    ></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                    ></path></g
+                ></svg
+            >
+            Write me a mail!
+        </button>
+        <dialog
+            id="mymodal"
+            class="modal modal-open modal-bottom sm:modal-middle"
+        >
+            <div class="modal-box">
+                <form
+                    id="sendmail"
+                    onsubmit="return false;"
+                >
+                    <fieldset class="fieldset w-full">
+                        <legend class="fieldset-legend text-xl"
+                            >Well, what do you want to talk about?</legend
+                        >
+
+                        <label class="fieldset-label">Your email</label>
+                        <input
+                            type="email"
+                            class="input w-full validator"
+                            required
+                            placeholder="Your email"
+                            name="from"
+                        />
+
+                        <label class="fieldset-label">Your topic</label>
+                        <select required class="input w-full" name="topic">
+                            <option selected value="job">Job offer</option>
+                            <option value="project">Project proposal</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <label class="fieldset-label">Tell me more...</label>
+                        <textarea
+                            id="body"
+                            name="body"
+                            class="input w-full resize-none"
+                            maxlength="500"
+                            required
+                            rows="8"
+                            placeholder="Describe your need"></textarea>
+                    </fieldset>
+                </form>
+
+                <p class="fieldset-label text-xs">
+                    Once, you validate this form, you will be requested to
+                    validate your mail.
+                </p>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                    <button
+                        onclick="sendmail.submit()"
+                        class="btn btn-primary"
+                        type="submit"
+                    >
+                        Send
+                    </button>
+                </div>
+            </div>
+        </dialog>
     </div>
 </section>

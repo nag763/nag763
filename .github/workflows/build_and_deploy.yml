@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Change to front directory
+        run: cd front
       - name: Install npm deps
         run: npm i
       - name: Build

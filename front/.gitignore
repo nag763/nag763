@@ -49,18 +49,4 @@ next-env.d.ts
 
 .astro
 
-# Terraform
-*.tfstate
-*.tfstate.backup
-.terraform/
-.terraform.lock.hcl
-crash.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-.terraformrc
-terraform.rc
-
 target
-terraform.tfvars
