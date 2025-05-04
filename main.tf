@@ -30,13 +30,29 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid       = "AllowCloudFrontServicePrincipalReadOnly"
         Effect    = "Allow"
-        Principal = "*"
+        Principal = {
+            "Service": "cloudfront.amazonaws.com"
+        }
         Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.bucket.arn}/*"
-      }
+        Resource  = "${aws_s3_bucket.bucket.arn}/*",
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.cdn.arn
+          }
+        }
+      },
     ]
   })
+}
+
+resource "aws_cloudfront_origin_access_control" "cdn_origin_access_control" {
+  name                              = "cdn-origin-access-control"
+  description                       = "Origin access control for CloudFront"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_s3_bucket_ownership_controls" "ownership" {
@@ -119,22 +135,9 @@ resource "aws_acm_certificate" "cert" {
 
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name = aws_s3_bucket_website_configuration.website.website_endpoint
-    origin_id   = "S3-${aws_s3_bucket.bucket.id}"
-
-    custom_origin_config {
-      http_port                = 80
-      https_port               = 443
-      origin_keepalive_timeout = 5
-      origin_protocol_policy   = "http-only"
-      origin_read_timeout      = 30
-      origin_ssl_protocols = [
-        "SSLv3",
-        "TLSv1",
-        "TLSv1.1",
-        "TLSv1.2",
-      ]
-    }
+    domain_name              = aws_s3_bucket.bucket.bucket_regional_domain_name
+    origin_id                = "S3-${aws_s3_bucket.bucket.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.cdn_origin_access_control.id
   }
 
   price_class = "PriceClass_100"
@@ -175,8 +178,6 @@ resource "aws_cloudfront_distribution" "cdn" {
     "labeye.info",
     "loic.labeye.info",
   ]
-
-
 
   restrictions {
     geo_restriction {
