@@ -6,7 +6,8 @@ authors = ["nag763 <loic.labeye@tutanota.de>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.12"
+google-adk = "^0.5.0"
 
 
 [build-system]
