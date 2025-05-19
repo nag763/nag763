@@ -11,7 +11,7 @@ AGENT_DIR = os.path.dirname(os.path.abspath(__file__))
 app: FastAPI = get_fast_api_app(
     agent_dir=AGENT_DIR,
     web=False,
-    allow_origins=["*"]
+    allow_origins=[os.getenv("ALLOWED_ORIGINS").split(",")], 
 )
 
 
