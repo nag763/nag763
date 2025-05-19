@@ -1,0 +1,124 @@
+
+<script>
+    const agentApi = import.meta.env.PUBLIC_AGENT_ENDPOINT;
+    import { marked } from "marked";
+    const userUuid = crypto.randomUUID();
+    const sessionUuid = crypto.randomUUID();
+
+    function createSession(userUuid, sessionUuid) {
+        const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+        };
+
+        fetch(
+            `${agentApi}/apps/assistant/users/${userUuid}/sessions/${sessionUuid}`,
+            options,
+        )
+            .then((response) => response.json())
+            .then((response) => console.log(response))
+            .catch((err) => console.error(err));
+    }
+
+    function generateChat(message, end = false) {
+        const chatElement = document.getElementById("chat");
+        const chatBubble = document.createElement("div");
+        chatBubble.className = `chat chat-${end ? "start" : "end"}`;
+        chatBubble.innerHTML = `
+            <div class="chat-bubble chat-bubble-${end ? "primary" : "secondary"}">
+                ${message}
+            </div>
+        `;
+        chatElement.appendChild(chatBubble);
+    }
+
+    function sendMessage(message, userUuid, sessionUuid) {
+        const inputElement = document.getElementById("myInput");
+        // Disables the input while waiting for the response
+        inputElement.disabled = true;
+        const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                app_name: "assistant",
+                user_id: userUuid,
+                session_id: sessionUuid,
+                new_message: {
+                    role: "user",
+                    parts: [
+                        {
+                            text: message,
+                        },
+                    ],
+                },
+            }),
+        };
+
+        fetch(`${agentApi}/run`, options)
+            .then((response) => response.json())
+            .then((response) =>
+                generateChat(
+                    marked.parse(
+                        response[response.length - 1]?.content?.parts?.[0]
+                            ?.text,
+                    ),
+                ),
+            )
+            .catch((err) => {
+                console.error(err);
+                generateChat(
+                    "An error occurred while processing your request.",
+                );
+            })
+            .finally(() => {
+                // Re-enables the input after the response is received
+                inputElement.disabled = false;
+                // Focus the input
+                inputElement.focus();
+            });
+
+        return false;
+    }
+
+    const inputElement = document.getElementById("myInput");
+
+    if (inputElement) {
+        inputElement.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                generateChat(e.target.value, true);
+                sendMessage(e.target.value, userUuid, sessionUuid);
+                // Clears the current input
+                e.target.value = "";
+            }
+        });
+    }
+
+    createSession(userUuid, sessionUuid);
+</script>
+<div class="drawer-side">
+    <div
+        class="chat-bubble chat-bubble-secondary chat-bubble-primary chat-end chat-start"
+        hidden
+    >
+    </div>
+    <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <div
+        class="menu bg-base-200 flex flex-col justify-between text-base-content min-h-full w-1/2 p-4"
+    >
+        <div id="chat" class="flex flex-col gap-4">
+        </div>
+        <div id="typebar" class="grow-0">
+            <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Ask questions</legend>
+                <input
+                    type="text"
+                    class="input w-full"
+                    id="myInput"
+                    placeholder="Type here"
+                    autocomplete="off"
+                />
+            </fieldset>
+        </div>
+    </div>
+</div>

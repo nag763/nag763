@@ -1,7 +1,8 @@
 ---
+import Bento from "../components/Bento.astro";
+import Chat from "../components/Chat.astro";
 import "../components/WhoAmiSlide.astro";
 import WhoAmiSlide from "../components/WhoAmiSlide.astro";
-import Bento from "../components/Bento.astro";
 import "../styles/global.css";
 ---
 
@@ -24,7 +25,10 @@ import "../styles/global.css";
         <link rel="robots" href="./robots.txt" />
     </head>
 
-    <body class="snap-y overflow-y-scroll h-screen gap-y-4 font-roboto">
+    <body
+        class="snap-y overflow-y-scroll h-screen gap-y-4 drawer-content drawer-end  font-roboto"
+    >
+        <input id="my-drawer" type="checkbox" class="drawer-toggle"/>
         <section
             class="snap-center bg-linear-to-b from-info-content to-base w-full flex justify-center items-center"
         >
@@ -37,10 +41,16 @@ import "../styles/global.css";
                         purpose isn't to spam you with a list of skill sets, it
                         will go straight to the matter.
                     </p>
+                    <label
+                        for="my-drawer"
+                        class="btn btn-primary rounded-xl drawer-button"
+                        >Want to start a chat instead ?</label
+                    >
                 </div>
             </div>
         </section>
         <WhoAmiSlide />
         <Bento />
+        <Chat />
     </body>
 </html>

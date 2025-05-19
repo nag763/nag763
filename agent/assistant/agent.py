@@ -8,7 +8,7 @@ from assistant.projects import get_projects
 
 root_agent = Agent(
     name="my_assistant",
-    model="gemini-2.0-flash",
+    model="gemini-2.0-flash-exp",
     description=(
         "Agent to answer questions about a person's CV."
     ),
