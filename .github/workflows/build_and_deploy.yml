@@ -21,6 +21,8 @@ jobs:
         run: npm i
         working-directory: ./front
       - name: Build
+        env:
+          PUBLIC_AGENT_ENDPOINT: ${{ secrets.PUBLIC_AGENT_ENDPOINT }}
         run: npm run build
         working-directory: ./front
       - uses: actions/upload-artifact@v4
