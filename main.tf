@@ -312,10 +312,7 @@ resource "google_iam_workload_identity_pool_provider" "github_provider" {
   workload_identity_pool_provider_id = "github-provider"
   display_name                       = "GitHub OIDC Provider"
   description                        = "OIDC Provider for GitHub Actions"
-  attribute_condition                = <<EOT
-    assertion.repository_owner_id == "nag763" &&
-    attribute.repository == "nag763/nag763"
-EOT
+  attribute_condition                = "attribute.repository == 'nag763/nag763'"
   attribute_mapping = {
     "google.subject"       = "assertion.sub"
     "attribute.actor"      = "assertion.actor"
