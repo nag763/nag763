@@ -297,6 +297,7 @@ resource "google_project_service" "apis" {
     "artifactregistry.googleapis.com",
     "cloudbuild.googleapis.com",
     "iam.googleapis.com",
+    "aiplatform.googleapis.com",
     "logging.googleapis.com", # Good for logs
   ])
   project            = local.gcp_project
@@ -350,6 +351,18 @@ resource "google_cloud_run_v2_service" "default" {
   }
 
   deletion_protection = false
+}
+
+## ------------------------------------------------------------------------------
+# GCP IAM Policy Binding for Cloud Run Invoker
+# ------------------------------------------------------------------------------
+resource "google_cloud_run_service_iam_member" "noauth" {
+  location = google_cloud_run_v2_service.default.location
+  project  = google_cloud_run_v2_service.default.project
+  service  = google_cloud_run_v2_service.default.name
+
+  role   = "roles/run.invoker"
+  member = "allUsers"
 }
 
 # ------------------------------------------------------------------------------
