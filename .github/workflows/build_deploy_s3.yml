@@ -1,4 +1,4 @@
-name: Build then deploy
+name: Deploy S3 bucket
 
 on:
   push:
