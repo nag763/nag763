@@ -14,26 +14,22 @@ USER myuser
 # Set up environment variables - Start
 ENV PATH="/home/myuser/.local/bin:$PATH"
 
+
+# Install ADK - Start
+RUN pip install google-adk
+
+# Copy agent - Start
+
+COPY ./assistant /app/assistant
+
 ENV GOOGLE_GENAI_USE_VERTEXAI=1
 ENV GOOGLE_CLOUD_PROJECT=nag763
 ENV GOOGLE_CLOUD_LOCATION=europe-west1
 
-# Install ADK - Start
-RUN pip install poetry
-
-# Copy agent - Start
-
-COPY . .
-
 # Set up environment variables - End
-
-RUN poetry install --no-root
-
 # Copy agent - End
 
 EXPOSE 8000
 
 
-ENV ALLOWED_ORIGINS='https://*labeye.info,http://*labeye.info'
-
-CMD ["poetry", "run", "uvicorn", "app:app", "--port", "8080", "--host", "0.0.0.0"]
+CMD ["adk", "api_server", "--allowed_origins", "https://loic.labeye.info", "--allowed_origins", "https://labeye.info", "./assistant"]

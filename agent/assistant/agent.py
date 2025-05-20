@@ -8,7 +8,7 @@ from assistant.projects import get_projects
 
 root_agent = Agent(
     name="my_assistant",
-    model="gemini-2.0-flash-exp",
+    model="gemini-2.0-flash",
     description=(
         "Agent to answer questions about a person's CV."
     ),
@@ -24,7 +24,7 @@ root_agent = Agent(
            - Skills : Python, Java, GCP, Rust, Docker, AWS, Azure and many more
            - Loves cloud related technologies, and is a big fan of open source. 
            
-        Right after, propose to answer questions about his education, certifications, links, work experience or skills. Direct contact can also be shared if the user asks for it.
+        Right after, propose to answer questions about his education, certifications, links, personnal projects, work experience or skills. Direct contact can also be shared if the user asks for it.
         """
     ),
     tools=[get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects],
