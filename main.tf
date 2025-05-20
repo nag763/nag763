@@ -1,3 +1,30 @@
+# ------------------------------------------------------------------------------
+# Terraform configuration for multi-cloud deployment (AWS & GCP) for nag763
+#
+# This file provisions:
+#   - AWS S3 bucket (public, static website hosting) with CloudFront CDN
+#   - AWS IAM user and policy for GitHub Actions to upload to S3
+#   - AWS ACM certificate for custom domain with CloudFront
+#   - GCP Cloud Run service for containerized app deployment
+#   - GCP Artifact Registry for Docker images
+#   - GCP IAM Service Account and Workload Identity Federation for GitHub Actions
+#   - Enables required GCP APIs
+#
+# Outputs:
+#   - Service account email for GitHub Actions
+#   - Workload Identity Provider path
+#   - Cloud Run service URI
+#   - AWS IAM access keys for S3 upload
+#
+# Prerequisites:
+#   - Terraform 1.3+
+#   - AWS and GCP credentials configured
+#   - Domains (labeye.info, loic.labeye.info) managed in Route53 or equivalent
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Local variables
+# ------------------------------------------------------------------------------
 locals {
   gcp_region  = "europe-west1"
   gcp_project = "nag763"
@@ -9,6 +36,9 @@ locals {
   ]
 }
 
+# ------------------------------------------------------------------------------
+# Terraform provider requirements
+# ------------------------------------------------------------------------------
 terraform {
   required_providers {
     aws = {
@@ -22,6 +52,9 @@ terraform {
   }
 }
 
+# ------------------------------------------------------------------------------
+# AWS Providers (default and us-east-1 for ACM)
+# ------------------------------------------------------------------------------
 provider "aws" {
   region = "eu-central-1"
 }
@@ -31,21 +64,31 @@ provider "aws" {
   alias  = "us-east-1"
 }
 
+# ------------------------------------------------------------------------------
+# Google Cloud Provider
+# ------------------------------------------------------------------------------
 provider "google" {
   project = local.gcp_project
   region  = local.gcp_region
 }
 
+# ------------------------------------------------------------------------------
+# Data source: GCP project info
+# ------------------------------------------------------------------------------
 data "google_project" "project" {
   project_id = local.gcp_project # Or var.gcp_project_id if it's a variable
 }
 
-# S3 Bucket, in LRS, publicly accessible
+# ------------------------------------------------------------------------------
+# AWS S3 bucket for static website hosting
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket" "bucket" {
   bucket = "nag763"
 }
 
-# S3 Bucket Policy, public read access
+# ------------------------------------------------------------------------------
+# S3 Bucket Policy: Allow CloudFront to read objects
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -70,6 +113,9 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   })
 }
 
+# ------------------------------------------------------------------------------
+# CloudFront Origin Access Control for S3
+# ------------------------------------------------------------------------------
 resource "aws_cloudfront_origin_access_control" "cdn_origin_access_control" {
   name                              = "cdn-origin-access-control"
   description                       = "Origin access control for CloudFront"
@@ -78,6 +124,9 @@ resource "aws_cloudfront_origin_access_control" "cdn_origin_access_control" {
   signing_protocol                  = "sigv4"
 }
 
+# ------------------------------------------------------------------------------
+# S3 Bucket Ownership Controls
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket_ownership_controls" "ownership" {
   bucket = aws_s3_bucket.bucket.id
   rule {
@@ -85,6 +134,9 @@ resource "aws_s3_bucket_ownership_controls" "ownership" {
   }
 }
 
+# ------------------------------------------------------------------------------
+# S3 Bucket Public Access Block (allows public access)
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket_public_access_block" "public_access_block" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -94,6 +146,9 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
   restrict_public_buckets = false
 }
 
+# ------------------------------------------------------------------------------
+# S3 Bucket ACL: Set to public-read
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket_acl" "bucket_acl" {
   depends_on = [
     aws_s3_bucket_ownership_controls.ownership,
@@ -104,12 +159,16 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
   acl    = "public-read"
 }
 
-# IAM User
+# ------------------------------------------------------------------------------
+# AWS IAM User for GitHub Actions S3 upload
+# ------------------------------------------------------------------------------
 resource "aws_iam_user" "user" {
   name = "gh-actions-user"
 }
 
-# IAM Policy, the user can upload to S3
+# ------------------------------------------------------------------------------
+# IAM Policy: Allow S3 Put/Delete for the user
+# ------------------------------------------------------------------------------
 resource "aws_iam_policy" "s3_upload_policy" {
   name        = "s3-upload-policy"
   description = "Policy to allow uploading to S3 bucket"
@@ -129,15 +188,24 @@ resource "aws_iam_policy" "s3_upload_policy" {
   })
 }
 
+# ------------------------------------------------------------------------------
+# Attach S3 upload policy to IAM user
+# ------------------------------------------------------------------------------
 resource "aws_iam_user_policy_attachment" "user_policy_attachment" {
   user       = aws_iam_user.user.name
   policy_arn = aws_iam_policy.s3_upload_policy.arn
 }
 
+# ------------------------------------------------------------------------------
+# IAM Access Key for GitHub Actions user
+# ------------------------------------------------------------------------------
 resource "aws_iam_access_key" "gh_access_keys" {
   user = aws_iam_user.user.name
 }
 
+# ------------------------------------------------------------------------------
+# S3 Website Configuration (index.html as root)
+# ------------------------------------------------------------------------------
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -146,6 +214,9 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
 }
 
+# ------------------------------------------------------------------------------
+# ACM Certificate for CloudFront (must be in us-east-1)
+# ------------------------------------------------------------------------------
 resource "aws_acm_certificate" "cert" {
   domain_name       = "labeye.info"
   validation_method = "DNS"
@@ -156,6 +227,9 @@ resource "aws_acm_certificate" "cert" {
   ]
 }
 
+# ------------------------------------------------------------------------------
+# CloudFront Distribution for S3 static site
+# ------------------------------------------------------------------------------
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name              = aws_s3_bucket.bucket.bucket_regional_domain_name
@@ -181,7 +255,6 @@ resource "aws_cloudfront_distribution" "cdn" {
       }
     }
 
-
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 3600
     default_ttl            = 86400
@@ -190,7 +263,6 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   viewer_certificate {
-
     acm_certificate_arn            = aws_acm_certificate.cert.arn
     ssl_support_method             = "sni-only"
     minimum_protocol_version       = "TLSv1.2_2021"
@@ -209,12 +281,16 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 }
 
+# ------------------------------------------------------------------------------
+# CloudFront Origin Access Identity (legacy, not used with OAC)
+# ------------------------------------------------------------------------------
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "Access identity for S3 bucket"
 }
 
-
-# Enable necessary APIs
+# ------------------------------------------------------------------------------
+# Enable required GCP APIs
+# ------------------------------------------------------------------------------
 resource "google_project_service" "apis" {
   for_each = toset([
     "run.googleapis.com",
@@ -228,6 +304,9 @@ resource "google_project_service" "apis" {
   disable_on_destroy = true
 }
 
+# ------------------------------------------------------------------------------
+# GCP Artifact Registry for Docker images
+# ------------------------------------------------------------------------------
 resource "google_artifact_registry_repository" "docker_repo" {
   provider      = google # Explicit provider required due to for_each on APIs
   location      = local.gcp_region
@@ -239,6 +318,9 @@ resource "google_artifact_registry_repository" "docker_repo" {
   ]
 }
 
+# ------------------------------------------------------------------------------
+# GCP Cloud Run Service for app deployment
+# ------------------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "default" {
   name     = "nag763-assistant"
   location = local.gcp_region
@@ -270,14 +352,18 @@ resource "google_cloud_run_v2_service" "default" {
   deletion_protection = false
 }
 
-# --- Service Account for GitHub Actions ---
+# ------------------------------------------------------------------------------
+# GCP Service Account for GitHub Actions deployments
+# ------------------------------------------------------------------------------
 resource "google_service_account" "github_actions_sa" {
   account_id   = "github-actions-deployer"
   display_name = "Service Account for GitHub Actions Cloud Run Deployments"
   project      = local.gcp_project
 }
 
-
+# ------------------------------------------------------------------------------
+# Assign required roles to GitHub Actions Service Account
+# ------------------------------------------------------------------------------
 resource "google_project_iam_member" "github_actions_sa_roles" {
   for_each = toset(local.github_actions_sa_roles)
 
@@ -285,10 +371,6 @@ resource "google_project_iam_member" "github_actions_sa_roles" {
   role    = each.key
   member  = "serviceAccount:${google_service_account.github_actions_sa.email}"
 
-  # Add depends_on for APIs if they are in the same apply as the roles.
-  # This ensures the API is enabled before the role is granted.
-  # You need to explicitly map each role to its corresponding API,
-  # or rely on the overall API enablement (which is usually sufficient if all are enabled).
   depends_on = [
     google_project_service.apis["run.googleapis.com"],
     google_project_service.apis["artifactregistry.googleapis.com"],
@@ -297,7 +379,9 @@ resource "google_project_iam_member" "github_actions_sa_roles" {
   ]
 }
 
-# --- Workload Identity Federation Configuration ---
+# ------------------------------------------------------------------------------
+# GCP Workload Identity Federation Pool for GitHub Actions
+# ------------------------------------------------------------------------------
 resource "google_iam_workload_identity_pool" "github_actions_pool" {
   project                   = local.gcp_project
   workload_identity_pool_id = "github-actions-pool"
@@ -306,6 +390,9 @@ resource "google_iam_workload_identity_pool" "github_actions_pool" {
   disabled                  = false
 }
 
+# ------------------------------------------------------------------------------
+# GCP Workload Identity Provider for GitHub OIDC
+# ------------------------------------------------------------------------------
 resource "google_iam_workload_identity_pool_provider" "github_provider" {
   project                            = local.gcp_project
   workload_identity_pool_id          = google_iam_workload_identity_pool.github_actions_pool.workload_identity_pool_id
@@ -325,15 +412,18 @@ resource "google_iam_workload_identity_pool_provider" "github_provider" {
   disabled = false
 }
 
-# Bind the Service Account to the Workload Identity Pool Provider
+# ------------------------------------------------------------------------------
+# Bind Service Account to Workload Identity Pool Provider
+# ------------------------------------------------------------------------------
 resource "google_service_account_iam_member" "wif_binding" {
   service_account_id = google_service_account.github_actions_sa.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "principalSet://iam.googleapis.com/projects/${data.google_project.project.number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.github_actions_pool.workload_identity_pool_id}/attribute.repository/nag763/nag763"
-
 }
 
-# --- Outputs for Service Account Email ---
+# ------------------------------------------------------------------------------
+# Outputs
+# ------------------------------------------------------------------------------
 output "github_actions_service_account_email" {
   description = "The email of the Google Service Account used by GitHub Actions"
   value       = google_service_account.github_actions_sa.email
