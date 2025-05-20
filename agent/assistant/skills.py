@@ -6,6 +6,8 @@ skills += [
     "GCP",
     "Rust",
     "Docker",
+    "Axum",
+    "WASM"
 ]
 
 # @title : Provide skills information about Loïc
