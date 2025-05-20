@@ -32,4 +32,4 @@ ENV GOOGLE_CLOUD_LOCATION=europe-west1
 EXPOSE 8000
 
 
-CMD ["adk", "api_server", "--allow_origins", "https://loic.labeye.info", "--allow_origins", "https://labeye.info", "./"]
+CMD ["adk", "api_server", "--host", "0.0.0.0", "--allow_origins", "https://loic.labeye.info", "--allow_origins", "https://labeye.info", "./"]
