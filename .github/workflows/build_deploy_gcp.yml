@@ -28,11 +28,7 @@ jobs:
       id: auth
       uses: google-github-actions/auth@v2
       with:
-        # These values directly reference the WIF setup you defined in Terraform.
-        # Make sure 'github-actions-pool' and 'github-provider' match your Terraform config.
-        # Use the numerical Project Number from your GitHub Secret:
         workload_identity_provider: projects/${{ secrets.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-pool/providers/github-provider
-        # The service account email will be outputted by your Terraform
         service_account: github-actions-deployer@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com
 
     - name: Set up Docker for Artifact Registry
@@ -56,9 +52,3 @@ jobs:
         service: ${{ env.CLOUD_RUN_SERVICE_NAME }}
         region: ${{ env.GCP_REGION }}
         image: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY_ID }}/${{ env.CLOUD_RUN_SERVICE_NAME }}:${{ github.sha }}
-        # Assuming your Cloud Run service is already configured with allUsers invoker role via Terraform
-        # If not, you might need: '--allow-unauthenticated: true' (not as part of this action)
-        # or manage IAM via another Terraform resource or gcloud command.
-        
-    - name: Show Cloud Run service URL
-      run: echo "Cloud Run service URL: ${{ steps.deploy.outputs.url }}"
