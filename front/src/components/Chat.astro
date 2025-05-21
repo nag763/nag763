@@ -120,7 +120,8 @@
     }
 
     // Initialize the chat session when the component loads
-    createSession(userUuid, sessionUuid).then(() => sendMessage('wave', userUuid, sessionUuid));
+    await createSession(userUuid, sessionUuid);
+    await sendMessage('wave', userUuid, sessionUuid);
 </script>
 <div class="drawer-side">
     <!-- Hidden chat bubble for layout or accessibility purposes -->
