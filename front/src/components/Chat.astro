@@ -12,7 +12,7 @@
      * @param {string} userUuid - Unique user identifier
      * @param {string} sessionUuid - Unique session identifier
      */
-    function createSession(userUuid, sessionUuid) {
+    async function createSession(userUuid, sessionUuid) {
         const options = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -52,7 +52,7 @@
      * @param {string} userUuid - User identifier
      * @param {string} sessionUuid - Session identifier
      */
-    function sendMessage(message, userUuid, sessionUuid) {
+    async function sendMessage(message, userUuid, sessionUuid) {
         const inputElement = document.getElementById("myInput");
         // Disables the input while waiting for the response
         inputElement.disabled = true;
@@ -74,7 +74,7 @@
             }),
         };
 
-        fetch(`${agentApi}/run`, options)
+        await fetch(`${agentApi}/run`, options)
             .then((response) => response.json())
             .then((response) =>
                 // Parse the assistant's response and display it as a chat bubble
@@ -120,7 +120,7 @@
     }
 
     // Initialize the chat session when the component loads
-    createSession(userUuid, sessionUuid);
+    createSession(userUuid, sessionUuid).then(() => sendMessage('wave', userUuid, sessionUuid));
 </script>
 <div class="drawer-side">
     <!-- Hidden chat bubble for layout or accessibility purposes -->

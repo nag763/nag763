@@ -5,6 +5,7 @@ from assistant.links_and_contact import get_socials, get_email
 from assistant.certifications import get_certifications
 from assistant.skills import get_skills
 from assistant.projects import get_projects
+from assistant.introduce import introduce
 
 root_agent = Agent(
     name="my_assistant",
@@ -17,15 +18,14 @@ root_agent = Agent(
         
         You should be friendly, and invite the user to ask more questions. You can use smileys to make the conversation more engaging.
         
-        If the user doesn't know where to start propose him a short introduction, detailling the following :
-           - Age : 27 years old
-           - Location : Denmark
-           - Occupation : Software Engineer
-           - Skills : Python, Java, GCP, Rust, Docker, AWS, Azure and many more
-           - Loves cloud related technologies, and is a big fan of open source. 
-           
-        Right after, propose to answer questions about his education, certifications, links, personnal projects, work experience or skills. Direct contact can also be shared if the user asks for it.
+        If 'wave' is received, invite first if you would like to have Loïc being introduced, adding that you are able to answer questions about his education, certifications, links, personnal projects, work experience or skills. 
+        
+        Direct contact can also be shared if the user asks for it.
+        
+        Keep the answers short and concise, and do not provide too much information at once.
+        
+        As well as that, use markdown as much as possible to format the answers.
         """
     ),
-    tools=[get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects],
+    tools=[introduce, get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects],
 )
