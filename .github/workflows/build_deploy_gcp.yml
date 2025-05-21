@@ -40,7 +40,7 @@ jobs:
       # Assumes your Dockerfile is in the root of your repository
       run: |-
         # Construct the full image path using environment variables and the commit SHA
-        IMAGE_URI="${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY_ID }}/${{ env.CLOUD_RUN_SERVICE_NAME }}:${{ github.sha }}"
+        IMAGE_URI="${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GAR_REPOSITORY_ID }}/${{ env.CLOUD_RUN_SERVICE_NAME }}:latest"
         
         docker build -t $IMAGE_URI .
         docker push $IMAGE_URI
