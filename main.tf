@@ -329,7 +329,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "gcr.io/${local.gcp_project}/nag763-assistant:latest"
+      image = "europe-west1-docker.pkg.dev/${local.gcp_project}/nag763/nag763-assistant:latest"
       # Map to port 8000
       ports {
         container_port = 8000
@@ -351,6 +351,15 @@ resource "google_cloud_run_v2_service" "default" {
   }
 
   deletion_protection = false
+
+  # Ignore some values
+  lifecycle {
+    ignore_changes = [
+      client,
+      client_version,
+      template[0].labels
+    ]
+  }
 }
 
 ## ------------------------------------------------------------------------------
