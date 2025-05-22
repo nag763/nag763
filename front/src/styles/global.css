@@ -4,6 +4,24 @@
 @plugin "@tailwindcss/typography";
 @tailwind utilities;
 
+.typing-dots .dot {
+  display: inline-block; /* Ensures dots are on the same line */
+  animation: typedots 1.4s infinite;
+  opacity: 0;
+  margin: 0 0.05em; /* Small spacing between dots */
+}
+
+.typing-dots .dot:nth-child(1) { animation-delay: 0s; }
+.typing-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typedots {
+  0% { opacity: 0; transform: translateY(0px); }
+  20% { opacity: 1; transform: translateY(-2px); } /* Slight bounce effect */
+  40% { opacity: 0; transform: translateY(0px); }
+  100% { opacity: 0; transform: translateY(0px); }
+}
+
 @theme {
     --font-roboto: "Roboto", sans-serif;
 }
