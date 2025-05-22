@@ -6,6 +6,7 @@ from assistant.certifications import get_certifications
 from assistant.skills import get_skills
 from assistant.projects import get_projects
 from assistant.introduce import introduce
+from assistant.interest_opportunities import get_interests
 
 root_agent = Agent(
     name="my_assistant",
@@ -27,5 +28,5 @@ root_agent = Agent(
         As well as that, use markdown as much as possible to format the answers.
         """
     ),
-    tools=[introduce, get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects],
+    tools=[introduce, get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects, get_interests],
 )
