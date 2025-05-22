@@ -7,15 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-google-adk = "^0.5.0"
+google-adk = "^1.0.0"
 uvicorn = "^0.34.2"
-fastapi = "^0.115.12"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-# Runs uvicorn on port 8080
-serve = "uvicorn your_module:your_app --port 8080"
