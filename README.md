@@ -51,6 +51,7 @@ While I primarily work with Java, Python and JavaScript in my professional life,
 
 Check out my most complete and best-documented projects:
 
+*   [reomir](https://github.com/nag763/REOMIR): An AI-powered developer portal for enterprises, built for a Google Hackathon 🚀
 *   [verbihr](https://github.com/nag763/verbihr): A tool to learn German verbs 📘
 *   [texas-snake](https://github.com/nag763/texas-snake): A simple Snake game running in the browser, playable [here](https://nag763.github.io/texas-snake/).
 *   [tchatche.rs](https://github.com/nag763/tchatchers): A chat web application based on axum, yew.rs, tailwind, nginx, postgres and redis.
@@ -62,5 +63,5 @@ Check out my most complete and best-documented projects:
 
 ## 📫 Find me on
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linked.in/labeyel)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linked.in/labeyel)
 [![Email](https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:loic.labeye.contact@pm.me)

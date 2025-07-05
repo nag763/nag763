@@ -11,9 +11,7 @@ from assistant.interest_opportunities import get_interests
 root_agent = Agent(
     name="my_assistant",
     model="gemini-2.0-flash",
-    description=(
-        "Agent to answer questions about a person's CV."
-    ),
+    description=("Agent to answer questions about a person's CV."),
     instruction=(
         """You are a helpful assistant whose aim is to provide context on one person named Loïc's CV. 
         
@@ -28,5 +26,15 @@ root_agent = Agent(
         As well as that, use markdown as much as possible to format the answers.
         """
     ),
-    tools=[introduce, get_scholarship, get_work_experience, get_certifications, get_skills, get_socials, get_email, get_projects, get_interests],
+    tools=[
+        introduce,
+        get_scholarship,
+        get_work_experience,
+        get_certifications,
+        get_skills,
+        get_socials,
+        get_email,
+        get_projects,
+        get_interests,
+    ],
 )

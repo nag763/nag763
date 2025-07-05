@@ -16,8 +16,8 @@ work_experiences = [
             "Azure",
             "Git",
             "GitHub",
-            "Confluence"
-        ]
+            "Confluence",
+        ],
     },
     {
         "company": "Allianz Trade on behalf of Aubay",
@@ -34,12 +34,12 @@ work_experiences = [
             "Spring",
             "Spring Boot",
             "Java EE",
-            "DB2",  
+            "DB2",
             "Jenkins",
             "Git",
             "Jira",
             "Confluence",
-        ]
+        ],
     },
     {
         "company": "Aubay",
@@ -56,8 +56,8 @@ work_experiences = [
             "PostgreSQL",
             "Tomcat",
             "Jenkins",
-            "SVN"
-        ]
+            "SVN",
+        ],
     },
     {
         "company": "SustainEcho",
@@ -66,26 +66,19 @@ work_experiences = [
         "end_date": "2020-09-01",
         "location": "Paris, France",
         "description": "Development of an AI business facing application.",
-        "skills": [
-            "Python",
-            "Django",
-            "DRF",
-            "AWS",
-            "Git",
-            "GitHub",
-            "Trello"   
-        ]
-    }
+        "skills": ["Python", "Django", "DRF", "AWS", "Git", "GitHub", "Trello"],
+    },
 ]
+
 
 # @title : Provide work experience information about Loïc
 def get_work_experience(current_only: bool, brief: bool = True) -> dict:
-    """ Helps retrieving information about Loïc's work experience.
-    
+    """Helps retrieving information about Loïc's work experience.
+
     By default, provide details only about the current work experience, or if the user wants to know more, detail the previous work experience.
-    
+
     Invite to know more about the experience before, or ask if the user wants to know more about a specific experience.
-    
+
     Args:
         brief (bool): Whether to provide a brief summary of the work experience.
         current_only (bool): Whether to provide only the current work experience.
@@ -95,25 +88,24 @@ def get_work_experience(current_only: bool, brief: bool = True) -> dict:
             status (str): Wheter it succeeded.
             work_experiences (list): List of work experience information.
             invite_to_describe (bool): Invite to describe more.
-    
+
     """
-    print('Work experience tool called')
+    print("Work experience tool called")
     if brief:
         return {
             "status": "success",
             "work_experiences": work_experiences[0:1],
-            "invite_to_describe": True
+            "invite_to_describe": True,
         }
     elif current_only:
         return {
             "status": "success",
             "work_experiences": work_experiences[0],
-            "invite_to_describe": True
+            "invite_to_describe": True,
         }
     else:
         return {
             "status": "success",
             "work_experiences": work_experiences,
-            "invite_to_describe": True
+            "invite_to_describe": True,
         }
-    
