@@ -27,6 +27,7 @@ While I primarily work with Java, Python and JavaScript in my professional life,
 
 ## 🎓 Certifications
 
+-   **AWS Certified AI Practitioner** (July 2025)
 -   **AWS Certified Developer – Associate** (May 2025)
 -   **AWS Certified Solutions Architect – Associate** (May 2025)
 -   **AWS Certified Cloud Practitioner** (April 2025)

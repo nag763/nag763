@@ -1,5 +1,13 @@
 certifications = [
     {
+        "title": "AWS Certified AI Practitioner",
+        "earned_on": "10/07/2025",
+        "link": "https://www.credly.com/badges/95335a26-2d27-4718-9cde-a0f60a14c133/public_url",
+        "detail": "Validates foundational knowledge of AI concepts and terminology, as well as core AWS AI and machine learning services.",
+        "level": "Practitioner",
+        "authority": "Amazon Web Services (AWS)",
+    },
+    {
         "title": "AWS Certified Developer – Associate",
         "earned_on": "16/05/2025",
         "link": "https://www.credly.com/badges/46c816db-1a9d-4c76-a180-30e4d51af1f6/public_url",
