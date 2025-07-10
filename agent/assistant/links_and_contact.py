@@ -5,6 +5,7 @@ links = {
     "personal_site": "https://labeye.info/",
     "ms_credentials": "https://learn.microsoft.com/en-us/users/llabeye/",
     "exercism": "https://learn.microsoft.com/en-us/users/llabeye/",
+    "Medium": "https://medium.com/@loic.labeye",
 }
 
 mail = "loic.labeye.contact@pm.me"
