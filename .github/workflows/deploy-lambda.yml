@@ -24,26 +24,13 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Output requirements
-        run: |
-          uv sync
-          uv export --no-emit-project -o requirements.txt
-        working-directory: agent
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: uv pip install --python-platform linux --python 3.12 -r pyproject.toml --target .
         working-directory: agent
 
       - name: Zip agent directory
         run: |
           cd agent
           zip -r ../agent.zip .
-
       - uses: actions/upload-artifact@v4
         with:
           name: agent-zip
