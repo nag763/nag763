@@ -139,11 +139,11 @@ resource "aws_iam_user" "user" {
 }
 
 # ------------------------------------------------------------------------------
-# IAM Policy: Allow S3 Put/Delete for the user
+# IAM Policy: Allow S3 Put/Delete and Lambda updates for the user
 # ------------------------------------------------------------------------------
-resource "aws_iam_policy" "s3_upload_policy" {
-  name        = "s3-upload-policy"
-  description = "Policy to allow uploading to S3 bucket"
+resource "aws_iam_policy" "gh_actions_policy" {
+  name        = "gh-actions-policy"
+  description = "Policy to allow uploading to S3 bucket and updating Lambda function"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -156,16 +156,21 @@ resource "aws_iam_policy" "s3_upload_policy" {
         ]
         Resource = "${aws_s3_bucket.bucket.arn}/*"
       },
+      {
+        Effect   = "Allow"
+        Action   = ["lambda:UpdateFunctionCode"]
+        Resource = aws_lambda_function.agent_lambda.arn
+      },
     ]
   })
 }
 
 # ------------------------------------------------------------------------------
-# Attach S3 upload policy to IAM user
+# Attach policy to IAM user for GitHub Actions
 # ------------------------------------------------------------------------------
 resource "aws_iam_user_policy_attachment" "user_policy_attachment" {
   user       = aws_iam_user.user.name
-  policy_arn = aws_iam_policy.s3_upload_policy.arn
+  policy_arn = aws_iam_policy.gh_actions_policy.arn
 }
 
 # ------------------------------------------------------------------------------
