@@ -24,13 +24,13 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Install requirements
-        run: uv pip install --no-installer-metadata --no-compile-bytecode --python-platform x86_64-manylinux2014 -r pyproject.toml --target .
+        run: uv pip install --python-platform manylinux2014_x86_64 -r pyproject.toml --target .
         working-directory: agent
 
       - name: Zip agent directory
         run: |
           cd agent
-          zip -r ../agent.zip ./*
+          zip -r ../agent.zip .
       - uses: actions/upload-artifact@v4
         with:
           name: agent-zip
