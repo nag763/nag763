@@ -24,7 +24,7 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Install requirements
-        run: uv pip install --no-installer-metadata --no-compile-bytecode --python-platform x86_64-manylinux2014 --python 3.13 -r pyproject.toml --target .
+        run: uv pip install --no-installer-metadata --no-compile-bytecode --python-platform x86_64-manylinux2014 -r pyproject.toml --target .
         working-directory: agent
 
       - name: Zip agent directory
