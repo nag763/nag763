@@ -132,10 +132,45 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
 }
 
 # ------------------------------------------------------------------------------
-# AWS IAM User for GitHub Actions S3 upload
+# IAM OIDC Provider for GitHub Actions
 # ------------------------------------------------------------------------------
-resource "aws_iam_user" "user" {
-  name = "gh-actions-user"
+resource "aws_iam_openid_connect_provider" "github" {
+  url = "https://token.actions.githubusercontent.com"
+
+  client_id_list = [
+    "sts.amazonaws.com",
+  ]
+
+  thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
+}
+
+# ------------------------------------------------------------------------------
+# IAM Role for GitHub Actions
+# ------------------------------------------------------------------------------
+resource "aws_iam_role" "github_actions" {
+  name        = "github-actions-role"
+  description = "Role for GitHub Actions to assume"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Federated = aws_iam_openid_connect_provider.github.arn
+        }
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Condition = {
+          StringEquals = {
+            "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+          }
+          StringLike = {
+            "token.actions.githubusercontent.com:sub" = "repo:nag763/nag763:*"
+          }
+        }
+      }
+    ]
+  })
 }
 
 # ------------------------------------------------------------------------------
@@ -152,9 +187,15 @@ resource "aws_iam_policy" "gh_actions_policy" {
         Effect = "Allow"
         Action = [
           "s3:PutObject",
-          "s3:DeleteObject"
+          "s3:DeleteObject",
+          "s3:GetObject"
         ]
         Resource = "${aws_s3_bucket.bucket.arn}/*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = "s3:ListBucket"
+        Resource = aws_s3_bucket.bucket.arn
       },
       {
         Effect   = "Allow"
@@ -166,18 +207,11 @@ resource "aws_iam_policy" "gh_actions_policy" {
 }
 
 # ------------------------------------------------------------------------------
-# Attach policy to IAM user for GitHub Actions
+# Attach policy to IAM Role for GitHub Actions
 # ------------------------------------------------------------------------------
-resource "aws_iam_user_policy_attachment" "user_policy_attachment" {
-  user       = aws_iam_user.user.name
+resource "aws_iam_role_policy_attachment" "github_actions_attachment" {
+  role       = aws_iam_role.github_actions.name
   policy_arn = aws_iam_policy.gh_actions_policy.arn
-}
-
-# ------------------------------------------------------------------------------
-# IAM Access Key for GitHub Actions user
-# ------------------------------------------------------------------------------
-resource "aws_iam_access_key" "gh_access_keys" {
-  user = aws_iam_user.user.name
 }
 
 # ------------------------------------------------------------------------------
@@ -403,13 +437,9 @@ resource "aws_lambda_function_url" "agent_url" {
 # ------------------------------------------------------------------------------
 # Outputs
 # ------------------------------------------------------------------------------
-output "iam_access_key" {
-  value = aws_iam_access_key.gh_access_keys.id
-}
-
-output "iam_secret_access_key" {
-  value     = aws_iam_access_key.gh_access_keys.secret
-  sensitive = true
+output "github_actions_role_arn" {
+  description = "The ARN of the IAM role for GitHub Actions."
+  value       = aws_iam_role.github_actions.arn
 }
 
 output "lambda_function_url" {

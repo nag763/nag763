@@ -44,10 +44,9 @@ jobs:
         with:
           name: agent-zip
       - name: Setup AWS CLI
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_TO_ASSUME }}
           aws-region: eu-central-1
       - name: Deploy Lambda
         run: aws lambda update-function-code --function-name nag763-agent --zip-file fileb://agent.zip
