@@ -62,7 +62,7 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Install requirements
-        run: uuv pip install -r pyproject.toml --target .
+        run: uv pip install -r pyproject.toml --target .
         working-directory: agent
 
       - name: Zip agent directory
