@@ -32,7 +32,9 @@ agent = Agent(
     ],
 )
 
-def handler(event, context) -> str:
-    res = agent(event.get('prompt'))
-    return str(res)
-    
+def lambda_handler(event, context) -> str:
+    if prompt := event.get('prompt'):
+        res = agent(prompt)
+        return str(res)
+    else:
+        return {"error": "No prompt received"}    
