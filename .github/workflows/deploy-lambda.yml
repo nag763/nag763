@@ -30,7 +30,7 @@ jobs:
       - name: Zip agent directory
         run: |
           cd agent
-          zip -r ../agent.zip .
+          zip -r ../agent.zip ./*
       - uses: actions/upload-artifact@v4
         with:
           name: agent-zip
