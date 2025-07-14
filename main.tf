@@ -377,7 +377,7 @@ resource "aws_lambda_function" "agent_lambda" {
   function_name    = "nag763-agent"
   role             = aws_iam_role.lambda_exec_role.arn
   handler          = "lambda_function.lambda_handler"
-  runtime          = "python3.13"
+  runtime          = "python3.12"
   filename         = data.archive_file.lambda_zip.output_path
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   timeout          = 15
