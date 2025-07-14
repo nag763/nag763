@@ -115,6 +115,8 @@ export default function ChatInterface({ theme, toggleTheme }) {
     }
   };
 
+  handleSendMessage('wave');
+
   return (
     <div className="flex flex-col h-screen w-screen bg-gray-100 dark:bg-gray-950">
       <div className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
