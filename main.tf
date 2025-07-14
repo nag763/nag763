@@ -1,40 +1,22 @@
 # ------------------------------------------------------------------------------
-# Terraform configuration for multi-cloud deployment (AWS & GCP) for nag763
+# Terraform configuration for AWS deployment for nag763
 #
 # This file provisions:
 #   - AWS S3 bucket (public, static website hosting) with CloudFront CDN
 #   - AWS IAM user and policy for GitHub Actions to upload to S3
 #   - AWS ACM certificate for custom domain with CloudFront
-#   - GCP Cloud Run service for containerized app deployment
-#   - GCP Artifact Registry for Docker images
-#   - GCP IAM Service Account and Workload Identity Federation for GitHub Actions
-#   - Enables required GCP APIs
+#   - AWS Lambda function with a public Function URL
+#   - AWS IAM role for Lambda with permissions for CloudWatch and Amazon Bedrock
 #
 # Outputs:
-#   - Service account email for GitHub Actions
-#   - Workload Identity Provider path
-#   - Cloud Run service URI
 #   - AWS IAM access keys for S3 upload
+#   - Lambda Function URL
 #
 # Prerequisites:
 #   - Terraform 1.3+
-#   - AWS and GCP credentials configured
+#   - AWS credentials configured
 #   - Domains (labeye.info, loic.labeye.info) managed in Route53 or equivalent
 # ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Local variables
-# ------------------------------------------------------------------------------
-locals {
-  gcp_region  = "europe-west1"
-  gcp_project = "nag763"
-  github_actions_sa_roles = [
-    "roles/run.admin",                # For Cloud Run deployments
-    "roles/artifactregistry.writer",  # For pushing Docker images
-    "roles/iam.serviceAccountUser",   # Allows SA to impersonate itself for Cloud Run runtime
-    "roles/cloudbuild.builds.editor", # For Cloud Build implicit build from source
-  ]
-}
 
 # ------------------------------------------------------------------------------
 # Terraform provider requirements
@@ -44,10 +26,6 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
-    }
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 6.35.0"
     }
   }
 }
@@ -65,18 +43,12 @@ provider "aws" {
 }
 
 # ------------------------------------------------------------------------------
-# Google Cloud Provider
+# Data source: Archive agent directory for Lambda deployment
 # ------------------------------------------------------------------------------
-provider "google" {
-  project = local.gcp_project
-  region  = local.gcp_region
-}
-
-# ------------------------------------------------------------------------------
-# Data source: GCP project info
-# ------------------------------------------------------------------------------
-data "google_project" "project" {
-  project_id = local.gcp_project # Or var.gcp_project_id if it's a variable
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_dir  = "${path.module}/agent"
+  output_path = "${path.module}/agent.zip"
 }
 
 # ------------------------------------------------------------------------------
@@ -334,184 +306,98 @@ EOT
 }
 
 # ------------------------------------------------------------------------------
-# CloudFront Origin Access Identity (legacy, not used with OAC)
+# IAM Role for Lambda Function
 # ------------------------------------------------------------------------------
-resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Access identity for S3 bucket"
-}
+resource "aws_iam_role" "lambda_exec_role" {
+  name = "lambda-bedrock-executor-role"
 
-# ------------------------------------------------------------------------------
-# Enable required GCP APIs
-# ------------------------------------------------------------------------------
-resource "google_project_service" "apis" {
-  for_each = toset([
-    "run.googleapis.com",
-    "artifactregistry.googleapis.com",
-    "cloudbuild.googleapis.com",
-    "iam.googleapis.com",
-    "aiplatform.googleapis.com",
-    "logging.googleapis.com", # Good for logs
-  ])
-  project            = local.gcp_project
-  service            = each.key
-  disable_on_destroy = true
-}
-
-# ------------------------------------------------------------------------------
-# GCP Artifact Registry for Docker images
-# ------------------------------------------------------------------------------
-resource "google_artifact_registry_repository" "docker_repo" {
-  provider      = google # Explicit provider required due to for_each on APIs
-  location      = local.gcp_region
-  repository_id = local.gcp_project
-  description   = "Docker repository for Cloud Run images"
-  format        = "DOCKER"
-  depends_on = [
-    google_project_service.apis["artifactregistry.googleapis.com"]
-  ]
-}
-
-# ------------------------------------------------------------------------------
-# GCP Cloud Run Service for app deployment
-# ------------------------------------------------------------------------------
-resource "google_cloud_run_v2_service" "default" {
-  name     = "nag763-assistant"
-  location = local.gcp_region
-  project  = local.gcp_project
-
-  template {
-    containers {
-      image = "europe-west1-docker.pkg.dev/${local.gcp_project}/nag763/nag763-assistant:latest"
-      # Map to port 8000
-      ports {
-        container_port = 8000
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = {
+        Service = "lambda.amazonaws.com"
       }
-    }
+    }]
+  })
+}
 
-    scaling {
-      min_instance_count = 0
-      max_instance_count = 1
-    }
+# ------------------------------------------------------------------------------
+# IAM Policy for Lambda to access Bedrock and CloudWatch
+# ------------------------------------------------------------------------------
+resource "aws_iam_policy" "lambda_bedrock_policy" {
+  name        = "lambda-bedrock-policy"
+  description = "Allows Lambda to invoke Bedrock models and write logs"
 
-    # Optional: Timeout in seconds for requests
-    timeout = "600s" # 5 minutes
-  }
-
-  traffic {
-    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-    percent = 100
-  }
-
-  deletion_protection = false
-
-  # Ignore some values
-  lifecycle {
-    ignore_changes = [
-      client,
-      client_version,
-      template[0].labels
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "bedrock:InvokeModel",
+          "bedrock:InvokeModelWithResponseStream"
+        ]
+        Resource = [
+          "arn:aws:bedrock:eu-*:*:inference-profile/*",
+          "arn:aws:bedrock:eu-*::foundation-model/*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Resource = "arn:aws:logs:*:*:*"
+      }
     ]
+  })
+}
+
+# ------------------------------------------------------------------------------
+# Attach Policy to Lambda Role
+# ------------------------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "lambda_bedrock_attachment" {
+  role       = aws_iam_role.lambda_exec_role.name
+  policy_arn = aws_iam_policy.lambda_bedrock_policy.arn
+}
+
+# ------------------------------------------------------------------------------
+# AWS Lambda Function
+# ------------------------------------------------------------------------------
+resource "aws_lambda_function" "agent_lambda" {
+  function_name    = "nag763-agent"
+  role             = aws_iam_role.lambda_exec_role.arn
+  handler          = "lambda_function.lambda_handler"
+  runtime          = "python3.13"
+  filename         = data.archive_file.lambda_zip.output_path
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+  timeout          = 15
+  memory_size      = 256
+
+}
+
+# ------------------------------------------------------------------------------
+# AWS Lambda Function URL
+# ------------------------------------------------------------------------------
+resource "aws_lambda_function_url" "agent_url" {
+  function_name      = aws_lambda_function.agent_lambda.function_name
+  authorization_type = "NONE" # Publicly accessible
+
+  cors {
+    allow_credentials = true
+    allow_origins     = concat(["https://${aws_acm_certificate.cert.domain_name}"], formatlist("https://%s", aws_acm_certificate.cert.subject_alternative_names))
+    allow_methods     = ["*"]
+    allow_headers     = ["*"]
   }
-}
-
-## ------------------------------------------------------------------------------
-# GCP IAM Policy Binding for Cloud Run Invoker
-# ------------------------------------------------------------------------------
-resource "google_cloud_run_service_iam_member" "noauth" {
-  location = google_cloud_run_v2_service.default.location
-  project  = google_cloud_run_v2_service.default.project
-  service  = google_cloud_run_v2_service.default.name
-
-  role   = "roles/run.invoker"
-  member = "allUsers"
-}
-
-# ------------------------------------------------------------------------------
-# GCP Service Account for GitHub Actions deployments
-# ------------------------------------------------------------------------------
-resource "google_service_account" "github_actions_sa" {
-  account_id   = "github-actions-deployer"
-  display_name = "Service Account for GitHub Actions Cloud Run Deployments"
-  project      = local.gcp_project
-}
-
-# ------------------------------------------------------------------------------
-# Assign required roles to GitHub Actions Service Account
-# ------------------------------------------------------------------------------
-resource "google_project_iam_member" "github_actions_sa_roles" {
-  for_each = toset(local.github_actions_sa_roles)
-
-  project = local.gcp_project
-  role    = each.key
-  member  = "serviceAccount:${google_service_account.github_actions_sa.email}"
-
-  depends_on = [
-    google_project_service.apis["run.googleapis.com"],
-    google_project_service.apis["artifactregistry.googleapis.com"],
-    google_project_service.apis["cloudbuild.googleapis.com"],
-    # iam.googleapis.com is usually enabled by default or implied, no need for explicit dependency here.
-  ]
-}
-
-# ------------------------------------------------------------------------------
-# GCP Workload Identity Federation Pool for GitHub Actions
-# ------------------------------------------------------------------------------
-resource "google_iam_workload_identity_pool" "github_actions_pool" {
-  project                   = local.gcp_project
-  workload_identity_pool_id = "github-actions-pool"
-  display_name              = "GitHub Actions Pool"
-  description               = "Workload Identity Pool for GitHub Actions"
-  disabled                  = false
-}
-
-# ------------------------------------------------------------------------------
-# GCP Workload Identity Provider for GitHub OIDC
-# ------------------------------------------------------------------------------
-resource "google_iam_workload_identity_pool_provider" "github_provider" {
-  project                            = local.gcp_project
-  workload_identity_pool_id          = google_iam_workload_identity_pool.github_actions_pool.workload_identity_pool_id
-  workload_identity_pool_provider_id = "github-provider"
-  display_name                       = "GitHub OIDC Provider"
-  description                        = "OIDC Provider for GitHub Actions"
-  attribute_condition                = "attribute.repository == 'nag763/nag763'"
-  attribute_mapping = {
-    "google.subject"       = "assertion.sub"
-    "attribute.actor"      = "assertion.actor"
-    "attribute.aud"        = "assertion.aud"
-    "attribute.repository" = "assertion.repository"
-  }
-  oidc {
-    issuer_uri = "https://token.actions.githubusercontent.com"
-  }
-  disabled = false
-}
-
-# ------------------------------------------------------------------------------
-# Bind Service Account to Workload Identity Pool Provider
-# ------------------------------------------------------------------------------
-resource "google_service_account_iam_member" "wif_binding" {
-  service_account_id = google_service_account.github_actions_sa.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "principalSet://iam.googleapis.com/projects/${data.google_project.project.number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.github_actions_pool.workload_identity_pool_id}/attribute.repository/nag763/nag763"
 }
 
 # ------------------------------------------------------------------------------
 # Outputs
 # ------------------------------------------------------------------------------
-output "github_actions_service_account_email" {
-  description = "The email of the Google Service Account used by GitHub Actions"
-  value       = google_service_account.github_actions_sa.email
-}
-
-output "workload_identity_provider_path" {
-  description = "The full path to the Workload Identity Provider for GitHub Actions"
-  value       = google_iam_workload_identity_pool_provider.github_provider.name
-}
-
-output "gcr_address" {
-  value = google_cloud_run_v2_service.default.uri
-}
-
 output "iam_access_key" {
   value = aws_iam_access_key.gh_access_keys.id
 }
@@ -519,4 +405,9 @@ output "iam_access_key" {
 output "iam_secret_access_key" {
   value     = aws_iam_access_key.gh_access_keys.secret
   sensitive = true
+}
+
+output "lambda_function_url" {
+  description = "The URL of the agent Lambda function"
+  value       = aws_lambda_function_url.agent_url.function_url
 }

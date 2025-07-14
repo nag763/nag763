@@ -44,6 +44,10 @@ projects = {
 }
 
 
+from strands import tool
+
+
+@tool
 def get_projects() -> dict:
     """Provides information about Loïc's projects.
 

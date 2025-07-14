@@ -1,4 +1,6 @@
-from assistant.work_experience import work_experiences
+from strands import tool
+
+from tools.work_experience import work_experiences
 
 skills = [
     skill for work_experience in work_experiences for skill in work_experience["skills"]
@@ -8,6 +10,7 @@ skills += ["GCP", "Rust", "Docker", "Axum", "WASM"]
 
 
 # @title : Provide skills information about Loïc
+@tool
 def get_skills() -> dict:
     """Provides information about Loïc's skills.
 

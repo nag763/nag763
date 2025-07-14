@@ -71,7 +71,11 @@ work_experiences = [
 ]
 
 
+from strands import tool
+
+
 # @title : Provide work experience information about Loïc
+@tool
 def get_work_experience(current_only: bool, brief: bool = True) -> dict:
     """Helps retrieving information about Loïc's work experience.
 

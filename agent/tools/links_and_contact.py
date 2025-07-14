@@ -11,7 +11,11 @@ links = {
 mail = "loic.labeye.contact@pm.me"
 
 
+from strands import tool
+
+
 # @title : Provide contact information about Loïc
+@tool
 def get_socials() -> dict:
     """Helps retrieving information about Loïc's socials information.
 
@@ -24,6 +28,7 @@ def get_socials() -> dict:
     return links
 
 
+@tool
 def get_email():
     """Provides Loïc's email address.
 

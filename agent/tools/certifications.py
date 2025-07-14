@@ -66,6 +66,10 @@ certifications = [
 ]
 
 
+from strands import tool
+
+
+@tool
 def get_certifications() -> dict:
     """Helps retrieving information about Loïc's certifications.
 

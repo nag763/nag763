@@ -1,4 +1,8 @@
 # @title: Interest Opportunities
+from strands import tool
+
+
+@tool
 def get_interests():
     """Defines which opportunities are of interest of Loïc.
 

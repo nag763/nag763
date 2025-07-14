@@ -1,3 +1,7 @@
+from strands import tool
+
+
+@tool
 def introduce():
     """
     Detail the followings about Loïc :
