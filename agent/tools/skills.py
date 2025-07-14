@@ -1,3 +1,7 @@
+"""
+This module provides a tool to retrieve information about Loïc's skills.
+"""
+
 from strands import tool
 
 from tools.work_experience import work_experiences
@@ -9,7 +13,6 @@ skills = [
 skills += ["GCP", "Rust", "Docker", "Axum", "WASM"]
 
 
-# @title : Provide skills information about Loïc
 @tool
 def get_skills() -> dict:
     """Provides information about Loïc's skills.

@@ -1,3 +1,7 @@
+"""
+This module provides a tool to introduce Loïc.
+"""
+
 from strands import tool
 
 

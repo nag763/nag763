@@ -1,3 +1,10 @@
+"""
+This module provides a tool to retrieve information about Loïc's projects.
+"""
+
+from strands import tool
+
+
 projects = {
     "reomir": {
         "name": "Reomir",
@@ -42,9 +49,6 @@ projects = {
         "link": "https://github.com/nag763/texas-snake",
     },
 }
-
-
-from strands import tool
 
 
 @tool

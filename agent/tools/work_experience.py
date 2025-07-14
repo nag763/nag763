@@ -1,3 +1,10 @@
+"""
+This module provides a tool to retrieve information about Loïc's work experience.
+"""
+
+from strands import tool
+
+
 work_experiences = [
     {
         "company": "TotalEnergies",
@@ -25,7 +32,11 @@ work_experiences = [
         "start_date": "2022-09-01",
         "end_date": "2025-01-01",
         "location": "Paris, France",
-        "description": "Development and maintenance of business facing applications in an internal context. This also included response to incidents, business support, and emboarding of new developers.",
+        "description": (
+            "Development and maintenance of business facing applications in an "
+            "internal context. This also included response to incidents, business "
+            "support, and emboarding of new developers."
+        ),
         "skills": [
             "Java",
             "AWS",
@@ -71,17 +82,15 @@ work_experiences = [
 ]
 
 
-from strands import tool
-
-
-# @title : Provide work experience information about Loïc
 @tool
 def get_work_experience(current_only: bool, brief: bool = True) -> dict:
     """Helps retrieving information about Loïc's work experience.
 
-    By default, provide details only about the current work experience, or if the user wants to know more, detail the previous work experience.
+    By default, provide details only about the current work experience, or if the user
+    wants to know more, detail the previous work experience.
 
-    Invite to know more about the experience before, or ask if the user wants to know more about a specific experience.
+    Invite to know more about the experience before, or ask if the user wants to know
+    more about a specific experience.
 
     Args:
         brief (bool): Whether to provide a brief summary of the work experience.
@@ -101,15 +110,14 @@ def get_work_experience(current_only: bool, brief: bool = True) -> dict:
             "work_experiences": work_experiences[0:1],
             "invite_to_describe": True,
         }
-    elif current_only:
+    if current_only:
         return {
             "status": "success",
             "work_experiences": work_experiences[0],
             "invite_to_describe": True,
         }
-    else:
-        return {
-            "status": "success",
-            "work_experiences": work_experiences,
-            "invite_to_describe": True,
-        }
+    return {
+        "status": "success",
+        "work_experiences": work_experiences,
+        "invite_to_describe": True,
+    }

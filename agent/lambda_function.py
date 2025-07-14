@@ -1,3 +1,9 @@
+"""
+This module contains the AWS Lambda function handler for the agent.
+It initializes the agent with various tools and handles incoming requests,
+processing them with the agent and returning responses.
+"""
+
 import json
 import os
 
@@ -70,7 +76,11 @@ agent = Agent(
 )
 
 
-def lambda_handler(event, context):
+def lambda_handler(event, _context):
+    """
+    Handles incoming AWS Lambda requests, processes them with the agent,
+    and returns appropriate HTTP responses.
+    """
     # Handle CORS preflight requests for API Gateway
     http_method = event.get("httpMethod") or event.get("requestContext", {}).get(
         "http", {}
@@ -120,11 +130,21 @@ def lambda_handler(event, context):
             },
             "body": json.dumps({"error": "Invalid JSON format in request body"}),
         }
-    except Exception as e:
+    except ValueError as e:
+        # Catch specific exceptions if possible, e.g., for agent-related errors
         return {
             "statusCode": 500,
             "headers": {
                 "Content-Type": "application/json",
             },
             "body": json.dumps({"error": str(e)}),
+        }
+    except Exception as e:  # pylint: disable=broad-exception-caught
+        # Fallback for any other unexpected exceptions
+        return {
+            "statusCode": 500,
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "body": json.dumps({"error": f"An unexpected error occurred: {e}"}),
         }

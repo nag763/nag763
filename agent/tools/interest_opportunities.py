@@ -1,4 +1,7 @@
-# @title: Interest Opportunities
+"""
+This module provides a tool to retrieve information about Loïc's interest opportunities.
+"""
+
 from strands import tool
 
 

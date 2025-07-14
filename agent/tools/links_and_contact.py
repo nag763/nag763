@@ -1,3 +1,10 @@
+"""
+This module provides tools to retrieve Loïc's social media links and contact information.
+"""
+
+from strands import tool
+
+
 links = {
     "GitHub": "https://github.com/nag763",
     "LinkedIn": "https://www.linkedin.com/in/labeyel/",
@@ -8,13 +15,9 @@ links = {
     "Medium": "https://medium.com/@loic.labeye",
 }
 
-mail = "loic.labeye.contact@pm.me"
+EMAIL = "loic.labeye.contact@pm.me"
 
 
-from strands import tool
-
-
-# @title : Provide contact information about Loïc
 @tool
 def get_socials() -> dict:
     """Helps retrieving information about Loïc's socials information.
@@ -40,4 +43,4 @@ def get_email():
             email (str): The email address.
     """
     print("Email tool called")
-    return {"status": "success", "email": mail}
+    return {"status": "success", "email": EMAIL}

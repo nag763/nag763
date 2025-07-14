@@ -1,3 +1,7 @@
+"""
+This module initializes the tools package and exposes the tool functions.
+"""
+
 from tools.certifications import get_certifications
 from tools.interest_opportunities import get_interests
 from tools.introduce import introduce
