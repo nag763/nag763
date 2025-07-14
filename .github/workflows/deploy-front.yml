@@ -1,8 +1,11 @@
-name: Deploy AWS Infra
+name: Deploy Frontend
 
 on:
   push:
     branches: ["main"]
+    paths:
+      - 'front/**'
+      - '.github/workflows/deploy-front.yml'
 
 permissions:
   contents: read
@@ -46,28 +49,3 @@ jobs:
           aws-region: eu-central-1
       - name: Sync files to S3 bucket
         run: aws s3 sync ./dist s3://nag763 --delete
-
-  deploy-lambda:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup AWS CLI
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
-      
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
-
-      - name: Install requirements
-        run: uv pip install -r pyproject.toml --target .
-        working-directory: agent
-
-      - name: Zip agent directory
-        run: |
-          cd agent
-          zip -r ../agent.zip .
-      - name: Deploy Lambda
-        run: aws lambda update-function-code --function-name nag763-agent --zip-file fileb://agent.zip
