@@ -62,11 +62,11 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Install requirements
-        run: uv pip install -r requirements.txt
+        run: uv pip install -r pyproject.toml
         env:
           UV_SYSTEM_PYTHON: 1
         working-directory: ./agent
-        
+
       - name: Zip agent directory
         run: |
           cd agent
