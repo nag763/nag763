@@ -37,7 +37,7 @@ export default function ChatInterface({ theme, toggleTheme }) {
   }, []);
 
     useEffect(() => {
-      handleSendMessage('wave');
+      handleSendMessage('wave', false);
     }, []);
 
   const addUserMessage = useCallback((text) => {
@@ -65,10 +65,12 @@ export default function ChatInterface({ theme, toggleTheme }) {
   }, []);
 
 
-  const handleSendMessage = async (messageText) => {
+  const handleSendMessage = async (messageText, showInMessages = true) => {
     if (!messageText.trim()) return;
 
-    addUserMessage(messageText);
+    if(showInMessages) {
+      addUserMessage(messageText);
+    }
     setIsSending(true);
 
     const typingIndicatorId = crypto.randomUUID(); // Generate ID for typing indicator
