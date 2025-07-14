@@ -5,7 +5,6 @@ import { PaperClipIcon, MicrophoneIcon, VideoCameraIcon } from '@heroicons/react
 
 const MessageInput = ({ onSendMessage, isSending }) => { // Added isSending prop
   const [inputValue, setInputValue] = useState('');
-  const inputRef = useRef(null); // Ref for focusing
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,14 +13,6 @@ const MessageInput = ({ onSendMessage, isSending }) => { // Added isSending prop
       setInputValue('');
     }
   };
-
-  // Optional: Focus input when not sending (e.g., after a message is sent)
-  useEffect(() => {
-    if (!isSending && inputRef.current) {
-      inputRef.current.focus(); // Be cautious with auto-focusing, can be disruptive
-    }
-  }, [isSending]);
-
 
   return (
     <form onSubmit={handleSubmit} className="p-3 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
@@ -34,7 +25,6 @@ const MessageInput = ({ onSendMessage, isSending }) => { // Added isSending prop
           <PaperClipIcon className="h-5 w-5" />
         </button>
         <input
-          ref={inputRef}
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
