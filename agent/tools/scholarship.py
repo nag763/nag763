@@ -23,6 +23,7 @@ graduation_list = [
 
 from strands import tool
 
+
 # @title : Provide scholarship information about Loïc
 @tool
 def get_scholarship() -> dict:

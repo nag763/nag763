@@ -27,38 +27,13 @@ const Header = () => {
 
 export default function ChatInterface({ theme, toggleTheme }) {
   const [messages, setMessages] = useState([]);
-  const [userUuid, setUserUuid] = useState('');
-  const [sessionUuid, setSessionUuid] = useState('');
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    const newUserId = crypto.randomUUID();
-    const newSessionId = crypto.randomUUID();
-    setUserUuid(newUserId);
-    setSessionUuid(newSessionId);
-
-    async function createSession(userId, sessionId) {
-      if (!agentApi) {
-        console.error("Agent API endpoint is not configured.");
-        // Use the new addBotMessage to add error with an ID
-        addBotMessage("Error: Chat service is not configured.", false, false, crypto.randomUUID());
-        return;
-      }
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      };
-      try {
-        const response = await fetch(`${agentApi}/apps/assistant/users/${userId}/sessions/${sessionId}`, options);
-        if (!response.ok) throw new Error(`Session creation failed: ${response.statusText}`);
-        const data = await response.json();
-        console.log("Session created:", data);
-      } catch (err) {
-        console.error("Error creating session:", err);
-        addBotMessage("Could not start a chat session. Please try again later.", false, false, crypto.randomUUID());
-      }
+    if (!agentApi) {
+      console.error("Agent API endpoint is not configured.");
+      addBotMessage("Error: Chat service is not configured.", false, false, crypto.randomUUID());
     }
-    createSession(newUserId, newSessionId);
   }, []);
 
   const addUserMessage = useCallback((text) => {
@@ -87,7 +62,7 @@ export default function ChatInterface({ theme, toggleTheme }) {
 
 
   const handleSendMessage = async (messageText) => {
-    if (!messageText.trim() || !userUuid || !sessionUuid) return;
+    if (!messageText.trim()) return;
 
     addUserMessage(messageText);
     setIsSending(true);
@@ -99,15 +74,12 @@ export default function ChatInterface({ theme, toggleTheme }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        app_name: "assistant",
-        user_id: userUuid,
-        session_id: sessionUuid,
-        new_message: { role: "user", parts: [{ text: messageText }] },
+        prompt: messageText
       }),
     };
 
     try {
-      const response = await fetch(`${agentApi}/run`, options);
+      const response = await fetch(agentApi, options);
       // Remove typing indicator REGARDLESS of response success, before adding new message
       setMessages(prev => prev.filter(msg => msg.id !== typingIndicatorId));
 
@@ -115,12 +87,17 @@ export default function ChatInterface({ theme, toggleTheme }) {
         let errorText = `API error: ${response.status}`;
         try {
           const errorData = await response.json();
-          errorText = errorData.message || errorData.detail || errorText;
-        } catch (e) { /* ignore */ }
+          errorText = errorData.message || errorData.detail || errorData.error || errorText;
+        } catch (e) { 
+          try {
+            errorText = await response.text()
+          } catch (e2) {
+            // ignore
+          }
+        }
         throw new Error(errorText);
       }
-      const responseData = await response.json();
-      const botText = responseData[responseData.length - 1]?.content?.parts?.[0]?.text;
+      const botText = await response.text();
 
       if (botText) {
         const parsedHtml = marked.parse(botText);

@@ -1,5 +1,19 @@
+import json
+import os
+
 from strands import Agent
-from tools import get_certifications, get_interests, introduce, get_email, get_socials, get_projects, get_skills, get_scholarship,  get_work_experience
+
+from tools import (
+    get_certifications,
+    get_email,
+    get_interests,
+    get_projects,
+    get_scholarship,
+    get_skills,
+    get_socials,
+    get_work_experience,
+    introduce,
+)
 
 MAIN_SYSTEM_PROMPT = """
 You are a helpful assistant whose aim is to provide context on one person named Loïc's CV. 
@@ -15,9 +29,12 @@ Keep the answers short and concise, and do not provide too much information at o
 As well as that, use markdown as much as possible to format the answers.
 """
 
+model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-lite-v1:0")
+
+
 # Create an agent with default settings
 agent = Agent(
-    model="eu.amazon.nova-lite-v1:0",
+    model=model,
     system_prompt=MAIN_SYSTEM_PROMPT,
     tools=[
         get_certifications,
@@ -32,9 +49,62 @@ agent = Agent(
     ],
 )
 
-def lambda_handler(event, context) -> str:
-    if prompt := event.get('prompt'):
+
+def lambda_handler(event, context):
+    # Handle CORS preflight requests for API Gateway
+    http_method = event.get("httpMethod") or event.get("requestContext", {}).get(
+        "http", {}
+    ).get("method")
+    if http_method == "OPTIONS":
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type",
+            },
+            "body": "",
+        }
+
+    try:
+        body_str = event.get("body", "{}")
+        if body_str is None:  # body can be None
+            body_str = "{}"
+        body = json.loads(body_str)
+        prompt = body.get("prompt")
+
+        if not prompt:
+            return {
+                "statusCode": 400,
+                "headers": {
+                    "Content-Type": "application/json",
+                },
+                "body": json.dumps({"error": "No prompt received in request body"}),
+            }
+
         res = agent(prompt)
-        return str(res)
-    else:
-        return {"error": "No prompt received"}    
+
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Content-Type": "text/plain",
+            },
+            "body": str(res),
+        }
+
+    except json.JSONDecodeError:
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "body": json.dumps({"error": "Invalid JSON format in request body"}),
+        }
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "body": json.dumps({"error": str(e)}),
+        }
