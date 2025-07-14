@@ -22,6 +22,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install uv
         uses: astral-sh/setup-uv@v6
+        with:
+          python-version: 3.13
 
       - name: Install requirements
         run: uv pip install --python-platform linux --python 3.13 -r pyproject.toml --target .
