@@ -36,6 +36,10 @@ export default function ChatInterface({ theme, toggleTheme }) {
     }
   }, []);
 
+    useEffect(() => {
+      handleSendMessage('wave');
+    }, []);
+
   const addUserMessage = useCallback((text) => {
     const newMessage = {
       id: crypto.randomUUID(),
@@ -114,8 +118,6 @@ export default function ChatInterface({ theme, toggleTheme }) {
       setIsSending(false);
     }
   };
-
-  handleSendMessage('wave');
 
   return (
     <div className="flex flex-col h-screen w-screen bg-gray-100 dark:bg-gray-950">
