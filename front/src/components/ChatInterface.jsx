@@ -79,7 +79,10 @@ export default function ChatInterface({ theme, toggleTheme }) {
         }
         throw new Error(errorText);
       }
-      const botText = await response.text();
+      let botText = await response.text();
+
+      // Remove <thinking> tags
+      botText = botText.replace(/<thinking>[\s\S]*?<\/thinking>/g, '');
 
       if (botText) {
         const parsedHtml = marked.parse(botText);
