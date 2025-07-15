@@ -80,7 +80,11 @@ export default function ChatInterface({ theme, toggleTheme }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        prompt: messageText
+        prompt: messageText,
+        messages: messages.filter(msg => !msg.isTypingIndicator).map(msg => ({
+          role: msg.sender === 'user' ? 'user' : 'assistant',
+          content: [{ text: msg.text }]
+        }))
       }),
     };
 

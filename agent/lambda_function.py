@@ -60,21 +60,6 @@ model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-lite-v1:0")
 
 
 # Create an agent with default settings
-agent = Agent(
-    model=model,
-    system_prompt=MAIN_SYSTEM_PROMPT,
-    tools=[
-        get_certifications,
-        get_interests,
-        introduce,
-        get_email,
-        get_socials,
-        get_projects,
-        get_skills,
-        get_scholarship,
-        get_work_experience,
-    ],
-)
 
 
 def lambda_handler(event, _context):
@@ -103,6 +88,24 @@ def lambda_handler(event, _context):
             body_str = "{}"
         body = json.loads(body_str)
         prompt = body.get("prompt")
+        messages = body.get("messages", [])
+
+        agent = Agent(
+            model=model,
+            system_prompt=MAIN_SYSTEM_PROMPT,
+            tools=[
+                get_certifications,
+                get_interests,
+                introduce,
+                get_email,
+                get_socials,
+                get_projects,
+                get_skills,
+                get_scholarship,
+                get_work_experience,
+            ],
+            messages=messages,
+        )
 
         if not prompt:
             return {
