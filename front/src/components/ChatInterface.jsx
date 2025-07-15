@@ -40,7 +40,9 @@ export default function ChatInterface({ theme, toggleTheme }) {
   const handleSendMessage = async (messageText, showInMessages = true) => {
     if (!messageText.trim()) return;
 
-    addUserMessage({messageText, showInMessages});
+    if(showInMessages) {
+      addUserMessage(messageText);
+    }
     setIsSending(true);
 
     const typingIndicatorId = crypto.randomUUID(); // Generate ID for typing indicator
@@ -114,14 +116,13 @@ export default function ChatInterface({ theme, toggleTheme }) {
     handleSendMessage('wave', false); // Send initial wave message
   }, [handleSendMessage]);
 
-  const addUserMessage = useCallback((text, showInMessages) => {
+  const addUserMessage = useCallback((text) => {
     const newMessage = {
       id: crypto.randomUUID(),
       text,
       sender: 'user',
       isHtml: false,
       isTypingIndicator: false,
-      showInMessages
     };
     setMessages(prevMessages => [...prevMessages, newMessage]);
   }, []);

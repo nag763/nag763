@@ -13,7 +13,7 @@ const MessageList = ({ messages }) => {
 
   return (
     <div className="flex-grow p-4 space-y-4 overflow-y-auto bg-white dark:bg-black">
-      {messages.filter((msg) => msg.showInMessage).map((msg) => ( // msg will have an id now
+      {messages.map((msg) => ( // msg will have an id now
         <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
           <Message
             text={msg.text}
