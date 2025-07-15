@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
-  MoonIcon, SunIcon, UserCircleIcon, SparklesIcon, ArrowLeftIcon
-} from '@heroicons/react/24/outline'; // Removed unused icons for brevity
+  SparklesIcon, ArrowLeftIcon, ArrowPathIcon
+} from '@heroicons/react/24/outline';
 import { marked } from 'marked';
 
 import MessageList from './MessageList';
@@ -9,7 +9,7 @@ import MessageInput from './MessageInput';
 
 const agentApi = import.meta.env.PUBLIC_AGENT_ENDPOINT;
 
-const Header = () => {
+const Header = ({ onNewChat }) => {
   return (
     <div className="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-center">
@@ -20,6 +20,13 @@ const Header = () => {
           Hello 👋! I'm here to help you with information about Loïc's CV. What would you like to know?
         </p>
       </div>
+      <button
+        onClick={onNewChat}
+        className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+        aria-label="Start new chat"
+      >
+        <ArrowPathIcon className="h-6 w-6" />
+      </button>
     </div>
   );
 };
@@ -28,41 +35,6 @@ const Header = () => {
 export default function ChatInterface({ theme, toggleTheme }) {
   const [messages, setMessages] = useState([]);
   const [isSending, setIsSending] = useState(false);
-
-  useEffect(() => {
-    if (!agentApi) {
-      console.error("Agent API endpoint is not configured.");
-      addBotMessage("Error: Chat service is not configured.", false, false, crypto.randomUUID());
-    }
-  }, []);
-
-    useEffect(() => {
-      handleSendMessage('wave', false);
-    }, []);
-
-  const addUserMessage = useCallback((text) => {
-    const newMessage = {
-      id: crypto.randomUUID(),
-      text,
-      sender: 'user',
-      isHtml: false,
-      isTypingIndicator: false,
-    };
-    setMessages(prevMessages => [...prevMessages, newMessage]);
-  }, []);
-
-  // Modified addBotMessage to include id directly
-  const addBotMessage = useCallback((text, isHtmlContent = false, isTyping = false, id = crypto.randomUUID()) => {
-    const newMessage = {
-      id, // Use provided id or generate new
-      text,
-      sender: 'bot',
-      isHtml: isHtmlContent,
-      isTypingIndicator: isTyping,
-    };
-    setMessages(prevMessages => [...prevMessages, newMessage]);
-    return id; // Return the ID
-  }, []);
 
 
   const handleSendMessage = async (messageText, showInMessages = true) => {
@@ -125,6 +97,48 @@ export default function ChatInterface({ theme, toggleTheme }) {
     }
   };
 
+  useEffect(() => {
+    if (!agentApi) {
+      console.error("Agent API endpoint is not configured.");
+      addBotMessage("Error: Chat service is not configured.", false, false, crypto.randomUUID());
+    }
+  }, []);
+
+    useEffect(() => {
+    handleSendMessage('wave', false);
+  }, []);
+
+  const handleNewChat = useCallback(() => {
+    setMessages([]); // Clear all messages
+    handleSendMessage('wave', false); // Send initial wave message
+  }, [handleSendMessage]);
+
+  const addUserMessage = useCallback((text) => {
+    const newMessage = {
+      id: crypto.randomUUID(),
+      text,
+      sender: 'user',
+      isHtml: false,
+      isTypingIndicator: false,
+    };
+    setMessages(prevMessages => [...prevMessages, newMessage]);
+  }, []);
+
+  // Modified addBotMessage to include id directly
+  const addBotMessage = useCallback((text, isHtmlContent = false, isTyping = false, id = crypto.randomUUID()) => {
+    const newMessage = {
+      id, // Use provided id or generate new
+      text,
+      sender: 'bot',
+      isHtml: isHtmlContent,
+      isTypingIndicator: isTyping,
+    };
+    setMessages(prevMessages => [...prevMessages, newMessage]);
+    return id; // Return the ID
+  }, []);
+
+
+
   return (
     <div className="flex flex-col h-screen w-screen bg-gray-100 dark:bg-gray-950">
       <div className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
@@ -136,7 +150,7 @@ export default function ChatInterface({ theme, toggleTheme }) {
           Go back to main page
         </a>
       </div>
-      <Header toggleTheme={toggleTheme} theme={theme} />
+      <Header onNewChat={handleNewChat} />
       <MessageList messages={messages} />
       <MessageInput onSendMessage={handleSendMessage} isSending={isSending} />
     </div>

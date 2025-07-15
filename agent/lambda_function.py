@@ -105,6 +105,7 @@ def lambda_handler(event, _context):
                 get_work_experience,
             ],
             messages=messages,
+            callback_handler=None
         )
 
         if not prompt:

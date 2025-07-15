@@ -17,13 +17,6 @@ const MessageInput = ({ onSendMessage, isSending }) => { // Added isSending prop
   return (
     <form onSubmit={handleSubmit} className="p-3 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
       <div className="flex items-center bg-white dark:bg-gray-800 rounded-lg p-2 shadow-sm">
-        <button
-          type="button"
-          className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 disabled:opacity-50"
-          disabled={isSending} // Disable button
-        >
-          <PaperClipIcon className="h-5 w-5" />
-        </button>
         <input
           type="text"
           value={inputValue}
