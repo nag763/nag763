@@ -21,6 +21,7 @@ const MessageList = ({ messages }) => {
             isBot={msg.sender === 'bot'}
             isHtml={msg.isHtml || false}
             isTypingIndicator={msg.isTypingIndicator || false} // Pass the flag
+            hidden={!msg.showInMessages}
           />
         </div>
       ))}

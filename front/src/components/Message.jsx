@@ -1,6 +1,10 @@
 // src/components/Message.jsx
 
-const Message = ({ text, sender, isBot, isHtml, isTypingIndicator }) => { // Added isTypingIndicator
+const Message = ({ text, sender, isBot, isHtml, isTypingIndicator, hidden }) => { // Added isTypingIndicator
+  if(hidden) {
+    return <></>
+  }
+  
   const bgColor = isBot ? 'bg-gray-100 dark:bg-gray-700' : 'bg-blue-500 dark:bg-blue-600';
   const textColor = isBot ? 'text-gray-800 dark:text-gray-200' : 'text-white';
   const alignment = isBot ? 'self-start' : 'self-end';
