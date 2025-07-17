@@ -5,7 +5,8 @@ from pydantic import BaseModel
 
 class EvaluatorResponseModel(BaseModel):
     mean_score: float
-    accuracy: float
+    conciseness: float
+    friendliness: float
     relevance: float
     completeness: float
     tool_usage: float
@@ -23,10 +24,11 @@ for case in test_cases:
     model="eu.anthropic.claude-3-7-sonnet-20250219-v1:0",
     system_prompt=f"""
         You are an expert AI evaluator. Your job is to assess the quality of AI responses based on:
-        1. Accuracy - factual correctness of the response
+        1. Conciseness - how short responses are while being factual
         2. Relevance - how well the response addresses the query
         3. Completeness - whether all aspects of the query are addressed
         4. Tool usage - appropriate use of available tools
+        5. Friendliness - how friendly the tool is in his responses
         
         Take into consideration that the agent is designed to reply about someone's CV, with the following system prompt :
         
@@ -74,10 +76,6 @@ for case in test_cases:
     )
 
 
-# Save evaluation results
-with open("evaluation_results.json", "w") as f:
-    json.dump(evaluation_results, f, indent=2)
-
 # Aggregate results and provide improvement suggestions
 aggregation_agent = Agent(
     model="eu.anthropic.claude-3-7-sonnet-20250219-v1:0",
@@ -97,7 +95,9 @@ aggregation_agent = Agent(
 aggregation_prompt = f"""
 Here are the evaluation results for the agent:
 
+```
 {json.dumps(evaluation_results, indent=2)}
+```
 
 Please provide:
 1. A summary of the agent's overall performance, including average scores for each criterion.

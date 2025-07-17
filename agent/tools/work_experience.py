@@ -83,7 +83,7 @@ work_experiences = [
 
 
 @tool
-def get_work_experience(current_only: bool, brief: bool = True) -> dict:
+def get_work_experience(current_only: bool = False, brief: bool = False) -> dict:
     """Helps retrieving information about Loïc's work experience.
 
     Args:
@@ -98,16 +98,16 @@ def get_work_experience(current_only: bool, brief: bool = True) -> dict:
 
     """
     print("Work experience tool called")
-    if brief:
-        return {
-            "status": "success",
-            "work_experiences": work_experiences[0:1],
-            "invite_to_describe": True,
-        }
     if current_only:
         return {
             "status": "success",
-            "work_experiences": work_experiences[0],
+            "work_experiences": [work_experiences[0]],
+            "invite_to_describe": True,
+        }
+    if brief:
+        return {
+            "status": "success",
+            "work_experiences": [work_experiences[0]],
             "invite_to_describe": True,
         }
     return {
