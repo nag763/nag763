@@ -4,7 +4,6 @@ This module provides tools to retrieve Loïc's social media links and contact in
 
 from strands import tool
 
-
 links = {
     "GitHub": "https://github.com/nag763",
     "LinkedIn": "https://www.linkedin.com/in/labeyel/",

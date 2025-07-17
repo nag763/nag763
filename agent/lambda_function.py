@@ -5,7 +5,6 @@ processing them with the agent and returning responses.
 """
 
 import json
-
 import os
 
 from strands import Agent

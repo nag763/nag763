@@ -4,7 +4,6 @@ This module provides a tool to retrieve information about Loïc's projects.
 
 from strands import tool
 
-
 projects = {
     "reomir": {
         "name": "Reomir",

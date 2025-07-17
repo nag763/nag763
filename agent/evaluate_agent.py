@@ -1,7 +1,9 @@
-from lambda_function import agent, MAIN_SYSTEM_PROMPT
-from strands import Agent
 import json
+
 from pydantic import BaseModel
+from strands import Agent
+
+from lambda_function import MAIN_SYSTEM_PROMPT, agent
 
 
 class EvaluatorResponseModel(BaseModel):

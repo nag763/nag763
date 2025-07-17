@@ -4,7 +4,6 @@ This module provides a tool to retrieve information about Loïc's work experienc
 
 from strands import tool
 
-
 work_experiences = [
     {
         "company": "TotalEnergies",

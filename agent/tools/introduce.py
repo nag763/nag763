@@ -4,11 +4,11 @@ This module provides a tool to introduce Loïc.
 
 from strands import tool
 
-from tools.scholarship import graduation_list
-from tools.work_experience import work_experiences
-from tools.skills import skills
-from tools.links_and_contact import links, EMAIL
 from tools.certifications import certifications
+from tools.links_and_contact import EMAIL, links
+from tools.scholarship import graduation_list
+from tools.skills import skills
+from tools.work_experience import work_experiences
 
 
 @tool
