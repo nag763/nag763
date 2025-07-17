@@ -132,7 +132,9 @@ def lambda_handler(event, _context):
                 "headers": {
                     "Content-Type": "application/json",
                 },
-                "body": json.dumps({"error": "Message exceeds the maximum length of 250 characters"}),
+                "body": json.dumps(
+                    {"error": "Message exceeds the maximum length of 250 characters"}
+                ),
             }
 
         res = agent(prompt)
