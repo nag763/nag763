@@ -23,12 +23,12 @@ def introduce() -> dict:
     skills = ["Python", "JavaScript", "React", "AWS", "Docker"]
 
     introduction_text = (
-        f"Hello! I'm Loïc, a {latest_work_experience['position']} based in "
-        f"{latest_work_experience['location']}. I'm {27} years old. "
-        f"My professional journey includes roles at companies like "
-        f"{latest_work_experience['company']} where I've focused on "
+        f"Hello! Loïc, is a {latest_work_experience['position']} based in "
+        f"{latest_work_experience['location']}. He is {27} years old. "
+        f"His professional journey includes roles at companies like "
+        f"{latest_work_experience['company']} where he is focused on "
         f"{latest_work_experience['description'].lower()}.\n\n"
-        f"I specialize in a variety of technologies, including: {', '.join(skills)}.\n\n"
+        f"He is specialized in a variety of technologies, including: {', '.join(skills)}.\n\n"
         "Feel free to ask me more about my experiences, skills, or projects!"
     )
 
