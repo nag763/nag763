@@ -59,6 +59,7 @@ def introduce(mode: str = "chat") -> dict:
         f"{description.lower()}.\n\n"
         f"Skilled in {', '.join(skills)}, {name} combines backend power with frontend finesse to "
         f"build robust and user-friendly tools.\n\n"
+        f"He's especially passionate about **Cloud technologies** and **Generative AI**, and is always exploring ways to leverage them to solve real-world problems.\n\n"
         f"Curious about his work, projects, or background? Feel free to ask — I’m here to help! 🚀"
     )
 
