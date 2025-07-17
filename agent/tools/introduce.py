@@ -6,26 +6,26 @@ from strands import tool
 
 
 @tool
-def introduce() -> dict:
+def introduce(mode: str = "chat") -> dict:
     """
-    Provides a structured introduction of Loïc, a Fullstack Software Engineer.
+    Provides an introduction of Loïc, a Fullstack Software Engineer, in various formats.
 
-    Use this tool to retrieve detailed profile information about Loïc, including
-    his current role, location, skills, and a summary. The data is structured to
-    support flexible presentation formats.
+    Use this tool to retrieve information about Loïc depending on the context:
+    - "structured": Returns detailed profile fields suitable for UI or logic-based use
+    - "chat": Returns a conversational, natural-language summary for chat interfaces
+    - "short": Returns a one-line summary for previews or quick listings
+
+    Args:
+        mode (str): The output format. Options are:
+                    - "structured"
+                    - "chat"
+                    - "short"
+                    Default is "structured".
 
     Returns:
         dict:
-            status (str): The status of the request. "success" if the tool executes correctly.
-            introduction (dict):
-                name (str): Full name.
-                age (int): Age in years.
-                title (str): Professional title or role.
-                location (str): City and country where Loïc is based.
-                company (str): Current employer.
-                description (str): Role description.
-                skills (list of str): Technical skills and areas of expertise.
-                summary (str): A prewritten natural-language summary for conversational use.
+            status (str): "success" if the tool executes correctly, or "error" if mode is invalid.
+            response (dict or str): Introduction of Loïc in the requested format.
     """
 
     # Profile data
@@ -37,23 +37,41 @@ def introduce() -> dict:
     description = "Developing internal applications to streamline operations and improve workflows"
     skills = ["Python", "JavaScript", "React", "AWS", "Docker"]
 
-    # Summary for use in chat or conversational UI
-    summary = (
-        f"{name} is a {title} based in {location}. Currently at {company}, "
-        f"he focuses on {description.lower()}. Skilled in {', '.join(skills)}, "
-        f"Loïc blends backend efficiency with frontend finesse to build robust and user-friendly tools."
+    # Pre-formatted outputs
+    structured = {
+        "name": name,
+        "age": age,
+        "title": title,
+        "location": location,
+        "company": company,
+        "description": description,
+        "skills": skills,
+        "summary": (
+            f"{name} is a {title} based in {location}. Currently at {company}, "
+            f"he focuses on {description.lower()}. Skilled in {', '.join(skills)}, "
+            f"{name} blends backend efficiency with frontend finesse to build robust and user-friendly tools."
+        ),
+    }
+
+    chat = (
+        f"Hello! 👋\n\n"
+        f"Meet **{name}**, a {title} based in {location}. At **{company}**, he’s focused on "
+        f"{description.lower()}.\n\n"
+        f"Skilled in {', '.join(skills)}, {name} combines backend power with frontend finesse to "
+        f"build robust and user-friendly tools.\n\n"
+        f"Curious about his work, projects, or background? Feel free to ask — I’m here to help! 🚀"
     )
 
-    return {
-        "status": "success",
-        "introduction": {
-            "name": name,
-            "age": age,
-            "title": title,
-            "location": location,
-            "company": company,
-            "description": description,
-            "skills": skills,
-            "summary": summary,
-        },
-    }
+    short = (
+        f"{name} is a {title} based in {location}, currently building internal tools at {company}."
+    )
+
+    match mode:
+        case "structured":
+            return {"status": "success", "response": structured}
+        case "chat":
+            return {"status": "success", "response": chat}
+        case "short":
+            return {"status": "success", "response": short}
+        case _:
+            return {"status": "error", "response": "Invalid mode. Use 'structured', 'chat', or 'short'."}
