@@ -2,14 +2,14 @@
 This module initializes the tools package and exposes the tool functions.
 """
 
-from tools.certifications import get_certifications
-from tools.interest_opportunities import get_interests
-from tools.introduce import introduce
-from tools.links_and_contact import get_email, get_socials
-from tools.projects import get_projects
-from tools.scholarship import get_scholarship
-from tools.skills import get_skills
-from tools.work_experience import get_work_experience
+from .certifications import get_certifications
+from .interest_opportunities import get_interests
+from .introduce import introduce
+from .links_and_contact import get_email, get_socials
+from .projects import get_projects
+from .scholarship import get_scholarship
+from .skills import get_skills
+from .work_experience import get_work_experience
 
 __all__ = [
     "get_certifications",

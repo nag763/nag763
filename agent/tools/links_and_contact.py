@@ -28,14 +28,12 @@ def get_socials() -> dict:
             socials (dict): The contact socials.
     """
     print("Contact tool called")
-    return links
+    return {"status": "success", "socials": links}
 
 
 @tool
 def get_email():
-    """Provides Loïc's email address.
-
-    This function retrieves the email address of Loïc and returns it in a structured format.
+    """Helps retrieving Loïc's email address.
 
     Returns:
         dict:

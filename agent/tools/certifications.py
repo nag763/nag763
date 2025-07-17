@@ -103,15 +103,6 @@ certifications = [
 def get_certifications() -> dict:
     """Helps retrieving information about Loïc's certifications.
 
-    If several certifications are shown to the user, display them in a list format
-    unless explictly told to do otherwise.
-
-    You can also ask the user if they want to know more about a specific certification,
-    or want to verify the validity of a certification.
-
-    Unless explictely asked, don't provide the expiration date of the certification,
-    the level of the certification, or the authority of the certification.
-
     Returns:
         dict:
             status (str): The status of the request.

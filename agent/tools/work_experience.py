@@ -86,21 +86,15 @@ work_experiences = [
 def get_work_experience(current_only: bool, brief: bool = True) -> dict:
     """Helps retrieving information about Loïc's work experience.
 
-    By default, provide details only about the current work experience, or if the user
-    wants to know more, detail the previous work experience.
-
-    Invite to know more about the experience before, or ask if the user wants to know
-    more about a specific experience.
-
     Args:
         brief (bool): Whether to provide a brief summary of the work experience.
         current_only (bool): Whether to provide only the current work experience.
 
     Returns:
         dict:
-            status (str): Wheter it succeeded.
+            status (str): Whether it succeeded.
             work_experiences (list): List of work experience information.
-            invite_to_describe (bool): Invite to describe more.
+            invite_to_describe (bool): Indicates if more details can be provided.
 
     """
     print("Work experience tool called")

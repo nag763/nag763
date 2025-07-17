@@ -55,14 +55,6 @@ projects = {
 def get_projects() -> dict:
     """Provides information about Loïc's projects.
 
-    This function retrieves the projects of Loïc and returns them in a structured format.
-
-    Mention that most of them are not actively maintained, but they are still available on GitHub.
-
-    By default, do not provide the links to the projects or the skills, but if asked, detail them.
-
-    Outputs the projects in a list format.
-
     Returns:
         dict:
             status (str): The status of the request.

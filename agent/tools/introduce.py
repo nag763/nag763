@@ -6,14 +6,31 @@ from strands import tool
 
 
 @tool
-def introduce():
-    """
-    Detail the followings about Loïc :
-        - Age : 27 years old
-        - Location : Denmark
-        - Occupation : Software Engineer
-        - Skills : Python, Java, GCP, Rust, Docker, AWS, Azure and many more
-        - Loves cloud related technologies, and is a big fan of open source.
+def introduce() -> dict:
+    """Provides a brief introduction of Loïc.
 
+    Returns:
+        dict:
+            status (str): The status of the request.
+            introduction (dict): The introduction of Loïc.
     """
-    return {"status": "success"}
+    return {
+        "status": "success",
+        "introduction": {
+            "name": "Loïc",
+            "age": 27,
+            "location": "Denmark",
+            "occupation": "Software Engineer",
+            "skills": [
+                "Python",
+                "Java",
+                "GCP",
+                "Javascript",
+                "Rust",
+                "Docker",
+                "AWS",
+                "Azure",
+            ],
+            "interests": ["cloud related technologies", "open source"],
+        },
+    }
