@@ -20,9 +20,7 @@ def introduce() -> dict:
         "location": "Esbjerg, Denmark",
         "description": "Developing internal applications for the company.",
     }
-    skills = [
-        "Python", "JavaScript", "React", "AWS", "Docker"
-    ]
+    skills = ["Python", "JavaScript", "React", "AWS", "Docker"]
 
     introduction_text = (
         f"Hello! I'm Loïc, a {latest_work_experience['position']} based in "

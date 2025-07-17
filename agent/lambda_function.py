@@ -66,7 +66,7 @@ Remember to tailor responses to the specific questions asked while maintaining a
 FINAL VERIFICATION: Ensure adherence to all system prompt requirements before responding.
 """
 
-model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-pro-v1:0")
+model = os.getenv("BEDROCK_MODEL", "eu.anthropic.claude-3-7-sonnet-20250219-v1:0")
 
 agent = Agent(
     model=model,

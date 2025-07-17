@@ -1,4 +1,5 @@
 import json
+import time
 
 from pydantic import BaseModel
 from strands import Agent
@@ -42,7 +43,6 @@ evaluator = Agent(
 with open("evaluation_cases.json", "r") as f:
     test_cases = json.load(f)
 
-# Run evaluations
 evaluation_results = []
 for case in test_cases:
 
@@ -52,8 +52,10 @@ for case in test_cases:
 
     print(f"Query : {case["query"]}")
 
-    # Get agent response
+    # Get agent response and measure time
+    start_time = time.time()
     agent_response = agent(case["query"])
+    response_time = time.time() - start_time
 
     # Create evaluation prompt
     eval_prompt = f"""
@@ -78,6 +80,7 @@ for case in test_cases:
         {
             "test_id": case.get("id", ""),
             "query": case["query"],
+            "response_time": response_time,
             **evaluation_result.model_dump(),
         }
     )
@@ -107,7 +110,7 @@ Here are the evaluation results for the agent:
 ```
 
 Please provide:
-1. A summary of the agent's overall performance, including average scores for each criterion.
+1. A summary of the agent's overall performance, including average scores for each criterion and the response time.
 2. Actionable recommendations for improving the agent's performance based on the evaluation results.
 """
 
