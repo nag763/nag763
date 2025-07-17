@@ -66,7 +66,7 @@ Remember to tailor responses to the specific questions asked while maintaining a
 FINAL VERIFICATION: Ensure adherence to all system prompt requirements before responding.
 """
 
-model = os.getenv("BEDROCK_MODEL", "eu.anthropic.claude-3-7-sonnet-20250219-v1:0")
+model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-pro-v1:0")
 
 agent = Agent(
     model=model,
@@ -122,6 +122,15 @@ def lambda_handler(event, _context):
                     "Content-Type": "application/json",
                 },
                 "body": json.dumps({"error": "No prompt received in request body"}),
+            }
+
+        if len(prompt) > 250:
+            return {
+                "statusCode": 400,
+                "headers": {
+                    "Content-Type": "application/json",
+                },
+                "body": json.dumps({"error": "Message exceeds the maximum length of 250 characters"}),
             }
 
         res = agent(prompt)
