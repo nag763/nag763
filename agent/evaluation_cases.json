@@ -14,71 +14,729 @@
   {
     "id": "introduction-1",
     "query": "Tell me about Loïc.",
-    "category": "introduction"
+    "category": "introduction",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(introduce())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "response": "Hello! 👋\n\nMeet **Loïc**, a Fullstack Software Engineer based in Esbjerg, Denmark. At **TotalEnergies**, he’s focused on developing internal applications to streamline operations and improve workflows.\n\nSkilled in Python, JavaScript, React, AWS, Docker, Loïc combines backend power with frontend finesse to build robust and user-friendly tools.\n\nHe's especially passionate about **Cloud technologies** and **Generative AI**, and is always exploring ways to leverage them to solve real-world problems.\n\nCurious about his work, projects, or background? Feel free to ask — I’m here to help! 🚀"
+    }
   },
   {
     "id": "introduction-2",
     "query": "wave",
-    "category": "introduction"
+    "category": "introduction",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(introduce())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "response": "Hello! 👋\n\nMeet **Loïc**, a Fullstack Software Engineer based in Esbjerg, Denmark. At **TotalEnergies**, he’s focused on developing internal applications to streamline operations and improve workflows.\n\nSkilled in Python, JavaScript, React, AWS, Docker, Loïc combines backend power with frontend finesse to build robust and user-friendly tools.\n\nHe's especially passionate about **Cloud technologies** and **Generative AI**, and is always exploring ways to leverage them to solve real-world problems.\n\nCurious about his work, projects, or background? Feel free to ask — I’m here to help! 🚀"
+    }
   },
   {
     "id": "certifications-1",
     "query": "What certifications does Loïc have?",
-    "category": "certifications"
+    "category": "certifications",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_certifications())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "certifications": [
+        {
+          "title": "AWS Certified AI Practitioner",
+          "earned_on": "10/07/2025",
+          "link": "https://www.credly.com/badges/95335a26-2d27-4718-9cde-a0f60a14c133/public_url",
+          "detail": "Validates foundational knowledge of AI concepts and terminology, as well as core AWS AI and machine learning services.",
+          "level": "Practitioner",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Developer – Associate",
+          "earned_on": "16/05/2025",
+          "link": "https://www.credly.com/badges/46c816db-1a9d-4c76-a180-30e4d51af1f6/public_url",
+          "detail": "Validates proficiency in developing, deploying, and debugging cloud-based applications using AWS. Covers core AWS services, best practices, and application lifecycle management.",
+          "level": "Associate",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Solutions Architect – Associate",
+          "earned_on": "06/05/2025",
+          "link": "https://www.credly.com/badges/37b9934f-c455-4c77-b975-df33c61d4c5d/public_url",
+          "detail": "Demonstrates ability to design distributed systems on AWS that are scalable, resilient, cost-efficient, and secure. Covers architectural best practices and AWS services.",
+          "level": "Associate",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Cloud Practitioner",
+          "earned_on": "02/04/2025",
+          "link": "https://www.credly.com/badges/4420a690-8cba-48ad-bd4a-f20b12d44491/public_url",
+          "detail": "Validates foundational knowledge of AWS Cloud concepts, core services, security, architecture, pricing, and support.",
+          "level": "Foundational",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "Terraform Associate (003)",
+          "earned_on": "21/03/2025",
+          "link": "https://www.credly.com/badges/06d18ae9-4e80-47d5-bf49-d8582fdacc39/public_url",
+          "detail": "Validates understanding of infrastructure as code concepts, Terraform's workflow, and the ability to use Terraform for provisioning and managing cloud resources.",
+          "level": "Associate",
+          "authority": "HashiCorp"
+        },
+        {
+          "title": "SC-900 : Security, Compliance, and Identity Fundamentals",
+          "earned_on": "05/03/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/D3D2E5191ECE725A?sharingId=607BD74E791FA26E",
+          "detail": "Covers foundational knowledge of security, compliance, and identity concepts and related Microsoft solutions.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        },
+        {
+          "title": "AI-900 : Azure AI Fundamentals",
+          "earned_on": "28/02/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/4D546F07B9FC2D16?sharingId=607BD74E791FA26E",
+          "detail": "Demonstrates foundational knowledge of artificial intelligence (AI) and machine learning (ML) concepts and related Azure services.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        },
+        {
+          "title": "AZ-900 : Azure Fundamentals",
+          "earned_on": "23/02/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/485804E946B9FB1D?sharingId=607BD74E791FA26E",
+          "detail": "Validates foundational knowledge of cloud services and how those services are provided with Microsoft Azure.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        }
+      ]
+    }
   },
   {
     "id": "certifications-2",
     "query": "Tell me more about his AWS certifications.",
-    "category": "certifications"
+    "category": "certifications",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_certifications())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "certifications": [
+        {
+          "title": "AWS Certified AI Practitioner",
+          "earned_on": "10/07/2025",
+          "link": "https://www.credly.com/badges/95335a26-2d27-4718-9cde-a0f60a14c133/public_url",
+          "detail": "Validates foundational knowledge of AI concepts and terminology, as well as core AWS AI and machine learning services.",
+          "level": "Practitioner",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Developer – Associate",
+          "earned_on": "16/05/2025",
+          "link": "https://www.credly.com/badges/46c816db-1a9d-4c76-a180-30e4d51af1f6/public_url",
+          "detail": "Validates proficiency in developing, deploying, and debugging cloud-based applications using AWS. Covers core AWS services, best practices, and application lifecycle management.",
+          "level": "Associate",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Solutions Architect – Associate",
+          "earned_on": "06/05/2025",
+          "link": "https://www.credly.com/badges/37b9934f-c455-4c77-b975-df33c61d4c5d/public_url",
+          "detail": "Demonstrates ability to design distributed systems on AWS that are scalable, resilient, cost-efficient, and secure. Covers architectural best practices and AWS services.",
+          "level": "Associate",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "AWS Certified Cloud Practitioner",
+          "earned_on": "02/04/2025",
+          "link": "https://www.credly.com/badges/4420a690-8cba-48ad-bd4a-f20b12d44491/public_url",
+          "detail": "Validates foundational knowledge of AWS Cloud concepts, core services, security, architecture, pricing, and support.",
+          "level": "Foundational",
+          "authority": "Amazon Web Services (AWS)"
+        },
+        {
+          "title": "Terraform Associate (003)",
+          "earned_on": "21/03/2025",
+          "link": "https://www.credly.com/badges/06d18ae9-4e80-47d5-bf49-d8582fdacc39/public_url",
+          "detail": "Validates understanding of infrastructure as code concepts, Terraform's workflow, and the ability to use Terraform for provisioning and managing cloud resources.",
+          "level": "Associate",
+          "authority": "HashiCorp"
+        },
+        {
+          "title": "SC-900 : Security, Compliance, and Identity Fundamentals",
+          "earned_on": "05/03/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/D3D2E5191ECE725A?sharingId=607BD74E791FA26E",
+          "detail": "Covers foundational knowledge of security, compliance, and identity concepts and related Microsoft solutions.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        },
+        {
+          "title": "AI-900 : Azure AI Fundamentals",
+          "earned_on": "28/02/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/4D546F07B9FC2D16?sharingId=607BD74E791FA26E",
+          "detail": "Demonstrates foundational knowledge of artificial intelligence (AI) and machine learning (ML) concepts and related Azure services.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        },
+        {
+          "title": "AZ-900 : Azure Fundamentals",
+          "earned_on": "23/02/2025",
+          "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/485804E946B9FB1D?sharingId=607BD74E791FA26E",
+          "detail": "Validates foundational knowledge of cloud services and how those services are provided with Microsoft Azure.",
+          "level": "Fundamental",
+          "authority": "Microsoft"
+        }
+      ]
+    }
   },
   {
     "id": "interests-1",
     "query": "What kind of job is Loïc looking for?",
-    "category": "interests"
+    "category": "interests",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_interests())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "interests": {
+        "areas": [
+          "Cloud Computing",
+          "Generative AI",
+          "Business critical applications",
+          "Regulated industries",
+          "Cloud Security",
+          "Cloud Architecture",
+          "Cloud Migration",
+          "Cloud Cost Management",
+          "Cloud Optimization",
+          "Cloud Operations",
+          "Cloud Governance",
+          "Cloud Strategy",
+          "Cloud Transformation"
+        ],
+        "ruled_out": [
+          "IT Product Management",
+          "IT Project Management",
+          "IT Service Management",
+          "IT Asset Management",
+          "IT Change Management",
+          "IT Configuration Management",
+          "Team Management",
+          "Team Leadership",
+          "Team Development"
+        ],
+        "considered_with_business_case": [
+          "Development",
+          "Operations",
+          "DevOps",
+          "Software Development",
+          "Software Engineering"
+        ],
+        "location": {
+          "preferred": [
+            "On-site (Northern Europe, Western Europe)",
+            "Hybrid"
+          ],
+          "ruled_out": [
+            "Remote",
+            "On-site (Eastern Europe, Southern Europe, Asia, Africa, North America, South America, Australia)"
+          ]
+        },
+        "non_it_opportunities": "Not of interest"
+      }
+    }
   },
   {
     "id": "interests-2",
     "query": "Is he interested in remote work?",
-    "category": "interests"
+    "category": "interests",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_interests())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "interests": {
+        "areas": [
+          "Cloud Computing",
+          "Generative AI",
+          "Business critical applications",
+          "Regulated industries",
+          "Cloud Security",
+          "Cloud Architecture",
+          "Cloud Migration",
+          "Cloud Cost Management",
+          "Cloud Optimization",
+          "Cloud Operations",
+          "Cloud Governance",
+          "Cloud Strategy",
+          "Cloud Transformation"
+        ],
+        "ruled_out": [
+          "IT Product Management",
+          "IT Project Management",
+          "IT Service Management",
+          "IT Asset Management",
+          "IT Change Management",
+          "IT Configuration Management",
+          "Team Management",
+          "Team Leadership",
+          "Team Development"
+        ],
+        "considered_with_business_case": [
+          "Development",
+          "Operations",
+          "DevOps",
+          "Software Development",
+          "Software Engineering"
+        ],
+        "location": {
+          "preferred": [
+            "On-site (Northern Europe, Western Europe)",
+            "Hybrid"
+          ],
+          "ruled_out": [
+            "Remote",
+            "On-site (Eastern Europe, Southern Europe, Asia, Africa, North America, South America, Australia)"
+          ]
+        },
+        "non_it_opportunities": "Not of interest"
+      }
+    }
   },
   {
     "id": "contact-1",
     "query": "How can I contact Loïc?",
-    "category": "contact"
+    "category": "contact",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_email())"
+      },
+      {
+        "tool_code": "print(get_socials())"
+      }
+    ],
+    "expected": [
+      {
+        "status": "success",
+        "email": "loic.labeye.contact@pm.me"
+      },
+      {
+        "status": "success",
+        "socials": {
+          "GitHub": "https://github.com/nag763",
+          "LinkedIn": "https://www.linkedin.com/in/labeyel/",
+          "credly": "https://www.credly.com/users/loic-labeye",
+          "personal_site": "https://labeye.info/",
+          "ms_credentials": "https://learn.microsoft.com/en-us/users/llabeye/",
+          "exercism": "https://learn.microsoft.com/en-us/users/llabeye/",
+          "Medium": "https://medium.com/@loic.labeye"
+        }
+      }
+    ]
   },
   {
     "id": "contact-2",
     "query": "What are his social media links?",
-    "category": "contact"
+    "category": "contact",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_socials())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "socials": {
+        "GitHub": "https://github.com/nag763",
+        "LinkedIn": "https://www.linkedin.com/in/labeyel/",
+        "credly": "https://www.credly.com/users/loic-labeye",
+        "personal_site": "https://labeye.info/",
+        "ms_credentials": "https://learn.microsoft.com/en-us/users/llabeye/",
+        "exercism": "https://learn.microsoft.com/en-us/users/llabeye/",
+        "Medium": "https://medium.com/@loic.labeye"
+      }
+    }
   },
   {
     "id": "projects-1",
     "query": "What projects has Loïc worked on?",
-    "category": "projects"
+    "category": "projects",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_projects())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "projects": {
+        "reomir": {
+          "name": "Reomir",
+          "description": "An AI-powered developer portal for enterprises.",
+          "timeline": "2025",
+          "stack": [
+            "Python",
+            "Next.js",
+            "Google Cloud",
+            "Terraform",
+            "Docker",
+            "Firestore"
+          ],
+          "link": "https://github.com/nag763/REOMIR"
+        },
+        "tchatchers": {
+          "name": "Tchatchers",
+          "description": "A chat application made in Rust",
+          "timeline": "2022-2025",
+          "stack": [
+            "Rust",
+            "Tokio",
+            "PostgreSQL",
+            "Redis",
+            "Yew.rs",
+            "Axum",
+            "Docker"
+          ],
+          "link": "https://github.com/nag763/tchatchers"
+        },
+        "doteur": {
+          "name": "Doteur",
+          "description": "A database schema vizualizer made in Rust",
+          "timeline": "2022-2025",
+          "stack": [
+            "Rust",
+            "Graphviz",
+            "Leptos",
+            "Wasm",
+            "Jekyll"
+          ],
+          "link": "https://github.com/nag763/doteur"
+        },
+        "verbihr": {
+          "name": "Verbihr",
+          "description": "A german verbs learning tool made in Rust",
+          "timeline": "2023-2025",
+          "stack": [
+            "Rust",
+            "Tokio",
+            "PostgreSQL",
+            "Redis",
+            "Docker"
+          ],
+          "link": "https://github.com/nag763/verbihr"
+        },
+        "texas-snake": {
+          "name": "Texas Snake",
+          "description": "A snake game made in Rust",
+          "timeline": "2023",
+          "stack": [
+            "Rust",
+            "Bevy",
+            "WASM"
+          ],
+          "link": "https://github.com/nag763/texas-snake"
+        }
+      }
+    }
   },
   {
     "id": "projects-2",
     "query": "Tell me about the 'Reomir' project.",
-    "category": "projects"
+    "category": "projects",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_projects())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "projects": {
+        "reomir": {
+          "name": "Reomir",
+          "description": "An AI-powered developer portal for enterprises.",
+          "timeline": "2025",
+          "stack": [
+            "Python",
+            "Next.js",
+            "Google Cloud",
+            "Terraform",
+            "Docker",
+            "Firestore"
+          ],
+          "link": "https://github.com/nag763/REOMIR"
+        },
+        "tchatchers": {
+          "name": "Tchatchers",
+          "description": "A chat application made in Rust",
+          "timeline": "2022-2025",
+          "stack": [
+            "Rust",
+            "Tokio",
+            "PostgreSQL",
+            "Redis",
+            "Yew.rs",
+            "Axum",
+            "Docker"
+          ],
+          "link": "https://github.com/nag763/tchatchers"
+        },
+        "doteur": {
+          "name": "Doteur",
+          "description": "A database schema vizualizer made in Rust",
+          "timeline": "2022-2025",
+          "stack": [
+            "Rust",
+            "Graphviz",
+            "Leptos",
+            "Wasm",
+            "Jekyll"
+          ],
+          "link": "https://github.com/nag763/doteur"
+        },
+        "verbihr": {
+          "name": "Verbihr",
+          "description": "A german verbs learning tool made in Rust",
+          "timeline": "2023-2025",
+          "stack": [
+            "Rust",
+            "Tokio",  
+            "PostgreSQL",
+            "Redis",
+            "Docker"
+          ],
+          "link": "https://github.com/nag763/verbihr"
+        },
+        "texas-snake": {
+          "name": "Texas Snake",
+          "description": "A snake game made in Rust",
+          "timeline": "2023",
+          "stack": [
+            "Rust",
+            "Bevy",
+            "WASM"
+          ],
+          "link": "https://github.com/nag763/texas-snake"
+        }
+      }
+    }
   },
   {
     "id": "scholarship-1",
     "query": "Where did Loïc study?",
-    "category": "scholarship"
+    "category": "scholarship",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_scholarship())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "graduations": [
+        {
+          "name": "ESIGELEC Rouen",
+          "type": "Engineering School",
+          "degree": "Engineer",
+          "timeline": "2021-2016",
+          "description": "General engineering degree, with a two years specialization in Software Engineering."
+        },
+        {
+          "name": "ECAM Brussels",
+          "type": "ERASMUS Exchange",
+          "timeline": "2019-2020",
+          "description": "Erasmus exchange program in Brussels, Belgium. It was a wonderful second experience abroad."
+        },
+        {
+          "name": "DCU Dublin",
+          "type": "ERASMUS Summer Program",
+          "timeline": "2017",
+          "description": "Erasmus summer program in Dublin, Ireland. It was a great experience to improve my English and meet new people."
+        }
+      ]
+    }
   },
   {
     "id": "skills-1",
     "query": "What are Loïc's skills?",
-    "category": "skills"
+    "category": "skills",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_skills())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "skills": [
+        "AWS",
+        "Axum",
+        "Azure",
+        "Confluence",
+        "DB2",
+        "Django",
+        "Docker",
+        "DRF",
+        "FastAPI",
+        "GCP",
+        "Git",
+        "GitHub",
+        "IBM",
+        "Java",
+        "Java EE",
+        "JavaScript",
+        "Jenkins",
+        "Jira",
+        "MySQL",
+        "NextJS",
+        "Node.js",
+        "PostgreSQL",
+        "Python",
+        "React",
+        "Spring",
+        "Spring Boot",
+        "SVN",
+        "Tomcat",
+        "Trello",
+        "WASM",
+        "Websphere"
+      ]
+    }
   },
   {
     "id": "work_experience-1",
     "query": "What is Loïc's current job?",
-    "category": "work_experience"
+    "category": "work_experience",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_work_experience(current_only=True))"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "work_experiences": [
+        {
+          "company": "TotalEnergies",
+          "position": "Fullstack Software Engineer",
+          "start_date": "2025-02-01",
+          "end_date": "2026-08-01",
+          "location": "Esbjerg, Denmark",
+          "description": "Developing internal applications for the company.",
+          "skills": [
+            "Python",
+            "JavaScript",
+            "React",
+            "Node.js",
+            "NextJS",
+            "FastAPI",
+            "Azure",
+            "Git",
+            "GitHub",
+            "Confluence"
+          ]
+        }
+      ],
+      "invite_to_describe": true
+    }
   },
   {
     "id": "work_experience-2",
     "query": "Tell me about his past work experiences.",
-    "category": "work_experience"
+    "category": "work_experience",
+    "expected_tool_outputs": [
+      {
+        "tool_code": "print(get_work_experience())"
+      }
+    ],
+    "expected": {
+      "status": "success",
+      "work_experiences": [
+        {
+          "company": "TotalEnergies",
+          "position": "Fullstack Software Engineer",
+          "start_date": "2025-02-01",
+          "end_date": "2026-08-01",
+          "location": "Esbjerg, Denmark",
+          "description": "Developing internal applications for the company.",
+          "skills": [
+            "Python",
+            "JavaScript",
+            "React",
+            "Node.js",
+            "NextJS",
+            "FastAPI",
+            "Azure",
+            "Git",
+            "GitHub",
+            "Confluence"
+          ]
+        },
+        {
+          "company": "Allianz Trade on behalf of Aubay",
+          "position": "Consultant Software Engineer",
+          "start_date": "2022-09-01",
+          "end_date": "2025-01-01",
+          "location": "Paris, France",
+          "description": "Development and maintenance of business facing applications in an internal context. This also included response to incidents, business support, and emboarding of new developers.",
+          "skills": [
+            "Java",
+            "AWS",
+            "IBM",
+            "Websphere",
+            "Spring",
+            "Spring Boot",
+            "Java EE",
+            "DB2",
+            "Jenkins",
+            "Git",
+            "Jira",
+            "Confluence"
+          ]
+        },
+        {
+          "company": "Aubay",
+          "position": "Intern Software Engineer",
+          "start_date": "2022-03-01",
+          "end_date": "2022-08-01",
+          "location": "Paris, France",
+          "description": "Development and maintenance of internal applications.",
+          "skills": [
+            "Java",
+            "Spring",
+            "Spring Boot",
+            "MySQL",
+            "PostgreSQL",
+            "Tomcat",
+            "Jenkins",
+            "SVN"
+          ]
+        },
+        {
+          "company": "SustainEcho",
+          "position": "Intern Software Engineer",
+          "start_date": "2020-07-01",
+          "end_date": "2020-09-01",
+          "location": "Paris, France",
+          "description": "Development of an AI business facing application.",
+          "skills": [
+            "Python",
+            "Django",
+            "DRF",
+            "AWS",
+            "Git",
+            "GitHub",
+            "Trello"
+          ]
+        }
+      ],
+      "invite_to_describe": true
+    }
   }
 ]

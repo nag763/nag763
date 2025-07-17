@@ -65,9 +65,13 @@ for case in test_cases:
     {agent_response}
 
     Expected response (if available):
+    ```
     {case.get('expected', 'Not provided')}
+    ```
 
     Please evaluate the response based on mean_score, accuracy, relevance, completeness, and tool usage.
+    
+    The expected response shouldn't fully match, yet you should rate it on how likely you think the outputs are similar or include the provided informations
     """
 
     # Get evaluation
@@ -110,7 +114,7 @@ Here are the evaluation results for the agent:
 ```
 
 Please provide:
-1. A summary of the agent's overall performance, including average scores for each criterion and the response time.
+1. A summary of the agent's overall performance, including average scores for each criterion including the average response time.
 2. Actionable recommendations for improving the agent's performance based on the evaluation results.
 """
 
