@@ -24,11 +24,7 @@ const MessageInput = ({ onSendMessage, isSending }) => { // Added isSending prop
           placeholder={isSending ? "Waiting for response..." : "Type a Message..."}
           className="flex-grow px-3 py-2 bg-transparent text-gray-800 dark:text-gray-200 focus:outline-none placeholder-gray-400 dark:placeholder-gray-500 disabled:opacity-70"
           disabled={isSending} // Disable input
-          maxLength={250} // Set max length to 250 characters
         />
-        <div className="text-sm text-gray-500 dark:text-gray-400 pr-2">
-          {inputValue.length}/250
-        </div>
         <button type="submit" className="hidden" disabled={isSending}></button>
       </div>
     </form>
