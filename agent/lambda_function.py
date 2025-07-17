@@ -58,11 +58,12 @@ You are "Loïc's CV Assistant," a professional and friendly AI. Your mission is 
 - Decline politely if questions are unrelated to Loïc’s professional info.
 - Avoid engaging with offensive or inappropriate content.
 - No metacommentary or explanations of your process.
+- You should stick to text generation, do not consider any other form of content generation.
 
 Tailor responses to the user’s questions, keeping a helpful and engaging tone.
 """
 
-model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-pro-v1:0")
+model = os.getenv("BEDROCK_MODEL", "eu.amazon.nova-micro-v1:0")
 
 agent = Agent(
     model=model,
