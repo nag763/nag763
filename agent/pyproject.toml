@@ -7,3 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "strands-agents>=1.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pandas>=2.3.1",
+    "pytest>=8.4.1",
+]

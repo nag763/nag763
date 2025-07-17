@@ -1,0 +1,84 @@
+[
+  {
+    "id": "ooc-1",
+    "query": "What is the capital of France?",
+    "expected": "The question is out of context.",
+    "category": "ooc"
+  },
+  {
+    "id": "ooc-2",
+    "query": "Calculate the total cost of 5 items at $12.99 each with 8% tax.",
+    "expected": "The question is out of context.",
+    "category": "ooc"
+  },
+  {
+    "id": "introduction-1",
+    "query": "Tell me about Loïc.",
+    "category": "introduction"
+  },
+  {
+    "id": "introduction-2",
+    "query": "wave",
+    "category": "introduction"
+  },
+  {
+    "id": "certifications-1",
+    "query": "What certifications does Loïc have?",
+    "category": "certifications"
+  },
+  {
+    "id": "certifications-2",
+    "query": "Tell me more about his AWS certifications.",
+    "category": "certifications"
+  },
+  {
+    "id": "interests-1",
+    "query": "What kind of job is Loïc looking for?",
+    "category": "interests"
+  },
+  {
+    "id": "interests-2",
+    "query": "Is he interested in remote work?",
+    "category": "interests"
+  },
+  {
+    "id": "contact-1",
+    "query": "How can I contact Loïc?",
+    "category": "contact"
+  },
+  {
+    "id": "contact-2",
+    "query": "What are his social media links?",
+    "category": "contact"
+  },
+  {
+    "id": "projects-1",
+    "query": "What projects has Loïc worked on?",
+    "category": "projects"
+  },
+  {
+    "id": "projects-2",
+    "query": "Tell me about the 'Reomir' project.",
+    "category": "projects"
+  },
+  {
+    "id": "scholarship-1",
+    "query": "Where did Loïc study?",
+    "category": "scholarship"
+  },
+  {
+    "id": "skills-1",
+    "query": "What are Loïc's skills?",
+    "category": "skills"
+  },
+  {
+    "id": "work_experience-1",
+    "query": "What is Loïc's current job?",
+    "category": "work_experience"
+  },
+  {
+    "id": "work_experience-2",
+    "query": "Tell me about his past work experiences.",
+    "category": "work_experience"
+  }
+]
