@@ -1,4 +1,3 @@
-
 """
 This module provides a tool to introduce Loïc.
 """
@@ -39,10 +38,11 @@ def introduce() -> dict:
     for platform, url in links.items():
         introduction_text += f"- {platform}: {url}\n"
     introduction_text += f"- Email: {EMAIL}\n\n"
-    introduction_text += "Feel free to ask me more about my experiences, skills, or projects!"
+    introduction_text += (
+        "Feel free to ask me more about my experiences, skills, or projects!"
+    )
 
     return {
         "status": "success",
         "introduction": introduction_text,
     }
-
