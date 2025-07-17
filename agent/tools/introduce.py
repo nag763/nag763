@@ -62,9 +62,7 @@ def introduce(mode: str = "chat") -> dict:
         f"Curious about his work, projects, or background? Feel free to ask — I’m here to help! 🚀"
     )
 
-    short = (
-        f"{name} is a {title} based in {location}, currently building internal tools at {company}."
-    )
+    short = f"{name} is a {title} based in {location}, currently building internal tools at {company}."
 
     match mode:
         case "structured":
@@ -74,4 +72,7 @@ def introduce(mode: str = "chat") -> dict:
         case "short":
             return {"status": "success", "response": short}
         case _:
-            return {"status": "error", "response": "Invalid mode. Use 'structured', 'chat', or 'short'."}
+            return {
+                "status": "error",
+                "response": "Invalid mode. Use 'structured', 'chat', or 'short'.",
+            }
