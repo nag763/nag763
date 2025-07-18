@@ -11,4 +11,9 @@ export default defineConfig({
   },
 
   integrations: [react()],
+  experimental: {
+    env: {
+      LAMBDA_URL: process.env.LAMBDA_URL,
+    }
+  }
 });

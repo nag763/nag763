@@ -40,9 +40,11 @@ import "../styles/global.css";
                         purpose isn't to spam you with a list of skill sets, it
                         will go straight to the matter.
                     </p>
-                    <a href="./chat" class="btn btn-primary rounded-xl"
-                        >Want to start a chat instead ?</a
-                    >
+                    {import.meta.env.LAMBDA_URL &&
+                        <a href="./chat" class="btn btn-primary rounded-xl"
+                            >Want to start a chat instead ?</a
+                        >
+                    }
                 </div>
             </div>
         </section>

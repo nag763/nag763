@@ -2,6 +2,13 @@
 import ChatWrapper from "../components/ChatWrapper.jsx";
 
 import "../styles/global.css";
+
+if (!import.meta.env.LAMBDA_URL) {
+    return new Response(null, {
+        status: 404,
+        statusText: 'Not Found'
+    });
+}
 ---
 
 <!doctype html>

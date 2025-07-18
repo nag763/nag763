@@ -8,5 +8,5 @@ output "github_actions_role_arn" {
 
 output "lambda_function_url" {
   description = "The URL of the agent Lambda function"
-  value       = aws_lambda_function_url.agent_url.function_url
+  value       = var.agent_enabled ? aws_lambda_function_url.agent_url[0].function_url : ""
 }

@@ -49,27 +49,31 @@ resource "aws_iam_policy" "gh_actions_policy" {
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:PutObject",
-          "s3:DeleteObject",
-          "s3:GetObject"
-        ]
-        Resource = "${aws_s3_bucket.bucket.arn}/*"
-      },
-      {
-        Effect   = "Allow"
-        Action   = "s3:ListBucket"
-        Resource = aws_s3_bucket.bucket.arn
-      },
-      {
-        Effect   = "Allow"
-        Action   = ["lambda:UpdateFunctionCode"]
-        Resource = aws_lambda_function.agent_lambda.arn
-      },
-    ]
+    Statement = concat(
+      [
+        {
+          Effect = "Allow"
+          Action = [
+            "s3:PutObject",
+            "s3:DeleteObject",
+            "s3:GetObject"
+          ]
+          Resource = "${aws_s3_bucket.bucket.arn}/*"
+        },
+        {
+          Effect   = "Allow"
+          Action   = "s3:ListBucket"
+          Resource = aws_s3_bucket.bucket.arn
+        },
+      ],
+      var.agent_enabled ? [
+        {
+          Effect   = "Allow"
+          Action   = ["lambda:UpdateFunctionCode"]
+          Resource = aws_lambda_function.agent_lambda[0].arn
+        },
+      ] : []
+    )
   })
 }
 
@@ -85,7 +89,8 @@ resource "aws_iam_role_policy_attachment" "github_actions_attachment" {
 # IAM Role for Lambda Function
 # ------------------------------------------------------------------------------
 resource "aws_iam_role" "lambda_exec_role" {
-  name = "lambda-bedrock-executor-role"
+  count = var.agent_enabled ? 1 : 0
+  name  = "lambda-bedrock-executor-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -103,6 +108,7 @@ resource "aws_iam_role" "lambda_exec_role" {
 # IAM Policy for Lambda to access Bedrock and CloudWatch
 # ------------------------------------------------------------------------------
 resource "aws_iam_policy" "lambda_bedrock_policy" {
+  count       = var.agent_enabled ? 1 : 0
   name        = "lambda-bedrock-policy"
   description = "Allows Lambda to invoke Bedrock models and write logs"
 
@@ -137,6 +143,7 @@ resource "aws_iam_policy" "lambda_bedrock_policy" {
 # Attach Policy to Lambda Role
 # ------------------------------------------------------------------------------
 resource "aws_iam_role_policy_attachment" "lambda_bedrock_attachment" {
-  role       = aws_iam_role.lambda_exec_role.name
-  policy_arn = aws_iam_policy.lambda_bedrock_policy.arn
+  count      = var.agent_enabled ? 1 : 0
+  role       = aws_iam_role.lambda_exec_role[0].name
+  policy_arn = aws_iam_policy.lambda_bedrock_policy[0].arn
 }

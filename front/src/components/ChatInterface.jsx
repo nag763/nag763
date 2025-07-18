@@ -7,7 +7,7 @@ import { marked } from 'marked';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 
-const agentApi = import.meta.env.PUBLIC_AGENT_ENDPOINT;
+const agentApi = import.meta.env.LAMBDA_URL;
 
 const Header = ({ onNewChat }) => {
   return (

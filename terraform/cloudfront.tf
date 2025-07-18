@@ -58,31 +58,33 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 1638400
     compress               = true
   }
-
   # Ordered cache behavior for /chat/* paths
-  ordered_cache_behavior {
-    path_pattern     = "/chat*" # Use /chat* to catch both /chat and /chat/ and /chat/something
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-${aws_s3_bucket.bucket.id}"
+  dynamic "ordered_cache_behavior" {
+    for_each = var.agent_enabled ? [1] : []
+    content {
+      path_pattern     = "/chat*" # Use /chat* to catch both /chat and /chat/ and /chat/something
+      allowed_methods  = ["GET", "HEAD"]
+      cached_methods   = ["GET", "HEAD"]
+      target_origin_id = "S3-${aws_s3_bucket.bucket.id}"
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
+      forwarded_values {
+        query_string = false
+        cookies {
+          forward = "none"
+        }
       }
-    }
 
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 3600
-    default_ttl            = 86400
-    max_ttl                = 1638400
-    compress               = true
+      viewer_protocol_policy = "redirect-to-https"
+      min_ttl                = 3600
+      default_ttl            = 86400
+      max_ttl                = 1638400
+      compress               = true
 
-    # Attach the CloudFront Function here
-    function_association {
-      event_type   = "viewer-request" # Function runs before CloudFront makes a request to the origin
-      function_arn = aws_cloudfront_function.chat_rewrite.arn
+      # Attach the CloudFront Function here
+      function_association {
+        event_type   = "viewer-request" # Function runs before CloudFront makes a request to the origin
+        function_arn = aws_cloudfront_function.chat_rewrite[0].arn
+      }
     }
   }
 
