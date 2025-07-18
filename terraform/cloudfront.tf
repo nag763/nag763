@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "cdn" {
       # Attach the CloudFront Function here
       function_association {
         event_type   = "viewer-request" # Function runs before CloudFront makes a request to the origin
-        function_arn = aws_cloudfront_function.chat_rewrite[0].arn
+        function_arn = aws_cloudfront_function.chat_rewrite.arn
       }
     }
   }
