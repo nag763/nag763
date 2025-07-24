@@ -19,7 +19,7 @@ While I primarily work with Java, Python and JavaScript in my professional life,
 
 **Frameworks & Libraries**: Spring, Hibernate, FastAPI, Axum, React, Next.js, Astro, Tailwind CSS, Django
 
-**Databases**: DB2
+**Databases**: DB2, PostgreSQL, RDS, DynamoDB, Azure Tables
 
 **Other**: Software Architecture, Agile methodology, Websphere
 
