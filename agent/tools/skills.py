@@ -10,7 +10,7 @@ skills = [
     skill for work_experience in work_experiences for skill in work_experience["skills"]
 ]
 
-skills += ["GCP", "Rust", "Docker", "Axum", "WASM"]
+skills += ["GCP", "Rust", "Docker", "Axum", "WASM", "PostgreSQL", "RDS", "DynamoDB", "Azure Tables"]
 
 
 @tool
