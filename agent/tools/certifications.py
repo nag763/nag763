@@ -6,6 +6,18 @@ from strands import tool
 
 certifications = [
     {
+        "title": "Azure Administrator Associate",
+        "earned_on": "19/09/2025",
+        "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/645001C96C304EBF?sharingId=607BD74E791FA26E",
+        "detail": (
+            "Validates skills in implementing, managing, and monitoring identity, governance, "
+            "storage, compute, and virtual networks in a cloud environment, plus provision, "
+            "size, monitor, and adjust resources when needed."
+        ),
+        "level": "Associate",
+        "authority": "Microsoft",
+    },
+    {
         "title": "AWS Certified AI Practitioner",
         "earned_on": "10/07/2025",
         "link": "https://www.credly.com/badges/95335a26-2d27-4718-9cde-a0f60a14c133/public_url",
