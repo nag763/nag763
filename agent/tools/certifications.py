@@ -6,6 +6,17 @@ from strands import tool
 
 certifications = [
     {
+        "title": "AWS Certified Data Engineer - Associate",
+        "earned_on": "10/10/2025",
+        "link": "https://www.credly.com/badges/6d39c7dd-fd8b-4cf5-8a4f-670b95d7547b/public_url",
+        "detail": (
+            "Validates technical expertise in data engineering on AWS, including designing and "
+            "maintaining data solutions for ingestion, transformation, and delivery of data."
+        ),
+        "level": "Associate",
+        "authority": "Amazon Web Services (AWS)",
+    },
+    {
         "title": "Azure Administrator Associate",
         "earned_on": "19/09/2025",
         "link": "https://learn.microsoft.com/api/credentials/share/en-us/llabeye/645001C96C304EBF?sharingId=607BD74E791FA26E",

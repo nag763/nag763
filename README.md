@@ -27,6 +27,7 @@ While I primarily work with Java, Python and JavaScript in my professional life,
 
 ## 🎓 Certifications
 
+-   **AWS Certified Data Engineer - Associate** (October 2025)
 -   **Microsoft Certified: Azure Administrator Associate** (September 2025)
 -   **AWS Certified AI Practitioner** (July 2025)
 -   **AWS Certified Developer – Associate** (May 2025)
