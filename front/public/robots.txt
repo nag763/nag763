@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://loic.labeye.info/sitemap.xml
+Sitemap: https://loic.labeye.xyz/sitemap.xml
