@@ -1,0 +1,14 @@
+---
+const { tech } = Astro.props;
+---
+<div class="flex flex-col items-center group">
+    <img
+        src={`https://cdn.simpleicons.org/${tech.icon}/9ca3af`}
+        alt={tech.name}
+        class="w-10 h-10 mb-3 group-hover:scale-110 group-hover:filter group-hover:brightness-125 transition-all duration-300"
+        style="filter: grayscale(0.5) opacity(0.8);"
+    />
+    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity">
+        {tech.name}
+    </span>
+</div>

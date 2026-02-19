@@ -1,0 +1,7 @@
+---
+const { link, name, color } = Astro.props;
+---
+<a href={link} target="_blank" rel="noopener noreferrer" class={`group flex items-center gap-2 text-gray-400 hover:text-[${color}] transition-all duration-300`}>
+    <slot />
+    <span class="text-xs font-mono uppercase tracking-widest hidden sm:inline">{name}</span>
+</a>

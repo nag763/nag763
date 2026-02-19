@@ -1,0 +1,59 @@
+---
+import SocialLink from './SocialLink.astro';
+---
+<header class="text-center lg:text-left space-y-10">
+    <h1 class="text-7xl md:text-9xl font-black text-white tracking-tighter">
+      Loïc <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">LABEYE</span>
+    </h1>
+
+    <div class="space-y-6">
+      <p class="text-2xl md:text-3xl text-gray-400 font-light max-w-4xl leading-relaxed">
+        Software Engineer at <span class="text-white">TotalEnergies</span>. 
+        Crafting cloud-native architectures and GenAI solutions. 
+        Currently in <span class="text-white">Denmark</span>.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Open to new opportunities</span>
+        </div>
+        <span class="text-xs font-mono text-gray-500">
+          Hybrid / Onsite • <span class="text-gray-300">NEUR / DACH</span>
+        </span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-6 justify-center lg:justify-start items-center">
+        <SocialLink link="https://flowcv.com/resume/nsdof7rglqn9" name="CV" color="white">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M9 18C9 16.3431 10.3431 15 12 15C13.6569 15 15 16.3431 15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </SocialLink>
+        <SocialLink link="https://www.linkedin.com/in/labeyel/" name="LinkedIn" color="#0A66C2">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+        </SocialLink>
+        <SocialLink link="https://github.com/nag763" name="GitHub" color="white">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+        </SocialLink>
+        <SocialLink link="https://medium.com/@loic.labeye" name="Medium" color="white">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/>
+            </svg>
+        </SocialLink>
+        <SocialLink link="https://www.credly.com/users/loic-labeye" name="Credly" color="#FF6B00">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0L9.43 2.57L5.8 2.07L4.54 5.46L1.15 6.72L1.65 10.35L0 13.12L2.57 15.69L2.07 19.32L5.46 20.58L6.72 23.97L10.35 23.47L13.12 25.12L15.69 22.55L19.32 23.05L20.58 19.66L23.97 18.4L23.47 14.77L25.12 12L22.55 9.43L23.05 5.8L19.66 4.54L18.4 1.15L14.77 1.65L12 0ZM12 17.5C8.96 17.5 6.5 15.04 6.5 12C6.5 8.96 8.96 6.5 12 6.5C15.04 6.5 17.5 8.96 17.5 12C17.5 15.04 15.04 17.5 12 17.5Z"/>
+            </svg>
+        </SocialLink>
+    </div>
+</header>

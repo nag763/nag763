@@ -1,0 +1,7 @@
+---
+const { certification } = Astro.props;
+---
+<a href={certification.link} target="_blank" class="group block border-l-2 border-transparent hover:border-blue-500 pl-4 transition-all">
+    <p class="text-[10px] font-mono text-gray-500 mb-1">{certification.authority} • {certification.earned_on}</p>
+    <h4 class="text-sm font-bold text-gray-200 group-hover:text-blue-400 leading-tight">{certification.title}</h4>
+</a>
