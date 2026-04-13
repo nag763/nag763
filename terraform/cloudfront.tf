@@ -13,12 +13,12 @@ resource "aws_cloudfront_origin_access_control" "cdn_origin_access_control" {
 # ACM Certificate for CloudFront (must be in us-east-1)
 # ------------------------------------------------------------------------------
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "labeye.info"
+  domain_name       = "labeye.eu"
   validation_method = "DNS"
   provider          = aws.us-east-1
 
   subject_alternative_names = [
-    "loic.labeye.info",
+    "loic.labeye.eu",
   ]
 }
 
@@ -36,7 +36,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  default_root_object = "index.html" # For labeye.info/
+  default_root_object = "index.html" # For labeye.eu/
   http_version        = "http2and3"
 
   # Default cache behavior for all other paths
@@ -96,8 +96,8 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   aliases = [
-    "labeye.info",
-    "loic.labeye.info",
+    "labeye.eu",
+    "loic.labeye.eu",
   ]
 
   restrictions {
@@ -118,7 +118,7 @@ function handler(event) {
     var uri = request.uri;
 
     // Check if the URI is exactly '/chat' or '/chat/'
-    // This handles both 'labeye.info/chat' and 'labeye.info/chat/'
+    // This handles both 'labeye.eu/chat' and 'labeye.eu/chat/'
     if (uri === '/chat' || uri === '/chat/') {
         request.uri = '/chat/index.html'; // Rewrite to the S3 object path
     } else if (uri.startsWith('/chat/')) {
