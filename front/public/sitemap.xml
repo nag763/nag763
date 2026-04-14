@@ -3,20 +3,20 @@
   
   <!-- Main domain -->
   <url>
-    <loc>https://www.labeye.info/</loc>
+    <loc>https://www.labeye.eu/</loc>
     <lastmod>2025-04-13</lastmod>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://labeye.info/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://loic.labeye.info/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://labeye.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loic.labeye.eu/"/>
   </url>
 
   <!-- Alternative domain 1 -->
   <url>
-    <loc>https://www.loic.labeye.info/</loc>
+    <loc>https://www.loic.labeye.eu/</loc>
     <lastmod>2025-04-13</lastmod>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://labeye.info/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://loic.labeye.info/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://labeye.eu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://loic.labeye.eu/"/>
   </url>
 
 </urlset>
