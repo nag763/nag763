@@ -1,4 +1,4 @@
-# Hi, I'm Loïc LABEYE 👋
+# Hi, I'm Loïc 👋
 
 [![Exercism](https://img.shields.io/badge/Exercism-009CAB?style=for-the-badge&logo=exercism&logoColor=white)](https://exercism.org/profiles/nag763)
 [![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)](https://github.com/search?q=owner%3Anag763+language%3ARust+&type=code)
