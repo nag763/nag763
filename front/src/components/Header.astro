@@ -10,6 +10,13 @@ import SocialLink from './SocialLink.astro';
     gtag('js', new Date());
 
     gtag('config', 'G-154TP6TJRZ');
+
+    // Send CV viewed event
+    document.getElementById('cv')?.addEventListener('click', () => {
+        if (gtag != null) {
+            gtag('event', 'CV viewed');
+        }
+    });
     </script>
     <h1 class="text-7xl md:text-9xl font-black text-white tracking-tighter">
       Loïc <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">LABEYE</span>
