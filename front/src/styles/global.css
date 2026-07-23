@@ -1,1 +1,105 @@
 @import "tailwindcss";
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 10px;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .animate-drift {
+    animation: drift 20s ease-in-out infinite alternate;
+  }
+
+  .animate-drift-slow {
+    animation: drift-slow 25s ease-in-out infinite alternate;
+  }
+
+  .animate-grain {
+    animation: grain 0.5s steps(1) infinite;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.95) translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(to right, var(--color-violet-500), var(--color-violet-500));
+    background-size: 0% 2px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 2px;
+  }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes drift-slow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 25px) scale(1.1); }
+  100% { transform: translate(20px, -30px) scale(0.95); }
+}
+
+@keyframes grain {
+  0% { background-position: 0 0; }
+  20% { background-position: -20px 20px; }
+  40% { background-position: 20px -20px; }
+  60% { background-position: -10px 10px; }
+  80% { background-position: 10px -10px; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.4); }
+}
