@@ -7,10 +7,13 @@ import WorkExperience from '../components/WorkExperience.astro';
 import Certification from '../components/Certification.astro';
 import Project from '../components/Project.astro';
 import Technology from '../components/Technology.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import { certifications, projects, technologies, workExperiences } from '../data.ts';
 ---
 
 <BaseLayout title="Loïc LABEYE | Software Engineer">
+  <LanguageSwitcher />
+
   <main class="max-w-5xl mx-auto px-6 py-24 space-y-40">
 
     <Header />
@@ -19,26 +22,26 @@ import { certifications, projects, technologies, workExperiences } from '../data
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal" data-delay="200">
       <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm text-center">
         <div class="text-3xl font-black text-white font-['JetBrains_Mono']" data-countup="5" data-suffix="+">0</div>
-        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider">Years Experience</div>
+        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider" data-i18n="stats.experience">Years Experience</div>
       </div>
       <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm text-center">
         <div class="text-3xl font-black text-white font-['JetBrains_Mono']" data-countup="10" data-suffix="">0</div>
-        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider">Certifications</div>
+        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider" data-i18n="stats.certifications">Certifications</div>
       </div>
       <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm text-center">
         <div class="text-3xl font-black text-white font-['JetBrains_Mono']" data-countup="3" data-suffix="">0</div>
-        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider">OSS Projects</div>
+        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider" data-i18n="stats.projects">OSS Projects</div>
       </div>
       <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm text-center">
         <div class="text-3xl font-black text-white font-['JetBrains_Mono']" data-countup="9" data-suffix="">0</div>
-        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider">Technologies</div>
+        <div class="text-xs text-zinc-500 mt-1 uppercase tracking-wider" data-i18n="stats.technologies">Technologies</div>
       </div>
     </div>
 
     <!-- Summary / About -->
     <section id="about" data-track-section="about" class="reveal">
       <div class="max-w-3xl space-y-6 text-lg text-zinc-400 leading-relaxed">
-        <p>
+        <p data-i18n="about.text">
           Software engineer with <span class="text-white font-medium">5+ years of professional experience</span>, currently wrapping up an international engagement in Denmark and <span class="text-violet-400 font-medium">actively looking for new opportunities</span>. Passionate about coding, <span class="text-white font-medium">cloud technologies</span>, and <span class="text-white font-medium">AI-driven development</span>. Currently expanding my toolkit with <span class="text-white font-medium font-['JetBrains_Mono']">Golang</span>.
         </p>
       </div>
@@ -47,21 +50,21 @@ import { certifications, projects, technologies, workExperiences } from '../data
     <!-- Attention catcher 1 -->
     <div class="flex items-center gap-4 reveal" data-delay="0">
       <div class="flex-grow h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent"></div>
-      <span class="text-xs font-['JetBrains_Mono'] text-violet-400 uppercase tracking-widest animate-pulse">Keep scrolling</span>
+      <span class="text-xs font-['JetBrains_Mono'] text-violet-400 uppercase tracking-widest animate-pulse" data-i18n="catcher.scroll">Keep scrolling</span>
       <div class="flex-grow h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent"></div>
     </div>
 
-    <Section title="Work Experience" trackName="work_experience">
+    <Section title="Work Experience" trackName="work_experience" i18nKey="section.experience">
       <div class="space-y-16">
         {workExperiences.map((experience, i) => (
           <div class="reveal" data-delay={String(i * 150)}>
-            <WorkExperience experience={experience} />
+            <WorkExperience experience={experience} index={i} />
           </div>
         ))}
       </div>
     </Section>
 
-    <Section title="Certifications" trackName="certifications">
+    <Section title="Certifications" trackName="certifications" i18nKey="section.certifications">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
         {certifications.map((cert, i) => (
           <div class="reveal-scale" data-delay={String(i * 80)}>
@@ -78,8 +81,8 @@ import { certifications, projects, technologies, workExperiences } from '../data
       <div class="w-2 h-2 rounded-full bg-fuchsia-500 animate-bounce" style="animation-delay: 300ms;"></div>
     </div>
 
-    <Section title="Used & Loved Technologies" trackName="technologies">
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-6 items-center">
+    <Section title="Used & Loved Technologies" trackName="technologies" i18nKey="section.technologies">
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-6 items-center">
         {technologies.map((tech, i) => (
           <div class="reveal-scale" data-delay={String(i * 60)}>
             <Technology tech={tech} />
@@ -88,7 +91,7 @@ import { certifications, projects, technologies, workExperiences } from '../data
       </div>
     </Section>
 
-    <Section title="Selected OSS Projects" trackName="projects">
+    <Section title="Selected OSS Projects" trackName="projects" i18nKey="section.projects">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((p, i) => (
           <div class="reveal-scale" data-delay={String(i * 120)}>
@@ -101,7 +104,7 @@ import { certifications, projects, technologies, workExperiences } from '../data
     <!-- Attention catcher 3 -->
     <div class="text-center space-y-2 reveal" data-delay="0">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-violet-500/20 bg-violet-500/5">
-        <span class="text-violet-400 text-sm">Almost there</span>
+        <span class="text-violet-400 text-sm" data-i18n="catcher.almost">Almost there</span>
         <svg class="w-4 h-4 text-violet-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
@@ -109,22 +112,22 @@ import { certifications, projects, technologies, workExperiences } from '../data
     </div>
 
     <section id="personal" data-track-section="personal" class="space-y-8 pt-16 border-t border-zinc-800/50">
-      <h2 class="text-xs font-bold text-violet-400 uppercase tracking-[0.25em] font-['JetBrains_Mono'] reveal">Beyond the Code</h2>
+      <h2 class="text-xs font-bold text-violet-400 uppercase tracking-[0.25em] font-['JetBrains_Mono'] reveal" data-i18n="section.personal">Beyond the Code</h2>
       <div class="flex items-center gap-6 reveal" data-delay="100">
         <div class="text-3xl grayscale opacity-60">📷</div>
-        <p class="text-lg text-zinc-400 leading-relaxed">
+        <p class="text-lg text-zinc-400 leading-relaxed" data-i18n="personal.photo">
           I've recently discovered a passion for <span class="text-white font-medium italic">photography</span>. I love capturing perspectives through the lens and exploring the creative balance between technical settings and visual storytelling.
         </p>
       </div>
       <div class="flex items-center gap-6 reveal" data-delay="200">
         <div class="text-3xl grayscale opacity-60">✈️</div>
-        <p class="text-lg text-zinc-400 leading-relaxed">
+        <p class="text-lg text-zinc-400 leading-relaxed" data-i18n="personal.travel">
           My goal is to visit all the <span class="text-white font-medium italic">EU</span>. Less than ten countries left!
         </p>
       </div>
       <div class="flex items-center gap-6 reveal" data-delay="300">
         <div class="text-3xl grayscale opacity-60">🧑‍💻</div>
-        <p class="text-lg text-zinc-400 leading-relaxed">
+        <p class="text-lg text-zinc-400 leading-relaxed" data-i18n="personal.code">
           Development is my job, but first it's my <span class="text-white font-medium italic">passion</span>.
         </p>
       </div>
@@ -139,13 +142,13 @@ import { certifications, projects, technologies, workExperiences } from '../data
         <div class="relative z-10">
           <p class="text-2xl md:text-3xl font-bold text-white mb-2">
             <span class="inline-block animate-bounce" style="animation-delay: 0ms;">🎉</span>
-            You made it this far!
+            <span data-i18n="footer.celebrate">You made it this far!</span>
             <span class="inline-block animate-bounce" style="animation-delay: 200ms;">🎊</span>
           </p>
-          <p class="text-zinc-400 text-lg mb-10">That means something — now let's connect.</p>
+          <p class="text-zinc-400 text-lg mb-10" data-i18n="footer.celebrate.sub">That means something — now let's connect.</p>
 
-          <h2 class="text-5xl md:text-6xl font-black text-white mb-8 tracking-tight">Let's build together.</h2>
-          <p class="text-zinc-500 mb-12 text-lg">Currently in Esbjerg, Denmark 🇩🇰 — Open to collaborations.</p>
+          <h2 class="text-5xl md:text-6xl font-black text-white mb-8 tracking-tight" data-i18n="footer.title">Let's build together.</h2>
+          <p class="text-zinc-500 mb-12 text-lg" data-i18n="footer.location">Currently in Esbjerg, Denmark 🇩🇰 — Open to collaborations.</p>
 
           <div class="flex flex-col items-center gap-6">
             <!-- Download CV button (prominent) -->
@@ -162,7 +165,7 @@ import { certifications, projects, technologies, workExperiences } from '../data
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download my CV
+              <span data-i18n="footer.cv">Download my CV</span>
             </a>
 
             <!-- Email with copy button -->
@@ -188,7 +191,7 @@ import { certifications, projects, technologies, workExperiences } from '../data
                 <svg class="w-4 h-4 hidden text-emerald-400" id="check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
-                <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] bg-zinc-800 text-zinc-300 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Copy</span>
+                <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] bg-zinc-800 text-zinc-300 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none" data-i18n="footer.copy">Copy</span>
               </button>
             </div>
           </div>
