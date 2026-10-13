@@ -48,7 +48,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "exp.allianz.location": "Paris, France",
     "exp.allianz.task1": "Led technical evolution of enterprise CRM portal, integrating Salesforce APIs to centralize data.",
     "exp.allianz.task2": "Scaled customer portal supporting 30,000+ monthly active users worldwide.",
-    "exp.allianz.task3": "Orchestrated migration of legacy systems to modern stack, improving developer velocity and reducing debt."
+    "exp.allianz.task3": "Orchestrated migration of legacy systems to modern stack, improving developer velocity and reducing debt.",
+    "projects.tchatche.rs.description": "Full-stack chat application",
+    "projects.recrudb.description": "Job application management platform that centralizes job offers, scores candidates' profiles against opportunities, and assists in redacting motivation letters.",
+    "projects.doteur.description": "Database schema renderer in Rust.",
+    "projects.dbaradar.description": "Automated serverless event-driven radar for Danish classifieds (DBA.dk) with AI-powered deal evaluation and Telegram alerts",
+    "projects.monmetrecarre.description": "Track real estate prices in France by commune. Serverless application using Rust Lambda, AWS Glue, DynamoDB, and CloudFront."
   },
   fr: {
     "header.role": "Ingénieur Logiciel",
@@ -88,7 +93,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "exp.allianz.location": "Paris, France",
     "exp.allianz.task1": "Direction de l'évolution technique du portail CRM d'entreprise, intégration des API Salesforce pour centraliser les données.",
     "exp.allianz.task2": "Mise à l'échelle du portail client supportant plus de 30 000 utilisateurs actifs mensuels dans le monde.",
-    "exp.allianz.task3": "Orchestration de la migration des systèmes legacy vers une stack moderne, améliorant la vélocité des développeurs."
+    "exp.allianz.task3": "Orchestration de la migration des systèmes legacy vers une stack moderne, améliorant la vélocité des développeurs.",
+    "projects.tchatche.rs.description": "Application de chat full-stack",
+    "projects.recrudb.description": "Plateforme de gestion des candidatures qui centralise les offres d'emploi, évalue les profils des candidats par rapport aux opportunités et aide à la rédaction des lettres de motivation.",
+    "projects.doteur.description": "Outil de rendu de schémas de base de données en Rust.",
+    "projects.dbaradar.description": "Radar automatique serverless piloté par événements pour les petites annonces danoises (DBA.dk) avec évaluation des offres par IA et alertes Telegram",
+    "projects.monmetrecarre.description": "Suivi des prix de l'immobilier en France par commune. Application serverless utilisant Rust Lambda, AWS Glue, DynamoDB et CloudFront."
   },
   de: {
     "header.role": "Software-Ingenieur",
@@ -128,7 +138,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     "exp.allianz.location": "Paris, Frankreich",
     "exp.allianz.task1": "Leitung der technischen Evolution des Enterprise-CRM-Portals, Integration von Salesforce-APIs zur Datenzentralisierung.",
     "exp.allianz.task2": "Skalierung des Kundenportals mit über 30.000 monatlich aktiven Nutzern weltweit.",
-    "exp.allianz.task3": "Orchestrierung der Migration von Legacy-Systemen auf einen modernen Stack, Verbesserung der Entwicklerproduktivität."
+    "exp.allianz.task3": "Orchestrierung der Migration von Legacy-Systemen auf einen modernen Stack, Verbesserung der Entwicklerproduktivität.",
+    "projects.tchatche.rs.description": "Vollständige Chat-Anwendung",
+    "projects.recrudb.description": "Bewerbungsmanagement-Plattform, die Stellenangebote zentralisiert, Kandidatenprofile mit Möglichkeiten bewertet und bei der Erstellung von Motivationsschreiben unterstützt.",
+    "projects.doteur.description": "Datenbankschema-Renderer in Rust.",
+    "projects.dbaradar.description": "Automatisiertes serverloses ereignisgesteuertes Radar für dänische Kleinanzeigen (DBA.dk) mit KI-gestützter Bewertung von Angeboten und Telegram-Benachrichtigungen",
+    "projects.monmetrecarre.description": "Verfolgung der Immobilienpreise in Frankreich nach Gemeinde. Serverlose Anwendung mit Rust Lambda, AWS Glue, DynamoDB und CloudFront."
   },
   da: {
     "header.role": "Softwareingeniør",
@@ -168,6 +183,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     "exp.allianz.location": "Paris, Frankrig",
     "exp.allianz.task1": "Ledte den tekniske evolution af enterprise CRM-portalen og integrerede Salesforce API'er til centralisering af data.",
     "exp.allianz.task2": "Skalerede kundeportal med over 30.000 månedligt aktive brugere på verdensplan.",
-    "exp.allianz.task3": "Orkestrerede migrering af legacy-systemer til en moderne stack, forbedrede udviklerproduktivitet og reducerede teknisk gæld."
+    "exp.allianz.task3": "Orkestrerede migrering af legacy-systemer til en moderne stack, forbedrede udviklerproduktivitet og reducerede teknisk gæld.",
+    "projects.tchatche.rs.description": "Fuld-stack chat applikation",
+    "projects.recrudb.description": "Jobsøgningsadministrationsplatform, der centraliserer jobtilbud, scorer kandidaters profiler mod muligheder og hjælper med at udarbejde motivationsbreve.",
+    "projects.doteur.description": "Database-skema-renderer i Rust.",
+    "projects.dbaradar.description": "Automatiseret serverløs begivenhedsdrevet radar for danske klassificerede annoncer (DBA.dk) med AI-drevet vurdering af tilbud og Telegram-alarmer",
+    "projects.monmetrecarre.description": "Spor boligpriser i Frankrig pr. kommune. Serverløs applikation, der bruger Rust Lambda, AWS Glue, DynamoDB og CloudFront."
   }
 };

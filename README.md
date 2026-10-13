@@ -59,8 +59,10 @@ Some of my open-source work:
 | Project | Description | Stack |
 | :--- | :--- | :--- |
 | [tchatche.rs](https://github.com/nag763/tchatchers) | Full-stack chat application | Rust, Axum, Redis |
+| [recrudb](https://github.com/nag763/recrudb) | Job application management platform that centralizes job offers, scores candidates' profiles against opportunities, and assists in redacting motivation letters | React (TanStack), Go, Firebase, Cloud Run |
 | [doteur](https://github.com/nag763/doteur) | Database schema renderer | Rust, Graphviz |
-| [reomir](https://github.com/nag763/REOMIR) | AI-powered developer portal | Go, GenAI |
+| [dbaradar](https://github.com/nag763/dbaradar) | Automated serverless event-driven radar for Danish classifieds (DBA.dk) with AI-powered deal evaluation and Telegram alerts | Go, Serverless, AI |
+| [monmetrecarre](https://github.com/nag763/monmetrecarre) | Track real estate prices in France by commune | Rust, Lambda, DynamoDB, AWS Glue, CloudFront |
 | [verbihr](https://github.com/nag763/verbihr) | German verb learning tool | Web |
 | [texas-snake](https://github.com/nag763/texas-snake) | Browser-based Snake game ([play it](https://nag763.github.io/texas-snake/)) | JS |
 | [rat-rs](https://github.com/nag763/rat-rs) | CLI transit schedule fetcher for Paris | Rust |

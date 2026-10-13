@@ -16,7 +16,7 @@ const { project } = Astro.props;
       <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
     </svg>
   </div>
-  <p class="text-zinc-500 text-sm mb-4">{project.description}</p>
+  <p class="text-zinc-500 text-sm mb-4" data-i18n={`projects.${project.title}.description`}>{project.description}</p>
   <div class="flex gap-2">
     {project.tech.map((t: string) => (
       <span class="text-[10px] bg-violet-500/10 text-violet-400 px-2.5 py-1 rounded-full uppercase font-bold tracking-widest">{t}</span>

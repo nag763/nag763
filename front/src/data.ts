@@ -72,9 +72,11 @@ export const certifications = [
 ];
 
 export const projects = [
-  { title: "tchatche.rs", description: "Full-stack chat based on Axum and Rust.", link: "https://github.com/nag763/tchatchers", tech: ["Rust", "Redis"] },
+  { title: "tchatche.rs", description: "Full-stack chat application", link: "https://github.com/nag763/tchatchers", tech: ["Rust", "Axum", "Redis"] },
+  { title: "recrudb", description: "Job application management platform that centralizes job offers, scores candidates' profiles against opportunities, and assists in redacting motivation letters.", link: "https://github.com/nag763/recrudb", tech: ["React (TanStack)", "Go", "Firebase", "Cloud Run"] },
   { title: "doteur", description: "Database schema renderer in Rust.", link: "https://github.com/nag763/doteur", tech: ["Rust", "Graphviz"] },
-  { title: "reomir", description: "AI-powered developer portal for enterprises.", link: "https://github.com/nag763/REOMIR", tech: ["GenAI", "Go"] }
+  { title: "dbaradar", description: "Automated serverless event-driven radar for Danish classifieds (DBA.dk) with AI-powered deal evaluation and Telegram alerts", link: "https://github.com/nag763/dbaradar", tech: ["Go", "Serverless", "AI"] },
+  { title: "monmetrecarre", description: "Track real estate prices in France by commune. Serverless application using Rust Lambda, AWS Glue, DynamoDB, and CloudFront.", link: "https://github.com/nag763/monmetrecarre", tech: ["Rust", "Lambda", "DynamoDB", "AWS Glue", "CloudFront"] }
 ];
 
 export const technologies = [
@@ -86,7 +88,10 @@ export const technologies = [
   { name: "Quarkus", icon: "quarkus" },
   { name: "Spring", icon: "spring" },
   { name: "Linux", icon: "linux" },
-  { name: "Docker", icon: "docker" }
+  { name: "Docker", icon: "docker" },
+  { name: "AWS", icon: "amazonwebservices" },
+  { name: "GCP", icon: "googlecloud" },
+  { name: "Azure", icon: "azure" }
 ];
 
 export const workExperiences = [
