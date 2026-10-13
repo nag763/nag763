@@ -12,7 +12,8 @@ interface Props {
 }
 
 const { experience, index } = Astro.props;
-const prefix = index === 0 ? 'exp.total' : 'exp.allianz';
+const prefixes = ['exp.total', 'exp.allianz', 'exp.sustain'];
+const prefix = prefixes[index] || 'exp.allianz';
 
 const dotClasses = [
   'absolute w-3 h-3 rounded-full -left-[7px] top-2',

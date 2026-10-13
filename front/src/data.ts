@@ -73,10 +73,10 @@ export const certifications = [
 
 export const projects = [
   { title: "tchatche.rs", description: "Full-stack chat application", link: "https://github.com/nag763/tchatchers", tech: ["Rust", "Axum", "Redis"] },
-  { title: "recrudb", description: "Job application management platform that centralizes job offers, scores candidates' profiles against opportunities, and assists in redacting motivation letters.", link: "https://github.com/nag763/recrudb", tech: ["React (TanStack)", "Go", "Firebase", "Cloud Run"] },
+  { title: "recrudb", description: "Job application management platform that centralizes job offers, scores candidates' profiles against opportunities, and assists in redacting motivation letters.", link: "https://github.com/nag763/recrudb", tech: ["React (TanStack)", "Go", "Firebase"] },
   { title: "doteur", description: "Database schema renderer in Rust.", link: "https://github.com/nag763/doteur", tech: ["Rust", "Graphviz"] },
   { title: "dbaradar", description: "Automated serverless event-driven radar for Danish classifieds (DBA.dk) with AI-powered deal evaluation and Telegram alerts", link: "https://github.com/nag763/dbaradar", tech: ["Go", "Serverless", "AI"] },
-  { title: "monmetrecarre", description: "Track real estate prices in France by commune. Serverless application using Rust Lambda, AWS Glue, DynamoDB, and CloudFront.", link: "https://github.com/nag763/monmetrecarre", tech: ["Rust", "Lambda", "DynamoDB", "AWS Glue", "CloudFront"] }
+  { title: "monmetrecarre", description: "Track real estate prices in France by commune. Serverless application using Rust Lambda, AWS Glue, DynamoDB, and CloudFront.", link: "https://github.com/nag763/monmetrecarre", tech: ["Rust", "Lambda", "DynamoDB"] }
 ];
 
 export const technologies = [
@@ -89,15 +89,23 @@ export const technologies = [
   { name: "Spring", icon: "spring" },
   { name: "Linux", icon: "linux" },
   { name: "Docker", icon: "docker" },
-  { name: "AWS", icon: "amazonwebservices" },
   { name: "GCP", icon: "googlecloud" },
-  { name: "Azure", icon: "azure" }
+  { name: "GitHub", icon: "github" },
+  { name: "Fedora", icon: "fedora" },
+  { name: "Mistral AI", icon: "mistralai" },
+  { name: "Gemini", icon: "googlegemini" },
+  { name: "Firefox", icon: "firefox" },
+  { name: "Mullvad", icon: "mullvad" },
+  { name: "HTTPie", icon: "httpie" },
+  { name: "Zed", icon: "zedindustries" },
 ];
+
+export const certificationsSeparator = "Will you be the next step ?";
 
 export const workExperiences = [
   {
     title: "Software Engineer @ TotalEnergies",
-    period: "02/2025 — Present",
+    period: "02/2025 — 01/2027",
     location: "Esbjerg, Denmark",
     tasks: [
       "Architected a document validation engine processing 500+ financial files/month, reducing manual effort by 80%.",
@@ -105,7 +113,7 @@ export const workExperiences = [
       "Led development of inventory tools reducing dead stock review time by 75%."
     ],
     technologies: ["Azure", "Python", "Next.js", "TypeScript", "React", "JavaScript", "Java", "Spring", "Entra ID"],
-    current: true
+    current: false
   },
   {
     title: "IT Consultant @ Allianz Trade (via Aubay)",
@@ -117,6 +125,17 @@ export const workExperiences = [
       "Orchestrated migration of legacy systems to modern stack, improving developer velocity and reducing debt."
     ],
     technologies: ["AWS", "Java", "Spring", "JEE", "JavaScript", "jQuery"],
+    current: false
+  },
+  {
+    title: "Backend Software Engineer Internship @ SustainEcho",
+    period: "06/2020 — 08/2020",
+    location: "Paris, France",
+    tasks: [
+      "Engineered the startup's initial backend REST API from scratch within a 2-month sprint using Python (Django).",
+      "Implemented core business logic, endpoints, and validation schemas, documenting the entire API surface via Swagger for seamless client consumption."
+    ],
+    technologies: ["Python", "Django", "Swagger"],
     current: false
   }
 ];
